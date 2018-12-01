@@ -24,7 +24,7 @@ import java.util.logging.Logger;
  */
 public class dataAccess {
 
-    public Connection connection;
+    private static Connection connection;
     private Statement statement;
     private ResultSet resultSet;
     private PreparedStatement preparedStatement;
@@ -32,23 +32,26 @@ public class dataAccess {
     public static final String MYSQL_URL = "jdbc:mysql://";
 
     private static dataAccess XLdata;
+
     private dataAccess() {
-        
+        getConnect();
+    }
+
+    public static Connection getConnect() {
         try {
             Class.forName(MYSQL_DRIVER);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(dataAccess.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        try {
             connection = (Connection) DriverManager.getConnection(MYSQL_URL + AppConfig.DBNAME, AppConfig.USERNAME, AppConfig.PASSWORD);
-        } catch (SQLException ex) {
+
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(dataAccess.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return connection;
     }
-    
-    public static dataAccess getInstance(){
-        if(XLdata==null)
+
+    public static dataAccess getInstance() throws ClassNotFoundException {
+        if (XLdata == null) {
             XLdata = new dataAccess();
+        }
         return XLdata;
     }
 
@@ -59,8 +62,7 @@ public class dataAccess {
             resultSet = statement.executeQuery(sql);
             ResultSetMetaData rsmd = resultSet.getMetaData();
             int numberOfColumns = rsmd.getColumnCount();
-            while (resultSet.next())
-            {
+            while (resultSet.next()) {
                 String[] row = new String[numberOfColumns];
                 for (int i = 0; i < numberOfColumns; i++) {
                     row[i] = resultSet.getString(i + 1);
@@ -76,7 +78,6 @@ public class dataAccess {
 
     public int runSQL(String sql) {
         try {
-            //connect();
             preparedStatement = (PreparedStatement) connection.prepareStatement(sql);
             return preparedStatement.executeUpdate();
 
@@ -97,6 +98,7 @@ public class dataAccess {
             if (connection != null) {
                 connection.close();
             }
+            XLdata = null;
         } catch (Exception e) {
         }
     }
