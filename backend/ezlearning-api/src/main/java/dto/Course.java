@@ -13,7 +13,7 @@ public class Course {
     private String id;
     private String name;
     private double rating;
-    private String desc;
+    private String description;
     private String teacherid;
     private String price;
     private String date;
@@ -24,7 +24,7 @@ public class Course {
         this.id = row[0];
         this.name = row[1];
         this.rating = Double.parseDouble(row[2]);
-        this.desc = row[3];
+        this.description = row[3];
         this.teacherid = row[4];
         this.price = row[5];
         this.date = row[6];
@@ -56,12 +56,12 @@ public class Course {
         this.rating = rating;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getTeacherid() {

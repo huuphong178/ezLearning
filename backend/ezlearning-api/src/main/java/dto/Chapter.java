@@ -13,13 +13,13 @@ public class Chapter {
     private String id;
     private String courseid;
     private String name;
-    private int order;
+    private int chapter_order;
 
     public Chapter(String[] row) {
         this.id = row[0];
         this.courseid = row[1];
         this.name = row[2];
-        this.order = Integer.parseInt(row[3]);
+        this.chapter_order = Integer.parseInt(row[3]);
     }
 
     public String getId() {
@@ -46,12 +46,12 @@ public class Chapter {
         this.name = name;
     }
 
-    public int getOrder() {
-        return order;
+    public int getChapter_order() {
+        return chapter_order;
     }
 
-    public void setOrder(int order) {
-        this.order = order;
+    public void setChapter_order(int chapter_order) {
+        this.chapter_order = chapter_order;
     }
     
     
