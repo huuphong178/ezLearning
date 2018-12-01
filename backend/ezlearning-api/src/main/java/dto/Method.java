@@ -17,6 +17,11 @@ public class Method {
         this.name = method[1];
     }
 
+    public Method(String id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     public String getId() {
         return id;
     }

@@ -15,7 +15,7 @@ import java.util.Date;
  */
 public class DateUtil {
 
-    public static String format="MM/dd/yyyy";
+    public static String format="yyyy-MM-dd";
     public static Date parseDate(String date) {
         try {
             return new SimpleDateFormat().parse(date);

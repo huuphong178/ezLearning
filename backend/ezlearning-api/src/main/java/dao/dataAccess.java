@@ -24,7 +24,7 @@ import java.util.logging.Logger;
  */
 public class dataAccess {
 
-    private static Connection connection;
+    public Connection connection;
     private Statement statement;
     private ResultSet resultSet;
     private PreparedStatement preparedStatement;
@@ -34,21 +34,15 @@ public class dataAccess {
     private static dataAccess XLdata;
 
     private dataAccess() {
-        getConnect();
-    }
-
-    public static Connection getConnect() {
-        try {
+         try {
             Class.forName(MYSQL_DRIVER);
             connection = (Connection) DriverManager.getConnection(MYSQL_URL + AppConfig.DBNAME, AppConfig.USERNAME, AppConfig.PASSWORD);
 
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(dataAccess.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return connection;
     }
-
-    public static dataAccess getInstance() throws ClassNotFoundException {
+    public static dataAccess getInstance() {
         if (XLdata == null) {
             XLdata = new dataAccess();
         }

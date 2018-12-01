@@ -21,7 +21,8 @@ public class User {
     String displayname;
     String address;
     String phone;
-    Date dob;
+    String degree;
+    String dob;
     Byte[] avartar;
 
     public User(String[] user) {
@@ -32,7 +33,8 @@ public class User {
         this.displayname = user[4];
         this.address = user[5];
         this.phone = user[6];
-        this.dob = DateUtil.parseDate(user[7]);
+        this.degree = user[7];
+        this.dob =user[8];
 //        Byte[] temp;
 //        for(int i =0 ; i< user[8].length(); i++){
 //            temp[i] = user[8].
@@ -41,6 +43,27 @@ public class User {
 
     }
 
+    public User(String username, String password, String email, int role, String displayname, String address, String phone, String degree, String dob) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.role = role;
+        this.displayname = displayname;
+        this.address = address;
+        this.phone = phone;
+        this.degree = degree;
+        this.dob = dob;
+        //this.avartar = avartar;
+    }
+
+    public String getDegree() {
+        return degree;
+    }
+
+    public void setDegree(String degree) {
+        this.degree = degree;
+    }
+    
     public String getUsername() {
         return username;
     }
@@ -97,14 +120,14 @@ public class User {
         this.phone = phone;
     }
 
-    public Date getDob() {
+    public String getDob() {
         return dob;
     }
 
-    public void setDob(Date dob) {
+    public void setDob(String dob) {
         this.dob = dob;
     }
-
+    
     public Byte[] getAvartar() {
         return avartar;
     }

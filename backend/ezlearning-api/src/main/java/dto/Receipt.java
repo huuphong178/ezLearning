@@ -26,6 +26,15 @@ public class Receipt {
         this.method = Integer.parseInt(receipt[5]);
     }
 
+    public Receipt(String id, String address, String studentid, Long total, String date, int method) {
+        this.id = id;
+        this.address = address;
+        this.studentid = studentid;
+        this.total = total;
+        this.date = date;
+        this.method = method;
+    }
+
     public String getId() {
         return id;
     }

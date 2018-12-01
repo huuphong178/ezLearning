@@ -31,6 +31,16 @@ public class Voucher {
         this.courseid = voucher[6];
     }
 
+    public Voucher(String id, String name, String code, String from, String to, int percentage, String courseid) {
+        this.id = id;
+        this.name = name;
+        this.code = code;
+        this.from = from;
+        this.to = to;
+        this.percentage = percentage;
+        this.courseid = courseid;
+    }
+    
     public String getId() {
         return id;
     }

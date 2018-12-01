@@ -15,10 +15,8 @@ import java.util.ArrayList;
  * @param <T>
  */
 public abstract class ObjectDAO<T extends Object> {
-    
     protected dataAccess XTData = dataAccess.getInstance();
-    protected Connection connection = dataAccess.getConnect();
-    
+    protected Connection connection = XTData.connection;
     public abstract ArrayList<T> getAll();
     public abstract T getOne(String id);
     public abstract int insert(T dto);

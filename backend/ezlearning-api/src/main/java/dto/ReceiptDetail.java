@@ -28,6 +28,16 @@ public class ReceiptDetail {
         this.code = receiptdetail[6];
     }
 
+    public ReceiptDetail(String id, String receiptid, String studentid, String courseid, String voucherid, int status, String code) {
+        this.id = id;
+        this.receiptid = receiptid;
+        this.studentid = studentid;
+        this.courseid = courseid;
+        this.voucherid = voucherid;
+        this.status = status;
+        this.code = code;
+    }
+
     public String getId() {
         return id;
     }

@@ -24,6 +24,14 @@ public class Rating {
         this.date = rating[4];
     }
 
+    public Rating(String id, String courseid, int race, String userid, String date) {
+        this.id = id;
+        this.courseid = courseid;
+        this.race = race;
+        this.userid = userid;
+        this.date = date;
+    }
+
     public String getId() {
         return id;
     }
