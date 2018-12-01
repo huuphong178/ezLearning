@@ -43,6 +43,7 @@ public abstract class BaseHandler extends HttpServlet {
         Gson gson = new Gson();
         try {
             out.print(gson.toJson("hello"));
+            
           //  out.flush();
         } catch (Exception ex) {
             out.print("fail");
