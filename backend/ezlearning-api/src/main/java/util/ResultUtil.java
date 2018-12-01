@@ -9,7 +9,7 @@ package util;
  *
  * @author lap11916
  */
-public class ErrorUtil {
-    private static int SUCCESS = 1;
-    private static int ERROR = 2;
+public class ResultUtil {
+    public static String SUCCESS = "SUCCESS";
+    public static String ERROR = "ERROR";
 }

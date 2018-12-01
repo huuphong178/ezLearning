@@ -5,8 +5,14 @@
  */
 package handler;
 
+import bus.UserBUS;
+import com.google.gson.Gson;
+import dao.UserDAO;
+import dto.User;
+import java.util.Collection;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import util.StringUtil;
 
 /**
  *
@@ -14,9 +20,24 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class UserHandler extends BaseHandler{
 
+    private UserBUS bus = new UserBUS(new UserDAO());
+    private Gson gson = new Gson();
+    
     @Override
-    protected void doGetHandler(HttpServletRequest req, HttpServletResponse resp) {
+    protected String doGetHandler(HttpServletRequest req, HttpServletResponse resp) {
+        String pathInfo = req.getPathInfo();
+        if (StringUtil.isEmpty(pathInfo)) {
+            pathInfo = "/";
+        }
         
+        switch (pathInfo) {
+            case "/":
+                Collection<User> listUser = bus.getAll();
+                if(!listUser.isEmpty())
+                    return gson.toJson(listUser);
+        }
+        
+        return "";
     }
 
     @Override
