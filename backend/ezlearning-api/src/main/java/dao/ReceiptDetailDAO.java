@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 public class ReceiptDetailDAO extends ObjectDAO<ReceiptDetail> {
 
     @Override
-    public ArrayList<ReceiptDetail> getAll() {
+    public ArrayList<ReceiptDetail> getAll() throws Exception{
         String sql = "select * from receiptdetail";
         ArrayList<String[]> receiptdetails = new ArrayList<>(XTData.loadData(sql));
         ArrayList<ReceiptDetail> result = new ArrayList<>();
@@ -31,7 +31,7 @@ public class ReceiptDetailDAO extends ObjectDAO<ReceiptDetail> {
     }
 
     @Override
-    public ReceiptDetail getOne(String id) {
+    public ReceiptDetail getOne(String id) throws Exception{
         String sql = "select * from receiptdetail where id=" + id;
         ReceiptDetail item = null;
         ArrayList<String[]> receiptdetails = new ArrayList<>(XTData.loadData(sql));
@@ -42,8 +42,7 @@ public class ReceiptDetailDAO extends ObjectDAO<ReceiptDetail> {
     }
 
     @Override
-    public int insert(ReceiptDetail dto) {
-        try {
+    public int insert(ReceiptDetail dto) throws Exception{
             String sql = "Insert Into receiptdetail(id, receiptid, studentid, courseid , voucherid, status, code) Values(?,?,?,?,?,?,?)";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, dto.getId());
@@ -53,16 +52,11 @@ public class ReceiptDetailDAO extends ObjectDAO<ReceiptDetail> {
             ps.setString(5, dto.getVoucherid());
             ps.setInt(6, dto.getStatus());
             ps.setString(7, dto.getCode());
-            ps.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(ReceiptDetailDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return 0;
+            return ps.executeUpdate();
     }
 
     @Override
-    public int update(String id, ReceiptDetail dto) {
-        try {
+    public int update(String id, ReceiptDetail dto) throws Exception{
             String sql = "update receiptdetail set receiptid =?, studentid =?, courseid = ? , voucherid = ?, status =?, code=? where id =?";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, dto.getReceiptid());
@@ -72,15 +66,11 @@ public class ReceiptDetailDAO extends ObjectDAO<ReceiptDetail> {
             ps.setInt(5, dto.getStatus());
             ps.setString(6, dto.getCode());
             ps.setString(7, id);
-            ps.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(ReceiptDetailDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return 0;
+            return ps.executeUpdate();
     }
 
     @Override
-    public int delete(String id) {
+    public int delete(String id) throws Exception{
         String sql = "delete from receiptdetail where id=" + id;
         return XTData.runSQL(sql);
     }

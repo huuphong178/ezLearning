@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 public class MethodDAO extends ObjectDAO<Method> {
 
     @Override
-    public ArrayList<Method> getAll() {
+    public ArrayList<Method> getAll() throws Exception{
         String sql = "select * from method";
         ArrayList<String[]> methods = new ArrayList<>(XTData.loadData(sql));
         ArrayList<Method> result = new ArrayList<>();
@@ -31,7 +31,7 @@ public class MethodDAO extends ObjectDAO<Method> {
     }
 
     @Override
-    public Method getOne(String id) {
+    public Method getOne(String id) throws Exception{
         String sql = "select * from method where id=" + id;
         Method item = null;
         ArrayList<String[]> methods = new ArrayList<>(XTData.loadData(sql));
@@ -42,35 +42,25 @@ public class MethodDAO extends ObjectDAO<Method> {
     }
 
     @Override
-    public int insert(Method dto) {
-        try {
+    public int insert(Method dto) throws Exception{
             String sql = "Insert Into method(id, name) Values(?,?)";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, dto.getId());
             ps.setString(2, dto.getName());
-            ps.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(MethodDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return 0;
+            return ps.executeUpdate();
     }
 
     @Override
-    public int update(String id, Method dto) {
-        try {
+    public int update(String id, Method dto) throws Exception{
             String sql = "update method set name =? where id =?";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, dto.getName());
             ps.setString(2, id);
-            ps.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(MethodDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return 0;
+            return ps.executeUpdate();
     }
 
     @Override
-    public int delete(String id) {
+    public int delete(String id) throws Exception{
         String sql = "delete from method where id=" + id;
         return XTData.runSQL(sql);
     }

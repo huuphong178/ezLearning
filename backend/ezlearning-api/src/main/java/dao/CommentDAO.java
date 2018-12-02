@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 public class CommentDAO extends ObjectDAO<Comment>{
 
     @Override
-    public ArrayList<Comment> getAll() {
+    public ArrayList<Comment> getAll() throws Exception{
         String sql="select * from comment";
         ArrayList<String[]> comments= new ArrayList<>(XTData.loadData(sql));
         ArrayList<Comment> result=new ArrayList<>();
@@ -32,7 +32,7 @@ public class CommentDAO extends ObjectDAO<Comment>{
     }
 
     @Override
-    public Comment getOne(String id) {
+    public Comment getOne(String id) throws Exception{
         String sql="select * from comment where id = " + id;
         ArrayList<String[]> comments= new ArrayList<>(XTData.loadData(sql));
         
@@ -45,8 +45,7 @@ public class CommentDAO extends ObjectDAO<Comment>{
     }
 
     @Override
-    public int insert(Comment dto) {
-        try {
+    public int insert(Comment dto) throws Exception{
             String sql = "INSERT INTO comment(id, content, courseid, lectureid, parentid, userid, date) VALUES(?,?,?,?,?,?,?)";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, dto.getId());
@@ -58,16 +57,10 @@ public class CommentDAO extends ObjectDAO<Comment>{
             ps.setString(7, dto.getDate());
             
             return ps.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(CommentDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        return 0;
     }
 
     @Override
-    public int update(String id, Comment dto) {
-        try {
+    public int update(String id, Comment dto) throws Exception{
             String sql = "UPDATE comment SET content=?, courseid=?, lectureid=?, parentid=?, userid=?, date=? WHERE id =?";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, dto.getContent());
@@ -79,15 +72,10 @@ public class CommentDAO extends ObjectDAO<Comment>{
             ps.setString(7, dto.getId());
             
             return ps.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(CommentDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        return 0;
     }
 
     @Override
-    public int delete(String id) {
+    public int delete(String id) throws Exception{
         String sql="DELETE FROM comment where id = " + id;
         System.out.println("SQL: " + sql);
         

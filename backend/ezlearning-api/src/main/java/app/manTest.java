@@ -24,8 +24,8 @@ public class manTest {
      */
     public static void main(String[] args) {
         
-          UserDAO userdao=new UserDAO();
-         ArrayList<User> list = userdao.getAll();
+          //UserDAO userdao=new UserDAO();
+         //ArrayList<User> list = userdao.getAll();
         //list=xtdata.loadData("select * from user");
         System.out.println();
     }

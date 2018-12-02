@@ -6,6 +6,8 @@
 package app;
 
 import app.config.AppConfig;
+import handler.CartHandler;
+import handler.CategoryHandler;
 import handler.UserHandler;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
@@ -24,6 +26,8 @@ public class Main {
       //  server.setHandler(new Application());
         ServletContextHandler handler = new ServletContextHandler(server, "/");
 	handler.addServlet(UserHandler.class, "/user/*");
+	handler.addServlet(CartHandler.class, "/cart/*");
+	handler.addServlet(CategoryHandler.class, "/category/*");
         
         try {
             server.start();

@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 public class RatingDAO extends ObjectDAO<Rating> {
 
     @Override
-    public ArrayList<Rating> getAll() {
+    public ArrayList<Rating> getAll() throws Exception{
         String sql = "select * from rating";
         ArrayList<String[]> ratings = new ArrayList<>(XTData.loadData(sql));
         ArrayList<Rating> result = new ArrayList<>();
@@ -31,7 +31,7 @@ public class RatingDAO extends ObjectDAO<Rating> {
     }
 
     @Override
-    public Rating getOne(String id) {
+    public Rating getOne(String id) throws Exception{
         String sql = "select * from rating where id=" + id;
         Rating item = null;
         ArrayList<String[]> ratings = new ArrayList<>(XTData.loadData(sql));
@@ -42,8 +42,7 @@ public class RatingDAO extends ObjectDAO<Rating> {
     }
 
     @Override
-    public int insert(Rating dto) {
-        try {
+    public int insert(Rating dto) throws Exception{
             String sql = "Insert Into rating(id, courseid, race, userid , date) Values(?,?,?,?,?)";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, dto.getId());
@@ -51,16 +50,11 @@ public class RatingDAO extends ObjectDAO<Rating> {
             ps.setInt(3, dto.getRace());
             ps.setString(4, dto.getUserid());
             ps.setString(5, dto.getDate());
-            ps.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(RatingDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return 0;
+            return ps.executeUpdate();
     }
 
     @Override
-    public int update(String id, Rating dto) {
-        try {
+    public int update(String id, Rating dto) throws Exception{
             String sql = "update rating set courseid =?, race =?, userid = ? , date = ? where id =?";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, dto.getCourseid());
@@ -68,15 +62,11 @@ public class RatingDAO extends ObjectDAO<Rating> {
             ps.setString(3, dto.getUserid());
             ps.setString(4, dto.getDate());
             ps.setString(5, id);
-            ps.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(RatingDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return 0;
+            return ps.executeUpdate();
     }
 
     @Override
-    public int delete(String id) {
+    public int delete(String id) throws Exception{
         String sql = "delete from rating where id=" + id;
         return XTData.runSQL(sql);
     }

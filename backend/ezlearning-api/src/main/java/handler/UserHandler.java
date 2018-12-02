@@ -24,7 +24,7 @@ public class UserHandler extends BaseHandler{
     private Gson gson = new Gson();
     
     @Override
-    protected String doGetHandler(HttpServletRequest req, HttpServletResponse resp) {
+    protected String doGetHandler(HttpServletRequest req, HttpServletResponse resp) throws Exception {
         String pathInfo = req.getPathInfo();
         if (StringUtil.isEmpty(pathInfo)) {
             pathInfo = "/";

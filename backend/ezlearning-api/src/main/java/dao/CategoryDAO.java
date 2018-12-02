@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 public class CategoryDAO extends ObjectDAO<Category>{
 
     @Override
-    public ArrayList<Category> getAll() {
+    public ArrayList<Category> getAll() throws SQLException {
         String sql="select * from category";
         ArrayList<String[]> carts= new ArrayList<>(XTData.loadData(sql));
         ArrayList<Category> result=new ArrayList<>();
@@ -32,7 +32,7 @@ public class CategoryDAO extends ObjectDAO<Category>{
     }
 
     @Override
-    public Category getOne(String id) {
+    public Category getOne(String id) throws SQLException {
         String sql="select * from category where id = " + id;
         ArrayList<String[]> categories= new ArrayList<>(XTData.loadData(sql));
         
@@ -45,8 +45,7 @@ public class CategoryDAO extends ObjectDAO<Category>{
     }
 
     @Override
-    public int insert(Category dto) {
-        try {
+    public int insert(Category dto) throws Exception{
             String sql = "INSERT INTO category(id, name, color) VALUES(?,?,?)";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, dto.getId());
@@ -54,16 +53,10 @@ public class CategoryDAO extends ObjectDAO<Category>{
             ps.setString(3, dto.getColor());
             
             return ps.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        return 0;
     }
 
     @Override
-    public int update(String id, Category dto) {
-        try {
+    public int update(String id, Category dto) throws Exception {
             String sql = "UPDATE category SET name=?, color=? WHERE id =?";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, dto.getName());
@@ -71,15 +64,10 @@ public class CategoryDAO extends ObjectDAO<Category>{
             ps.setString(3, dto.getId());
             
             return ps.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        return 0;
     }
 
     @Override
-    public int delete(String id) {
+    public int delete(String id) throws Exception {
         String sql="DELETE FROM category where id = " + id;
         System.out.println("SQL: " + sql);
         

@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 public class UserDAO extends ObjectDAO<User> {
 
     @Override
-    public ArrayList<User> getAll() {
+    public ArrayList<User> getAll() throws Exception{
         String sql = "select * from user";
         ArrayList<String[]> users = new ArrayList<>(XTData.loadData(sql));
         ArrayList<User> result = new ArrayList<>();
@@ -32,7 +32,7 @@ public class UserDAO extends ObjectDAO<User> {
     }
 
     @Override
-    public User getOne(String username) {
+    public User getOne(String username) throws Exception{
         String sql = "select * from user where username='" + username+"'";
         User item = null;
         ArrayList<String[]> users = new ArrayList<>(XTData.loadData(sql));
@@ -43,8 +43,7 @@ public class UserDAO extends ObjectDAO<User> {
     }
 
     @Override
-    public int insert(User dto) {
-        try {
+    public int insert(User dto) throws Exception{
             String sql = "Insert Into user(username, password, email, role , displayname, address, phone, degree, dob) Values(?,?,?,?,?,?,?,?,?)";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, dto.getUsername());
@@ -57,16 +56,11 @@ public class UserDAO extends ObjectDAO<User> {
             ps.setString(8, dto.getDegree());
             ps.setString(9, dto.getDob());
             //ps.setBytes(10, dto.getAvartar());
-            ps.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return 0;
+            return ps.executeUpdate();
     }
 
     @Override
-    public int update(String username, User dto) {
-        try {
+    public int update(String username, User dto) throws Exception{
             String sql = "update user set password =?, email = ? , role = ?, displayname =?, address=?, phone=?, degree=?, dob=? where username =?";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, dto.getPassword());
@@ -78,15 +72,11 @@ public class UserDAO extends ObjectDAO<User> {
             ps.setString(7, dto.getDegree());
             ps.setString(8, dto.getDob());
             ps.setString(9, username);
-            ps.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return 0;
+           return ps.executeUpdate();
     }
 
     @Override
-    public int delete(String username) {
+    public int delete(String username) throws Exception{
         String sql = "delete from user where username='" + username+"'";
         return XTData.runSQL(sql);
     }

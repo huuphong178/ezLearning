@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 public class ChapterDAO extends ObjectDAO<Chapter>{
 
     @Override
-    public ArrayList<Chapter> getAll() {
+    public ArrayList<Chapter> getAll() throws Exception{
         String sql="select * from chapter";
         ArrayList<String[]> chapters= new ArrayList<>(XTData.loadData(sql));
         ArrayList<Chapter> result=new ArrayList<>();
@@ -32,7 +32,7 @@ public class ChapterDAO extends ObjectDAO<Chapter>{
     }
 
     @Override
-    public Chapter getOne(String id) {
+    public Chapter getOne(String id) throws Exception{
         String sql="select * from chapter where id = " + id;
         ArrayList<String[]> chapters= new ArrayList<>(XTData.loadData(sql));
         
@@ -45,8 +45,7 @@ public class ChapterDAO extends ObjectDAO<Chapter>{
     }
 
     @Override
-    public int insert(Chapter dto) {
-        try {
+    public int insert(Chapter dto) throws Exception{
             String sql = "INSERT INTO chapter(id, courseid, name, chapter_order) VALUES(?,?,?,?)";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, dto.getId());
@@ -55,16 +54,10 @@ public class ChapterDAO extends ObjectDAO<Chapter>{
             ps.setString(4, String.valueOf(dto.getChapter_order()));
             
             return ps.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(ChapterDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        return 0;
     }
 
     @Override
-    public int update(String id, Chapter dto) {
-        try {
+    public int update(String id, Chapter dto) throws Exception{
             String sql = "UPDATE chapter SET courseid=?, name=?, chapter_order=? WHERE id =?";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, dto.getCourseid());
@@ -73,15 +66,10 @@ public class ChapterDAO extends ObjectDAO<Chapter>{
             ps.setString(4, dto.getId());
             
             return ps.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(ChapterDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        return 0;
     }
 
     @Override
-    public int delete(String id) {
+    public int delete(String id) throws Exception{
         String sql="DELETE FROM chapter where id = " + id;
         System.out.println("SQL: " + sql);
         

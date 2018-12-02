@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 public class LectureDAO extends ObjectDAO<Lecture>{
 
     @Override
-    public ArrayList<Lecture> getAll() {
+    public ArrayList<Lecture> getAll() throws Exception{
         String sql="select * from lecture";
         ArrayList<String[]> lectures= new ArrayList<>(XTData.loadData(sql));
         ArrayList<Lecture> result=new ArrayList<>();
@@ -32,7 +32,7 @@ public class LectureDAO extends ObjectDAO<Lecture>{
     }
 
     @Override
-    public Lecture getOne(String id) {
+    public Lecture getOne(String id) throws Exception{
         String sql="select * from lecture where id = " + id;
         ArrayList<String[]> lectures= new ArrayList<>(XTData.loadData(sql));
         
@@ -45,8 +45,7 @@ public class LectureDAO extends ObjectDAO<Lecture>{
     }
 
     @Override
-    public int insert(Lecture dto) {
-        try {
+    public int insert(Lecture dto) throws Exception {
             String sql = "INSERT INTO lecture(id, name, date, videopath, docpath, chapterid) VALUES(?,?,?,?,?,?)";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, dto.getId());
@@ -57,16 +56,10 @@ public class LectureDAO extends ObjectDAO<Lecture>{
             ps.setString(6, dto.getChapterid());
             
             return ps.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(LectureDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        return 0;
     }
 
     @Override
-    public int update(String id, Lecture dto) {
-        try {
+    public int update(String id, Lecture dto) throws Exception{
             String sql = "UPDATE lecture SET name=?, date=?, videopath=?, docpath=?, chapterid=? WHERE id =?";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, dto.getName());
@@ -77,15 +70,10 @@ public class LectureDAO extends ObjectDAO<Lecture>{
             ps.setString(6, dto.getId());
             
             return ps.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(LectureDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        return 0;
     }
 
     @Override
-    public int delete(String id) {
+    public int delete(String id) throws Exception{
         String sql="DELETE FROM lecture where id = " + id;
         System.out.println("SQL: " + sql);
         

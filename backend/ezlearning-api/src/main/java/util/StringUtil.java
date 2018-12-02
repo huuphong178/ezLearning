@@ -5,6 +5,9 @@
  */
 package util;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  *
  * @author lap11916
@@ -15,5 +18,16 @@ public class StringUtil {
             return true;
         }
         return false;
+    }
+    
+    public static Map<String, String> getParams(String query, String regex){
+        Map<String, String> result = new HashMap<>();
+        String[] arr = query.split(regex);
+        for(String param : arr){
+            String[] split = param.split("=");
+            result.put(split[0], split[1]);
+        }
+        
+        return result;
     }
 }

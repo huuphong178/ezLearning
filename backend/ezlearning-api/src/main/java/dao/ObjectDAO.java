@@ -17,9 +17,9 @@ import java.util.ArrayList;
 public abstract class ObjectDAO<T extends Object> {
     protected dataAccess XTData = dataAccess.getInstance();
     protected Connection connection = XTData.connection;
-    public abstract ArrayList<T> getAll();
-    public abstract T getOne(String id);
-    public abstract int insert(T dto);
-    public abstract int update(String id, T dto);
-    public abstract int delete(String id);
+    public abstract ArrayList<T> getAll() throws Exception;
+    public abstract T getOne(String id) throws Exception;
+    public abstract int insert(T dto) throws Exception;
+    public abstract int update(String id, T dto) throws Exception;
+    public abstract int delete(String id) throws Exception;
 }

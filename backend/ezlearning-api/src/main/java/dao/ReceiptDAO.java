@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 public class ReceiptDAO extends ObjectDAO<Receipt> {
 
     @Override
-    public ArrayList<Receipt> getAll() {
+    public ArrayList<Receipt> getAll() throws Exception{
         String sql = "select * from receipt";
         ArrayList<String[]> receipts = new ArrayList<>(XTData.loadData(sql));
         ArrayList<Receipt> result = new ArrayList<>();
@@ -31,7 +31,7 @@ public class ReceiptDAO extends ObjectDAO<Receipt> {
     }
 
     @Override
-    public Receipt getOne(String id) {
+    public Receipt getOne(String id) throws Exception{
         String sql = "select * from receipt where id=" + id;
         Receipt item = null;
         ArrayList<String[]> receipts = new ArrayList<>(XTData.loadData(sql));
@@ -42,8 +42,7 @@ public class ReceiptDAO extends ObjectDAO<Receipt> {
     }
 
     @Override
-    public int insert(Receipt dto) {
-        try {
+    public int insert(Receipt dto) throws Exception{
             String sql = "Insert Into receipt(id, address, studentid, total , date, method) Values(?,?,?,?,?,?)";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, dto.getId());
@@ -52,16 +51,11 @@ public class ReceiptDAO extends ObjectDAO<Receipt> {
             ps.setLong(4, dto.getTotal());
             ps.setString(5, dto.getDate());
             ps.setInt(6, dto.getMethod());
-            ps.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(ReceiptDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return 0;
+            return ps.executeUpdate();
     }
 
     @Override
-    public int update(String id, Receipt dto) {
-        try {
+    public int update(String id, Receipt dto) throws Exception{
             String sql = "update receipt set address =?, studentid =?, total = ? , date = ?, method =? where id =?";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, dto.getAddress());
@@ -70,15 +64,11 @@ public class ReceiptDAO extends ObjectDAO<Receipt> {
             ps.setString(4, dto.getDate());
             ps.setInt(5, dto.getMethod());
             ps.setString(6, id);
-            ps.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(ReceiptDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return 0;
+            return ps.executeUpdate();
     }
 
     @Override
-    public int delete(String id) {
+    public int delete(String id) throws Exception{
         String sql = "delete from receipt where id=" + id;
         return XTData.runSQL(sql);
     }

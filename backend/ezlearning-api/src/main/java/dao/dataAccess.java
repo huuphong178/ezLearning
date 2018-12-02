@@ -49,7 +49,7 @@ public class dataAccess {
         return XLdata;
     }
 
-    public ArrayList<String[]> loadData(String sql) {
+    public ArrayList<String[]> loadData(String sql) throws SQLException{
         ArrayList<String[]> result = new ArrayList<>();
         try {
             statement = (Statement) connection.createStatement();
@@ -70,7 +70,7 @@ public class dataAccess {
         return result;
     }
 
-    public int runSQL(String sql) {
+    public int runSQL(String sql) throws SQLException{
         try {
             preparedStatement = (PreparedStatement) connection.prepareStatement(sql);
             return preparedStatement.executeUpdate();

@@ -18,25 +18,25 @@ public abstract class ObjectBUS<T> {
     public ObjectBUS(ObjectDAO<T> dao) {
         this.dao=dao;
     }
-    public ArrayList<T> getAll(){
+    public ArrayList<T> getAll() throws Exception{
         return dao.getAll();
     }
-    public T getOne(String id){
+    public T getOne(String id) throws Exception{
         if(!id.isEmpty())
             return dao.getOne(id);
         return null;
     }   
-    public int insert(T dto){
+    public int insert(T dto) throws Exception{
         if(dto!=null)
             return dao.insert(dto);
         return 0;
     }
-    public int update(String id, T dto){
+    public int update(String id, T dto) throws Exception{
         if(dto!=null && !id.isEmpty())
             return dao.update(id,dto);
         return 0;
     }
-    public int delete(String id){
+    public int delete(String id) throws Exception{
         if(!id.isEmpty())
             return dao.delete(id);
         return 0;

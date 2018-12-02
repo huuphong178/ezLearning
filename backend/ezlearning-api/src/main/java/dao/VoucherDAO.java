@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 public class VoucherDAO extends ObjectDAO<Voucher> {
 
     @Override
-    public ArrayList<Voucher> getAll() {
+    public ArrayList<Voucher> getAll() throws Exception{
         String sql="select * from voucher";
         ArrayList<String[]> vouchers= new ArrayList<>(XTData.loadData(sql));
         ArrayList<Voucher> result=new ArrayList<>();
@@ -31,7 +31,7 @@ public class VoucherDAO extends ObjectDAO<Voucher> {
     }
 
     @Override
-    public Voucher getOne(String id) {
+    public Voucher getOne(String id) throws Exception{
         String sql="select * from voucher where id="+id;
         Voucher item = null;
         ArrayList<String[]> vouchers= new ArrayList<>(XTData.loadData(sql));
@@ -42,8 +42,7 @@ public class VoucherDAO extends ObjectDAO<Voucher> {
     }
 
     @Override
-    public int insert(Voucher dto) {
-        try {
+    public int insert(Voucher dto) throws Exception{
             String sql = "Insert Into voucher(id, name, code, from_date , to_date, percentage, courseid) Values(?,?,?,?,?,?,?)";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, dto.getId());
@@ -53,16 +52,11 @@ public class VoucherDAO extends ObjectDAO<Voucher> {
             ps.setString(5, dto.getTo());
             ps.setInt(6, dto.getPercentage());
             ps.setString(7, dto.getCourseid());
-            ps.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(VoucherDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return 0;
+            return ps.executeUpdate();
     }
 
     @Override
-    public int update(String id, Voucher dto) {
-         try {
+    public int update(String id, Voucher dto) throws Exception{
             String sql = "update voucher set name =?, code =?, from_date = ? , to_date = ?, percentage =?, courseid=? where id =?";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, dto.getName());
@@ -71,16 +65,12 @@ public class VoucherDAO extends ObjectDAO<Voucher> {
             ps.setString(4, dto.getTo());
             ps.setInt(5, dto.getPercentage());
             ps.setString(6, dto.getCourseid());
-             ps.setString(7, id);
-            ps.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(VoucherDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return 0;
+            ps.setString(7, id);
+            return ps.executeUpdate();
     }
 
     @Override
-    public int delete(String id) {
+    public int delete(String id) throws Exception{
          String sql ="delete from voucher where id="+id;
          return XTData.runSQL(sql);
     }

@@ -20,9 +20,9 @@ import util.ResultUtil;
  */
 public abstract class BaseHandler extends HttpServlet {
     
-    private final Gson gson = new Gson();
-    private final String resultERROR = "{\"Result:\" " + ResultUtil.ERROR + "}";
-    private final String resultSUCCESS = "{\"Result:\" " + ResultUtil.SUCCESS + "}";
+    protected final Gson gson = new Gson();
+    private final String resultERROR = "{\"Result\": \"" + ResultUtil.ERROR + "\"}";
+    private final String resultSUCCESS = "{\"Result\": \"" + ResultUtil.SUCCESS + "\"}";
 
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -100,12 +100,12 @@ public abstract class BaseHandler extends HttpServlet {
         }
     }
 
-    protected abstract String doGetHandler(HttpServletRequest req, HttpServletResponse resp);
+    protected abstract String doGetHandler(HttpServletRequest req, HttpServletResponse resp) throws Exception;
 
-    protected abstract void doPostHandler(HttpServletRequest req, HttpServletResponse resp);
+    protected abstract void doPostHandler(HttpServletRequest req, HttpServletResponse resp) throws Exception;
 
-    protected abstract void doPutHandler(HttpServletRequest req, HttpServletResponse resp);
+    protected abstract void doPutHandler(HttpServletRequest req, HttpServletResponse resp) throws Exception;
 
-    protected abstract void doDeleteHandler(HttpServletRequest req, HttpServletResponse resp);
+    protected abstract void doDeleteHandler(HttpServletRequest req, HttpServletResponse resp) throws Exception;
     
 }
