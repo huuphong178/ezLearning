@@ -40,7 +40,8 @@ public class CartHandler extends BaseHandler{
                     String courseID = params.get("courseid");
                     if(!StringUtil.isEmpty(userID) && !StringUtil.isEmpty(courseID)){
                         Cart item = bus.getOne(userID + "|" + courseID);
-                        listCart.add(item);
+                        if(item!=null)
+                            listCart.add(item);
                     }
                 }else{
                     listCart = bus.getAll();

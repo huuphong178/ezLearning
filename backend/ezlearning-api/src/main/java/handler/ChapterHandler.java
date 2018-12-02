@@ -5,9 +5,9 @@
  */
 package handler;
 
-import bus.CategoryBUS;
-import dao.CategoryDAO;
-import dto.Category;
+import bus.ChapterBUS;
+import dao.ChapterDAO;
+import dto.Chapter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
@@ -19,9 +19,9 @@ import util.StringUtil;
  *
  * @author lap11916
  */
-public class CategoryHandler extends BaseHandler{
+public class ChapterHandler extends BaseHandler{
     
-    private final CategoryBUS bus = new CategoryBUS(new CategoryDAO());
+    private final ChapterBUS bus = new ChapterBUS(new ChapterDAO());
     
     @Override
     protected String doGetHandler(HttpServletRequest req, HttpServletResponse resp) throws Exception {
@@ -33,21 +33,21 @@ public class CategoryHandler extends BaseHandler{
         switch (pathInfo) {
             case "/":
                 String query = req.getQueryString();                
-                Collection<Category> listCategory = new ArrayList<>();
+                Collection<Chapter> listChapter = new ArrayList<>();
                 if(!StringUtil.isEmpty(query)){
                     Map<String, String> params = StringUtil.getParams(query, "&");
                     String id = params.get("id");
                     if(!StringUtil.isEmpty(id)){
-                        Category item = bus.getOne(id);
+                        Chapter item = bus.getOne(id);
                         if(item!=null)
-                            listCategory.add(item);
+                            listChapter.add(item);
                     }
                 }else{
-                    listCategory = bus.getAll();
+                    listChapter = bus.getAll();
                 }
                 
-                if(!listCategory.isEmpty())
-                    return gson.toJson(listCategory);
+                if(!listChapter.isEmpty())
+                    return gson.toJson(listChapter);
         }
         
         return "";
@@ -63,7 +63,7 @@ public class CategoryHandler extends BaseHandler{
         switch (pathInfo) {
             case "/":
                 String json = req.getParameter("data");
-                Category item = gson.fromJson(json, Category.class);
+                Chapter item = gson.fromJson(json, Chapter.class);
                 bus.insert(item);
                 break;  
         }
@@ -79,7 +79,7 @@ public class CategoryHandler extends BaseHandler{
         switch (pathInfo) {
             case "/":
                 String json = req.getParameter("data");
-                Category item = gson.fromJson(json, Category.class);
+                Chapter item = gson.fromJson(json, Chapter.class);
                 bus.update(item.getId(), item);
                 break;  
         }
