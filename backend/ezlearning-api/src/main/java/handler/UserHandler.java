@@ -16,6 +16,7 @@ import java.util.Collection;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import util.GenerateIDUtil;
 import util.StringUtil;
 
 /**
@@ -24,9 +25,7 @@ import util.StringUtil;
  */
 public class UserHandler extends BaseHandler {
 
-    private UserBUS bus = new UserBUS(new UserDAO());
-    private Gson gson = new Gson();
-
+    private final UserBUS bus = new UserBUS(new UserDAO());
     @Override
     protected String doGetHandler(HttpServletRequest req, HttpServletResponse resp) throws Exception {
         String pathInfo = req.getPathInfo();
@@ -81,7 +80,7 @@ public class UserHandler extends BaseHandler {
             String body = getRequestBody(req);
             User user = (User) gson.fromJson(body, User.class);
             bus.update(id, user);
-        }
+        }   
     }
 
     @Override
