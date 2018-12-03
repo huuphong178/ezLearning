@@ -19,7 +19,7 @@ import util.ResultUtil;
  * @author Phong Nguyen
  */
 public abstract class BaseHandler extends HttpServlet {
-    
+
     protected final Gson gson = new Gson();
     private final String resultERROR = "{\"Result\": \"" + ResultUtil.ERROR + "\"}";
     private final String resultSUCCESS = "{\"Result\": \"" + ResultUtil.SUCCESS + "\"}";
@@ -28,7 +28,7 @@ public abstract class BaseHandler extends HttpServlet {
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("application/json");
         resp.setCharacterEncoding("utf-8");
-        
+
         ServletOutputStream out = resp.getOutputStream();
         try {
             doDeleteHandler(req, resp);
@@ -37,7 +37,7 @@ public abstract class BaseHandler extends HttpServlet {
         } catch (Exception ex) {
             out.print(resultERROR);
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-        } finally{
+        } finally {
             out.flush();
         }
     }
@@ -46,7 +46,7 @@ public abstract class BaseHandler extends HttpServlet {
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("application/json");
         resp.setCharacterEncoding("utf-8");
-        
+
         ServletOutputStream out = resp.getOutputStream();
         try {
             doPutHandler(req, resp);
@@ -55,7 +55,7 @@ public abstract class BaseHandler extends HttpServlet {
         } catch (Exception ex) {
             out.print(resultERROR);
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-        } finally{
+        } finally {
             out.flush();
         }
     }
@@ -64,7 +64,7 @@ public abstract class BaseHandler extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("application/json");
         resp.setCharacterEncoding("utf-8");
-        
+
         ServletOutputStream out = resp.getOutputStream();
         try {
             doPostHandler(req, resp);
@@ -73,7 +73,7 @@ public abstract class BaseHandler extends HttpServlet {
         } catch (Exception ex) {
             out.print(resultERROR);
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-        } finally{
+        } finally {
             out.flush();
         }
     }
@@ -82,22 +82,31 @@ public abstract class BaseHandler extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("application/json");
         resp.setCharacterEncoding("utf-8");
-        
+
         ServletOutputStream out = resp.getOutputStream();
         try {
             String jsonStr = doGetHandler(req, resp);
-            if(jsonStr.isEmpty()){
+            if (jsonStr.isEmpty()) {
                 resp.setStatus(HttpServletResponse.SC_NO_CONTENT);
-            }else{
+            } else {
                 out.print(jsonStr);
                 resp.setStatus(HttpServletResponse.SC_OK);
             }
         } catch (Exception ex) {
             out.print(resultERROR);
             resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
-        } finally{
+        } finally {
             out.flush();
         }
+    }
+
+    protected String getRequestBody(HttpServletRequest req) throws IOException {
+        StringBuilder sb = new StringBuilder();
+        String s;
+        while ((s = req.getReader().readLine()) != null) {
+            sb.append(s);
+        }
+        return sb.toString();
     }
 
     protected abstract String doGetHandler(HttpServletRequest req, HttpServletResponse resp) throws Exception;
@@ -107,5 +116,5 @@ public abstract class BaseHandler extends HttpServlet {
     protected abstract void doPutHandler(HttpServletRequest req, HttpServletResponse resp) throws Exception;
 
     protected abstract void doDeleteHandler(HttpServletRequest req, HttpServletResponse resp) throws Exception;
-    
+
 }
