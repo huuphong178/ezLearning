@@ -9,6 +9,9 @@ import app.config.AppConfig;
 import handler.CartHandler;
 import handler.CategoryHandler;
 import handler.ChapterHandler;
+import handler.CommentHandler;
+import handler.CourseHandler;
+import handler.LectureHandler;
 import handler.UserHandler;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
@@ -30,6 +33,9 @@ public class Main {
 	handler.addServlet(CartHandler.class, "/cart/*");
 	handler.addServlet(CategoryHandler.class, "/category/*");
 	handler.addServlet(ChapterHandler.class, "/chapter/*");
+	handler.addServlet(CommentHandler.class, "/comment/*");
+	handler.addServlet(CourseHandler.class, "/course/*");
+	handler.addServlet(LectureHandler.class, "/lecture/*");
         
         try {
             server.start();
