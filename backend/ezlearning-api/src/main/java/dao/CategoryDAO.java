@@ -9,8 +9,6 @@ import dto.Category;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -61,7 +59,7 @@ public class CategoryDAO extends ObjectDAO<Category>{
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, dto.getName());
             ps.setString(2, dto.getColor());
-            ps.setString(3, dto.getId());
+            ps.setString(3, id);
             
             return ps.executeUpdate();
     }

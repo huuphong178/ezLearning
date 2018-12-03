@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * @author Phong Nguyen
  */
 public abstract class ObjectBUS<T> {
-    private ObjectDAO<T> dao;
+    protected ObjectDAO<T> dao;
 
     public ObjectBUS(ObjectDAO<T> dao) {
         this.dao=dao;

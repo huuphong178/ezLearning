@@ -49,6 +49,21 @@ public class CartHandler extends BaseHandler{
                 
                 if(!listCart.isEmpty())
                     return gson.toJson(listCart);
+                break;
+            case "/userid":
+                String query2 = req.getQueryString();                
+                Collection<Cart> listCart2 = new ArrayList<>();
+                if(!StringUtil.isEmpty(query2)){
+                    Map<String, String> params = StringUtil.getParams(query2, "&");
+                    String userID = params.get("userid");
+                    if(!StringUtil.isEmpty(userID)){
+                        listCart2.addAll(bus.getByUserID(userID));
+                    }
+                }
+                
+                if (!listCart2.isEmpty()) {
+                    return gson.toJson(listCart2);
+                }
         }
         
         return "";
@@ -63,7 +78,7 @@ public class CartHandler extends BaseHandler{
         
         switch (pathInfo) {
             case "/":
-                String json = req.getParameter("data");
+                String json = getRequestBody(req);
                 Cart item = gson.fromJson(json, Cart.class);
                 bus.insert(item);
                 break;  
@@ -74,15 +89,12 @@ public class CartHandler extends BaseHandler{
     protected void doPutHandler(HttpServletRequest req, HttpServletResponse resp) throws Exception {
         String pathInfo = req.getPathInfo();
         if (StringUtil.isEmpty(pathInfo)) {
-            pathInfo = "/";
-        }
-        
-        switch (pathInfo) {
-            case "/":
-                String json = req.getParameter("data");
-                Cart item = gson.fromJson(json, Cart.class);
-                bus.update(item.getUserid()+"|"+item.getCourseid(), item);
-                break;  
+            System.err.println("Empty");
+        } else {
+            String id = pathInfo.substring(1);
+            String bodyData = getRequestBody(req);
+            Cart item = gson.fromJson(bodyData, Cart.class);
+            bus.update(id, item);
         }
     }
 

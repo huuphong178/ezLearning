@@ -7,10 +7,7 @@ package dao;
 
 import dto.Cart;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -21,6 +18,19 @@ public class CartDAO extends ObjectDAO<Cart>{
     @Override
     public ArrayList<Cart> getAll() throws Exception{
         String sql="select * from cart";
+        ArrayList<String[]> carts= new ArrayList<>(XTData.loadData(sql));
+        ArrayList<Cart> result=new ArrayList<>();
+        
+        for(String[] row : carts){
+            Cart cart=new Cart(row);
+            result.add(cart);
+        }
+        return result;
+    }
+    
+    public ArrayList<Cart> getByUserID(String userid) throws Exception{
+        String sql="select * from cart where userid = '{{userid}}'";
+        sql = sql.replace("{{userid}}", userid);
         ArrayList<String[]> carts= new ArrayList<>(XTData.loadData(sql));
         ArrayList<Cart> result=new ArrayList<>();
         
@@ -62,8 +72,8 @@ public class CartDAO extends ObjectDAO<Cart>{
             String sql = "UPDATE cart SET status=? WHERE userid=? AND courseid=?";
             PreparedStatement ps = connection.prepareStatement(sql);    
             ps.setInt(1, dto.getStatus());
-            ps.setString(2, dto.getUserid());
-            ps.setString(3, dto.getCourseid());
+            ps.setString(2, id.split("\\|")[0]);
+            ps.setString(3, id.split("\\|")[1]);
             
             return ps.executeUpdate();
     }

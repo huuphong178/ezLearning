@@ -63,7 +63,7 @@ public class ChapterDAO extends ObjectDAO<Chapter>{
             ps.setString(1, dto.getCourseid());
             ps.setString(2, dto.getName());
             ps.setInt(3, dto.getChapter_order());
-            ps.setString(4, dto.getId());
+            ps.setString(4, id);
             
             return ps.executeUpdate();
     }

@@ -73,7 +73,7 @@ public class CourseDAO extends ObjectDAO<Course>{
             ps.setString(6, dto.getDate());
             ps.setString(7, dto.getCover());
             ps.setString(8, dto.getCatid());
-            ps.setString(9, dto.getId());
+            ps.setString(9, id);
             
             return ps.executeUpdate();
     }

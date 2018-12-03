@@ -67,7 +67,7 @@ public class LectureDAO extends ObjectDAO<Lecture>{
             ps.setString(3, dto.getVideopath());
             ps.setString(4, dto.getDocpath());
             ps.setString(5, dto.getChapterid());
-            ps.setString(6, dto.getId());
+            ps.setString(6, id);
             
             return ps.executeUpdate();
     }

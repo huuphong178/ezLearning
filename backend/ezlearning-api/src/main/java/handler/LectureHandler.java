@@ -13,6 +13,7 @@ import java.util.Collection;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import util.GenerateIDUtil;
 import util.StringUtil;
 
 /**
@@ -62,8 +63,9 @@ public class LectureHandler extends BaseHandler{
         
         switch (pathInfo) {
             case "/":
-                String json = req.getParameter("data");
+                String json = getRequestBody(req);
                 Lecture item = gson.fromJson(json, Lecture.class);
+                item.setId(GenerateIDUtil.GenerateID());
                 bus.insert(item);
                 break;  
         }
@@ -73,15 +75,12 @@ public class LectureHandler extends BaseHandler{
     protected void doPutHandler(HttpServletRequest req, HttpServletResponse resp) throws Exception {
         String pathInfo = req.getPathInfo();
         if (StringUtil.isEmpty(pathInfo)) {
-            pathInfo = "/";
-        }
-        
-        switch (pathInfo) {
-            case "/":
-                String json = req.getParameter("data");
-                Lecture item = gson.fromJson(json, Lecture.class);
-                bus.update(item.getId(), item);
-                break;  
+            System.err.println("Empty");
+        } else {
+            String id = pathInfo.substring(1);
+            String bodyData = getRequestBody(req);
+            Lecture item = gson.fromJson(bodyData, Lecture.class);
+            bus.update(id, item);
         }
     }
 

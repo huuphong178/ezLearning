@@ -69,7 +69,7 @@ public class CommentDAO extends ObjectDAO<Comment>{
             ps.setString(4, dto.getParentid());
             ps.setString(5, dto.getUserid());
             ps.setString(6, dto.getDate());
-            ps.setString(7, dto.getId());
+            ps.setString(7, id);
             
             return ps.executeUpdate();
     }

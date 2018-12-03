@@ -5,8 +5,10 @@
  */
 package bus;
 
+import dao.CartDAO;
 import dao.ObjectDAO;
 import dto.Cart;
+import java.util.ArrayList;
 
 /**
  *
@@ -18,4 +20,9 @@ public class CartBUS extends ObjectBUS<Cart>{
         super(dao);
     }
     
+    public ArrayList<Cart> getByUserID(String id) throws Exception{
+        if(!id.isEmpty())
+            return ((CartDAO)dao).getByUserID(id);
+        return null;
+    }  
 }
