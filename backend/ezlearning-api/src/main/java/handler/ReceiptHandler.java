@@ -5,24 +5,25 @@
  */
 package handler;
 
-import bus.UserBUS;
-import dao.UserDAO;
-import dto.User;
+import bus.ReceiptBUS;
+import dao.ReceiptDAO;
+import dto.Receipt;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import util.GenerateIDUtil;
 import util.StringUtil;
 
 /**
  *
  * @author Phong Nguyen
  */
-public class UserHandler extends BaseHandler {
+public class ReceiptHandler extends BaseHandler {
 
-    private final UserBUS bus = new UserBUS(new UserDAO());
+    private final ReceiptBUS bus = new ReceiptBUS(new ReceiptDAO());
     @Override
     protected String doGetHandler(HttpServletRequest req, HttpServletResponse resp) throws Exception {
         String pathInfo = req.getPathInfo();
@@ -32,21 +33,21 @@ public class UserHandler extends BaseHandler {
         switch (pathInfo) {
             case "/":
                 String query = req.getQueryString();
-                Collection<User> listUser = new ArrayList<>();
+                Collection<Receipt> listReceipt = new ArrayList<>();
                 if (!StringUtil.isEmpty(query)) {
                     Map<String, String> params = StringUtil.getParams(query, "&");
-                    String username = params.get("username");
-                    if (!StringUtil.isEmpty(username)) {
-                        User item = bus.getOne(username);
+                    String id = params.get("id");
+                    if (!StringUtil.isEmpty(id)) {
+                        Receipt item = bus.getOne(id);
                         if (item != null) {
-                            listUser.add(item);
+                            listReceipt.add(item);
                         }
                     }
                 } else {
-                    listUser = bus.getAll();
+                    listReceipt = bus.getAll();
                 }
-                if (!listUser.isEmpty()) {
-                    return gson.toJson(listUser);
+                if (!listReceipt.isEmpty()) {
+                    return gson.toJson(listReceipt);
                 }
         }
         return "";
@@ -61,8 +62,9 @@ public class UserHandler extends BaseHandler {
         switch (pathInfo) {
             case "/":
                 String body = getRequestBody(req);
-                User user = (User) gson.fromJson(body, User.class);
-                bus.insert(user);
+                Receipt receipt = (Receipt) gson.fromJson(body, Receipt.class);
+                receipt.setId(GenerateIDUtil.GenerateID());
+                bus.insert(receipt);
                 break;
         }
     }
@@ -75,8 +77,8 @@ public class UserHandler extends BaseHandler {
         } else {
             String id = pathInfo.substring(1);
             String body = getRequestBody(req);
-            User user = (User) gson.fromJson(body, User.class);
-            bus.update(id, user);
+            Receipt receipt = (Receipt) gson.fromJson(body, Receipt.class);
+            bus.update(id, receipt);
         }   
     }
 

@@ -6,15 +6,15 @@
 package bus;
 
 import dao.ObjectDAO;
-import dto.User;
+import dto.Voucher;
 
 /**
  *
  * @author Phong Nguyen
  */
-public class VoucherBUS extends ObjectBUS<User>{
+public class VoucherBUS extends ObjectBUS<Voucher>{
     
-    public VoucherBUS(ObjectDAO<User> dao) {
+    public VoucherBUS(ObjectDAO<Voucher> dao) {
         super(dao);
     }
     

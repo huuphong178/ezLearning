@@ -5,24 +5,25 @@
  */
 package handler;
 
-import bus.UserBUS;
-import dao.UserDAO;
-import dto.User;
+import bus.MethodBUS;
+import dao.MethodDAO;
+import dto.Method;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import util.GenerateIDUtil;
 import util.StringUtil;
 
 /**
  *
  * @author Phong Nguyen
  */
-public class UserHandler extends BaseHandler {
+public class MethodHandler extends BaseHandler {
 
-    private final UserBUS bus = new UserBUS(new UserDAO());
+    private final MethodBUS bus = new MethodBUS(new MethodDAO());
     @Override
     protected String doGetHandler(HttpServletRequest req, HttpServletResponse resp) throws Exception {
         String pathInfo = req.getPathInfo();
@@ -32,21 +33,21 @@ public class UserHandler extends BaseHandler {
         switch (pathInfo) {
             case "/":
                 String query = req.getQueryString();
-                Collection<User> listUser = new ArrayList<>();
+                Collection<Method> listMethod = new ArrayList<>();
                 if (!StringUtil.isEmpty(query)) {
                     Map<String, String> params = StringUtil.getParams(query, "&");
-                    String username = params.get("username");
-                    if (!StringUtil.isEmpty(username)) {
-                        User item = bus.getOne(username);
+                    String id = params.get("id");
+                    if (!StringUtil.isEmpty(id)) {
+                        Method item = bus.getOne(id);
                         if (item != null) {
-                            listUser.add(item);
+                            listMethod.add(item);
                         }
                     }
                 } else {
-                    listUser = bus.getAll();
+                    listMethod = bus.getAll();
                 }
-                if (!listUser.isEmpty()) {
-                    return gson.toJson(listUser);
+                if (!listMethod.isEmpty()) {
+                    return gson.toJson(listMethod);
                 }
         }
         return "";
@@ -61,8 +62,9 @@ public class UserHandler extends BaseHandler {
         switch (pathInfo) {
             case "/":
                 String body = getRequestBody(req);
-                User user = (User) gson.fromJson(body, User.class);
-                bus.insert(user);
+                Method method = (Method) gson.fromJson(body, Method.class);
+                method.setId(GenerateIDUtil.GenerateID());
+                bus.insert(method);
                 break;
         }
     }
@@ -75,8 +77,8 @@ public class UserHandler extends BaseHandler {
         } else {
             String id = pathInfo.substring(1);
             String body = getRequestBody(req);
-            User user = (User) gson.fromJson(body, User.class);
-            bus.update(id, user);
+            Method method = (Method) gson.fromJson(body, Method.class);
+            bus.update(id, method);
         }   
     }
 

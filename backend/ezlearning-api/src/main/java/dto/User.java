@@ -23,7 +23,7 @@ public class User {
     String phone;
     String degree;
     String dob;
-    Byte[] avartar;
+    String avatar;
 
     public User(String[] user) {
         this.username = user[0];
@@ -35,13 +35,11 @@ public class User {
         this.phone = user[6];
         this.degree = user[7];
         this.dob =user[8];
-//        Byte[] temp;
-//        for(int i =0 ; i< user[8].length(); i++){
-//            temp[i] = user[8].
-//        }
-        //this.avartar = user[8];
+        this.avatar = user[8];
 
     }
+
+    
 
     public User(String username, String password, String email, int role, String displayname, String address, String phone, String degree, String dob) {
         this.username = username;
@@ -53,7 +51,15 @@ public class User {
         this.phone = phone;
         this.degree = degree;
         this.dob = dob;
-        //this.avartar = avartar;
+        //this.avatar = avatar;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     public String getDegree() {
@@ -128,12 +134,4 @@ public class User {
         this.dob = dob;
     }
     
-    public Byte[] getAvartar() {
-        return avartar;
-    }
-
-    public void setAvartar(Byte[] avartar) {
-        this.avartar = avartar;
-    }
-
 }
