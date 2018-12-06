@@ -41,11 +41,13 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState } from 'vuex';
 
 export default {
   data() {
-    return;
+    return {
+
+    }
   },
   // computed: {
   //   catogaries() {
@@ -53,11 +55,11 @@ export default {
   //   }
   // },
   computed: {
-    catogaries() {
-      alert(this.$store.state.catogaries);
-     return this.$store.state.catogaries;
-     }
-    // ...mapState(["catogaries"])
+    // catogaries() {
+    //   alert(this.$store.state.catogaries);
+    //  return this.$store.state.catogaries;
+    //  }
+    ...mapState(['catogaries'])
   },
   methods: {
     LogIn() {},

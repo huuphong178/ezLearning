@@ -6,14 +6,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    catogaries: [ {
-      "id": 1,
-      "name": "Giáo dục",
-    },
-    {
-      "id": 2,
-      "name": "Công nghệ",
-    }],
+    catogaries: [],
     courseBanner: [],
     statistic: [],
     saleCourese: [],
@@ -45,15 +38,15 @@ export default new Vuex.Store({
       //danh mục navbar
       var cats = [
         {
-          "id": 1,
-          "name": "Giáo dục",
+          id: 1,
+          name: "Giáo dục",
         },
         {
-          "id": 2,
-          "name": "Công nghệ",
+          id: 2,
+          name: "Công nghệ",
         }
       ]
-      ctx.commit(SET_CATOGARIES, cats);
+      ctx.commit('SET_CATOGARIES', cats);
 
       // axios.get("http:domain:port/category").then(response => {
       //   if (response.status == 200){
