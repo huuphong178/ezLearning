@@ -5,6 +5,7 @@
     <Statistic/>
     <Sale/>
     <ListCats/>
+    <Footer/>
   </div>
 </template>
 
@@ -15,6 +16,9 @@ import BannerHome from '@/components/BannerHome.vue'
 import Statistic from '@/components/Statistic.vue'
 import Sale from '@/components/Sale.vue'
 import ListCats from '@/components/ListCats.vue'
+import Footer from '@/components/Footer.vue'
+
+import { mapState, mapActions } from 'vuex';
 
 export default {
   name: 'home',
@@ -23,7 +27,13 @@ export default {
     BannerHome,
     Statistic,
     Sale,
-    ListCats
-  }
+    ListCats,
+    Footer
+  },
+   methods: {
+    ...mapActions([
+      'init'
+    ])
+  },
 }
 </script>

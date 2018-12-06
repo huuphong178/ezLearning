@@ -1,16 +1,19 @@
 <template>
-    <div>
+<div>
+    <div v-for="course in courseBanner" :key="course.id">
     <img src="../assets/pics/banner.png" alt="">
         <div>
-            Lập trình
+            {{course.catname}}
         </div>
         <div>
-            Thiết kế website siêu tốc trong 30 phút bằng các công cụ
+            {{course.name}}
         </div>
         <div >
-            <img src="../assets/pics/teacher.png" alt="" style="display:inline-block">
-            <div style="display:inline-block">Đặng Ngọc Bình</div>
+           
+            <img src="../assets/pics/teacher.png" alt="" style="display:inline-block">   <!-- load hình giáo viên -->
+            <div style="display:inline-block">{{course.teachername}}</div>
         </div>
         <button>ĐĂNG KÝ NGAY</button>
     </div>
+</div>
 </template>

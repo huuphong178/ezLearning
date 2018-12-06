@@ -4,16 +4,17 @@
 
     <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
 
-    <b-navbar-brand href="#">EZLearning</b-navbar-brand>
+    <b-navbar-brand href="#">
+      <router-link :to="'/home'">EZLearning</router-link>
+      </b-navbar-brand>
 
     <b-collapse is-nav id="nav_collapse" class="row">
 
       <b-navbar-nav class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
         <b-nav-item-dropdown text="Danh mục">
-          <b-dropdown-item href="#">EN</b-dropdown-item>
-          <b-dropdown-item href="#">ES</b-dropdown-item>
-          <b-dropdown-item href="#">RU</b-dropdown-item>
-          <b-dropdown-item href="#">FA</b-dropdown-item>
+          <div v-for="cat in catogaries" :key="cat.id">
+          <b-dropdown-item href="#">{{cat.name}}</b-dropdown-item>
+          </div>
         </b-nav-item-dropdown>
       </b-navbar-nav>
 
@@ -24,11 +25,11 @@
 
     <b-navbar-nav class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
        <b-navbar-nav >
-        <b-nav-item href="#">Đăng nhập</b-nav-item>
+        <b-nav-item v-on:click="LogIn()">Đăng nhập</b-nav-item>
       </b-navbar-nav>
  
        <b-navbar-nav> 
-        <b-nav-item href="#">Đăng ký</b-nav-item>
+        <b-nav-item v-on:click="Signup()">Đăng ký</b-nav-item>
       </b-navbar-nav>
     </b-navbar-nav>
 
@@ -39,10 +40,17 @@
 </template>
 
 <script>
-
 export default {
   data(){
     return;
+  },
+  methods: {
+    LogIn(){
+    },
+    Signup(){
+
+    }
   }
 }
 </script>
+
