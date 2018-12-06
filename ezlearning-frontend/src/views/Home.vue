@@ -1,11 +1,11 @@
 <template>
   <div class="home">
     <NavBar/>
-    <BannerHome/>
+    <!-- <BannerHome/>
     <Statistic/>
     <Sale/>
     <ListCats/>
-    <Footer/>
+    <Footer/> -->
   </div>
 </template>
 
@@ -18,7 +18,7 @@ import Sale from '@/components/Sale.vue'
 import ListCats from '@/components/ListCats.vue'
 import Footer from '@/components/Footer.vue'
 
-import { mapState, mapActions } from 'vuex';
+import { mapActions } from 'vuex';
 
 export default {
   name: 'home',
@@ -35,5 +35,8 @@ export default {
       'init'
     ])
   },
+  mounted() {
+    this.init();
+  }
 }
 </script>

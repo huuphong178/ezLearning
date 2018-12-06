@@ -6,12 +6,24 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    catogaries: [],
+    catogaries: [ {
+      "id": 1,
+      "name": "Giáo dục",
+    },
+    {
+      "id": 2,
+      "name": "Công nghệ",
+    }],
     courseBanner: [],
     statistic: [],
     saleCourese: [],
-    
+
   },
+  // getters: {
+  //   displayListCats(state){
+  //     return state.catogaries;
+  //   }
+  // },
   mutations: {
     SET_CATOGARIES(state, payload)
     {
@@ -23,34 +35,60 @@ export default new Vuex.Store({
     },
     SET_STATISTIC(state, payload){
       state.statistic = payload;
+    },
+    SET_SALE(state, payload){
+      state.saleCourese = payload;
     }
   },
   actions: {
     init(ctx){
       //danh mục navbar
-      axios.get("http:domain:port/category").then(response => {
-        if (response.status == 200){
-          ctx.commit(SET_CATOGARIES, response.data);
+      var cats = [
+        {
+          "id": 1,
+          "name": "Giáo dục",
+        },
+        {
+          "id": 2,
+          "name": "Công nghệ",
         }
-      }).catch(err => {
-        alert("Error:" + err);
-      });
+      ]
+      ctx.commit(SET_CATOGARIES, cats);
 
-      axios.get("http:domain:port/course/random?n=5").then(response => {
-        if (response.status == 200){
-          ctx.commit(SET_BANNER, response.data);
-        }
-      }).catch(err => {
-        alert("Error:" + err);
-      });
+      // axios.get("http:domain:port/category").then(response => {
+      //   if (response.status == 200){
+      //     // ctx.commit(SET_CATOGARIES, response.data);
+      //   }
+      // }).catch(err => {
+      //   alert("Error:" + err);
+      // });
 
-      axios.get("http:domain:port/").then(response => {
-        if (response.status == 200){
-          ctx.commit(SET_STATISTIC, response.data);
-        }
-      }).catch(err => {
-        alert("Error:" + err);
-      });
+      //banner
+      // axios.get("http:domain:port/course/random?n=5").then(response => {
+      //   if (response.status == 200){
+      //     ctx.commit(SET_BANNER, response.data);
+      //   }
+      // }).catch(err => {
+      //   alert("Error:" + err);
+      // });
+
+      // //thống kê
+      // axios.get(`http:domain:port/`).then(response => {
+      //   if (response.status == 200){
+      //     ctx.commit(SET_STATISTIC, response.data);
+      //   }
+      // }).catch(err => {
+      //   alert("Error:" + err);
+      // });
+
+      // //sale
+      // axios.get(`http:domain:port/course/promotion?from=${a}&to=${y-m-d}&n=7`).then(response => {
+      //   if (response.status == 200){
+      //     ctx.commit(SET_SALE, response.data);
+      //   }
+      // }).catch(err => {
+      //   alert("Error:" + err);
+      // });
     }
   }
 })
