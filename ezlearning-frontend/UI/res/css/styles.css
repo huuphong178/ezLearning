@@ -1,0 +1,49 @@
+@font-face {
+    font-family: 'SVN-Product Sans';
+    src: url('../fonts/SVN-ProductSans.eot');
+    src: url('../fonts/SVN-ProductSans.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/SVN-ProductSans.woff2') format('woff2'),
+        url('../fonts/SVN-ProductSans.woff') format('woff'),
+        url('../fonts/SVN-ProductSans.svg#SVN-ProductSans') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SVN-Product Sans';
+    src: url('../fonts/SVN-ProductSansBold.eot');
+    src: url('../fonts/SVN-ProductSansBold.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/SVN-ProductSansBold.woff2') format('woff2'),
+        url('../fonts/SVN-ProductSansBold.woff') format('woff'),
+        url('../fonts/SVN-ProductSansBold.svg#SVN-ProductSansBold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+
+body {
+    font-family: SVN-Product Sans !important;
+}
+
+.button-white-small {
+    height: 31px;
+    box-shadow: 1px 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 100px;
+    padding: 7px 10px;
+    color: #75D354;
+    font-weight: bold;
+    font-size: 14px;
+    background: #fff;
+    border: 0px;
+}
+
+.price-button {
+    box-shadow: 1px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 100px;
+    padding: 6px 20px;
+    background: #75D354;
+    color: #fff;
+    font-weight: bold;
+    font-size: 18px;
+    border: 0px;
+    cursor: pointer;
+}

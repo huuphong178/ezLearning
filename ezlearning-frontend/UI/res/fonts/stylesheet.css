@@ -1,0 +1,22 @@
+@font-face {
+    font-family: 'SVN-Product Sans';
+    src: url('SVN-ProductSans.eot');
+    src: url('SVN-ProductSans.eot?#iefix') format('embedded-opentype'),
+        url('SVN-ProductSans.woff2') format('woff2'),
+        url('SVN-ProductSans.woff') format('woff'),
+        url('SVN-ProductSans.svg#SVN-ProductSans') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SVN-Product Sans';
+    src: url('SVN-ProductSansBold.eot');
+    src: url('SVN-ProductSansBold.eot?#iefix') format('embedded-opentype'),
+        url('SVN-ProductSansBold.woff2') format('woff2'),
+        url('SVN-ProductSansBold.woff') format('woff'),
+        url('SVN-ProductSansBold.svg#SVN-ProductSansBold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+
