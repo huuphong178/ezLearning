@@ -14,7 +14,30 @@
     <title>Home</title>
 </head>
 
-<body>
+<body style="position: relative;">
+
+    <div class="navbar" style="width: 100%; position: fixed; z-index: 10; display: none;">
+        <div class="row" style="width: 100%">
+            <div class="col-sm" style="width: 35%; margin-top: 3px;">
+                <img src="res/icons/logos/navbar.png" width="138px">
+                <span style="margin-left: 50px">
+                    Danh mục
+                    <img src="res/icons/more-cat.png" width="11px" style="margin-left: 15px">
+                </span>
+            </div>
+            <div class="col-sm" style="width: 40%; margin: auto;">
+                <div class="search-box">
+                    <input type="text" placeholder="Tìm kiếm khóa học, giảng viên, ...">
+                    <img src="res/icons/search.png" style="float: right; margin-top: 3px" width="13px">
+                </div>
+            </div>
+            <div class="col-sm text-right" style="width: 40%; margin-top: 5px;">
+                <span>Đăng nhập</span>
+                <span class="sign-up-btn" style="margin-left: 30px;">Đăng ký</span>
+            </div>
+        </div>
+    </div>
+
 
     <div class="big-banner">
         <div class="container">
@@ -680,9 +703,9 @@
                     <img src="res/icons/home-right.png" width="10px">
                 </div>
                 <div id="popular-right" class="arrow-white right">
-                        <img src="res/icons/home-left.png" width="10px">
-                    </div>
+                    <img src="res/icons/home-left.png" width="10px">
                 </div>
+            </div>
             <div style="width: 100%; padding: 5px; overflow: hidden;">
                 <div id="popular-list" style="width: 200%;">
                     <div class="tile-container-long">
@@ -1524,7 +1547,9 @@
 
     </div>
 
+    
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="res/js/scripts.js"></script>
     <script src="res/js/tile.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
