@@ -49,16 +49,7 @@ export default {
 
     }
   },
-  // computed: {
-  //   catogaries() {
-  //     return this.$store.getters.displayListCats;
-  //   }
-  // },
   computed: {
-    // catogaries() {
-    //   alert(this.$store.state.catogaries);
-    //  return this.$store.state.catogaries;
-    //  }
     ...mapState(['catogaries'])
   },
   methods: {

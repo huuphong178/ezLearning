@@ -1,8 +1,8 @@
 <template>
   <div class="home">
     <NavBar/>
-    <!-- <BannerHome/>
-    <Statistic/>
+    <BannerHome/>
+    <!-- <Statistic/>
     <Sale/>
     <ListCats/>
     <Footer/> -->

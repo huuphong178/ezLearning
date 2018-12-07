@@ -10,13 +10,7 @@ export default new Vuex.Store({
     courseBanner: [],
     statistic: [],
     saleCourese: [],
-
   },
-  // getters: {
-  //   displayListCats(state){
-  //     return state.catogaries;
-  //   }
-  // },
   mutations: {
     SET_CATOGARIES(state, payload)
     {
@@ -36,21 +30,19 @@ export default new Vuex.Store({
   actions: {
     init(ctx){
       //danh mục navbar
-      var cats = [
+      var banner = [
         {
           id: 1,
           name: "Giáo dục",
-        },
-        {
-          id: 2,
-          name: "Công nghệ",
+          catname: "aaa",
+          teachername: "An"
         }
       ]
-      ctx.commit('SET_CATOGARIES', cats);
+      ctx.commit('SET_BANNER', banner);
 
       // axios.get("http:domain:port/category").then(response => {
       //   if (response.status == 200){
-      //     // ctx.commit(SET_CATOGARIES, response.data);
+      //     ctx.commit(SET_CATOGARIES, response.data);
       //   }
       // }).catch(err => {
       //   alert("Error:" + err);
