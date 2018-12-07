@@ -5,7 +5,15 @@
     grid-template-columns: repeat(5, calc((100% / 3.675) - 100px));
     grid-template-rows: 320px;
     margin-bottom: 25px;
-    cursor: pointer;
+}
+
+.tile-container-long {
+    display: grid;
+    grid-column-gap: 25px;
+    grid-row-gap: 40px;
+    grid-template-columns: repeat(10, calc((50% / 3.675) - 100px));
+    grid-template-rows: 320px;
+    margin-bottom: 25px;
 }
 
 .tile {
@@ -19,6 +27,7 @@
 .tile-course {
     height: 300px;
     overflow: hidden;
+    cursor: pointer;
 }
 
 .tile-banner {
@@ -123,4 +132,33 @@
 .tile-preview-des{
     color: #000;
     margin: 5px 0px;
+}
+
+.arrow-white{
+    top: 80px;
+    width: 52px;
+    height: 52px;
+    border-radius: 100px;
+    position: absolute;
+    z-index: 10;
+    padding: 13px;
+    text-align: center;
+    box-shadow: 1px 4px 8px rgba(0, 0, 0, 0.2);
+    background: #fff;
+    cursor: pointer;
+}
+
+.left{
+    left: -26px;
+}
+
+.right{
+    left: calc(100% - 30px);
+}
+
+.slide-arrow{
+    width: 52px;
+    margin: 30px;
+    position: absolute;
+    z-index: 10;
 }

@@ -7,23 +7,10 @@ $(".tile-course").hover(
     }
 )
 
-function showSlides(curId) {
-    var nextId;
-    nextId = curId + 1;
-    if (nextId > 3) nextId = 1;
-    var nextObj = $("#v" + nextId);
-    var curObj = $("#v" + curId);
-    nextObj.fadeIn();   
-    curObj.fadeOut();
-    setTimeout(showSlides(nextId), 3000);
-}
+$("#popular-left").click(function(){
+    $("#popular-list").animate({marginLeft: "-102%"}, 600);
+})
 
-$(document).ready(function () {
-
-    $("#v2").hide();
-    $("#v3").hide();
-
-    setTimeout(showSlides(1), 3000);
-
-
+$("#popular-right").click(function(){
+    $("#popular-list").animate({marginLeft: "0%"}, 600);
 })
