@@ -15,17 +15,16 @@ function showSlides(curId) {
     if (nextId > 3) nextId = 1;
     var nextObj = $("#v" + nextId);
     var curObj = $("#v" + curId);
-    nextObj.fadeIn();
     curObj.fadeOut();
-    setTimeout(showSlides(nextId), 3000);
+    nextObj.fadeIn();
+    setTimeout(showSlides(nextId), 10000);
 }
 
 $(document).ready(function () {
 
     $("#v2").hide();
     $("#v3").hide();
-
-    setTimeout(showSlides(1), 3000);
-
-
+    setTimeout(showSlides(1), 000);
 })
+
+
