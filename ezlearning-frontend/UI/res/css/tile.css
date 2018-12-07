@@ -24,6 +24,7 @@
 .tile-banner {
     width: 100%;
     height: auto;
+    position: absolute;
 }
 
 .tile-cover {
