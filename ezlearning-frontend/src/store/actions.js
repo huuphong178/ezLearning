@@ -1,33 +1,6 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
 import axios from 'axios'
 
-Vue.use(Vuex)
-
-export default new Vuex.Store({
-  state: {
-    catogaries: [],
-    courseBanner: [],
-    statistic: [],
-    saleCourese: [],
-  },
-  mutations: {
-    SET_CATOGARIES(state, payload)
-    {
-      state.catogaries = payload;
-    },
-    SET_BANNER(state, payload)
-    {
-      state.courseBanner = payload;
-    },
-    SET_STATISTIC(state, payload){
-      state.statistic = payload;
-    },
-    SET_SALE(state, payload){
-      state.saleCourese = payload;
-    }
-  },
-  actions: {
+export default {
     init(ctx){
       //danh mục navbar
       var banner = [
@@ -76,4 +49,3 @@ export default new Vuex.Store({
       // });
     }
   }
-})
