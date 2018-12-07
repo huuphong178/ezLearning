@@ -1,28 +1,84 @@
 <template>
-  <div>
-    <b-card
-      overlay
-      img-src="https://picsum.photos/600/300/?image=36"
-      img-alt="Image"
-      text-variant="white"
-      style="max-width: 30rem; max-height: 60rem"
-      img-top
-      tag="article"
-    >
-      <p class="card-text">50%</p>
-      <p class="card-text">Kế toán</p>
-      <img src="icons/star.png" alt="">
-      <p class="card-text">
-        Luyện thi TOIEC cấp tốc
-      </p>
-      <div>
-          <img src="../assets/pics/teacher.png" alt="">
-           <p class="card-text" style="display: inline-block">Vũ Trọng Phụng</p>
-      </div>
-       <p class="card-text">
-        Giá cũ: 420.000đ
-      </p>
-      <b-button href="#" variant="primary">149.500đ</b-button>
-    </b-card>
-  </div>
+ <div style="height: 100%; position: relative;">
+                    <div class="tile-price">
+                        <button class="price-button">149,500 đ</button>
+                    </div>
+                    <div class="tile tile-course">
+                        <div class="tile-preview">
+                            <div style="position: relative; height: 100%;">
+                                <div>
+                                    <div class="tile-cat">
+                                        Kế toán
+                                    </div>
+                                </div>
+                                <div>
+                                    <div>
+                                        <img src="icons/ratings/rate-full.png" width="18px">
+                                        <img src="icons/ratings/rate-full.png" width="18px">
+                                        <img src="icons/ratings/rate-full.png" width="18px">
+                                        <img src="icons/ratings/rate-full.png" width="18px">
+                                        <img src="icons/ratings/rate-outline.png" width="18px">
+                                        <span>(04)</span>
+                                    </div>
+                                    <div class="tile-preview-name">
+                                        Trọn bộ làm video và kỹ thuật AE
+                                    </div>
+                                    <div>
+                                        <div class="tile-ava-container" style="float: left; margin-right: 15px; margin-top: 5px">
+                                            <img src="imgs/teachers/teacher1.png" class="tile-ava-img">
+                                        </div>
+                                        <span>
+                                            Trần Đình Dần (Master Trần)
+                                        </span>
+                                    </div>
+                                    <div class="tile-preview-des">
+                                        Dành cho những nhà làm marketing chuyên nghiệp bạn luôn phải cắt ghép nhân vật,
+                                        hình ảnh và phông nền xanh. Khóa ...
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tile-info" style="background-color: rgba(0, 178, 203, 0.75);">
+                            <div style="position: relative; height: 100%;">
+                                <div>
+                                    <div class="tile-discount" style="margin-bottom: 5px;">
+                                        50%
+                                    </div>
+                                    <br>
+                                    <div class="tile-cat">
+                                        Kế toán
+                                    </div>
+                                </div>
+                                <div style="bottom: 0; position: absolute;">
+                                    <div>
+                                        <img src="icons/ratings/rate-full-white.png" width="18px">
+                                        <img src="icons/ratings/rate-full-white.png" width="18px">
+                                        <img src="icons/ratings/rate-full-white.png" width="18px">
+                                        <img src="icons/ratings/rate-full-white.png" width="18px">
+                                        <img src="icons/ratings/rate-outline-white.png" width="18px">
+                                        <span>(04)</span>
+                                    </div>
+                                    <div class="tile-course-name">
+                                        Trọn bộ làm video và kỹ thuật AE
+                                    </div>
+                                    <div>
+                                        <div class="tile-ava-container" style="float: left; margin-right: 15px; margin-top: 5px">
+                                            <img src="imgs/teachers/teacher1.png" class="tile-ava-img">
+                                        </div>
+                                        <span>
+                                            Trần Đình Dần (Master Trần)
+                                        </span>
+                                    </div>
+                                    <div>
+                                        Giá cũ:
+                                        <span class="tile-old-price">299,000 đ</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <img src="imgs/courses/course1.png" class="tile-cover">
+                        </div>
+                    </div>
+                </div>
 </template>

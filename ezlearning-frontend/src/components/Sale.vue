@@ -1,10 +1,16 @@
 <template>
-  <div>
-    <p>Khuyến mãi</p>
-    <button>Xem thêm</button>
-    <AdvertiseHome/>
-    <CourseCard/>
-  </div>
+ <div class="container" style="margin-top: 90px; margin-bottom: 50px;">
+        <div id="vouchers">
+            <div style="margin-bottom: 10px;">
+                <span class="section-title">Khuyến mãi</span>
+                <button class="button-white-small" style="float: right;">Xem thêm</button>
+            </div>
+            <div class="tile-container">
+              <AdvertiseHome/>
+               <CourseCard/>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>

@@ -1,17 +1,17 @@
 <template>
   <div class="home">
-    <NavBar/>
-    <BannerHome/>
-    <!-- <Statistic/>
+    <NavBarHome/>
+    <!-- <BannerHome/> -->
+    <Statistic/>
     <Sale/>
-    <ListCats/>
+    <!-- <ListCats/>
     <Footer/> -->
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import NavBar from '@/components/NavBar.vue'
+import NavBarHome from '@/components/NavBarHome.vue'
 import BannerHome from '@/components/BannerHome.vue'
 import Statistic from '@/components/Statistic.vue'
 import Sale from '@/components/Sale.vue'
@@ -23,7 +23,7 @@ import { mapActions } from 'vuex';
 export default {
   name: 'home',
   components: {
-    NavBar,
+    NavBarHome,
     BannerHome,
     Statistic,
     Sale,

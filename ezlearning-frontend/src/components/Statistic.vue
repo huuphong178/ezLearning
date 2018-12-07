@@ -1,25 +1,49 @@
 <template>
-    <div class="row">
-        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-            <img src="icons/StatisticCourse.png" alt="">
-            <div style="display: inline-block">
-                <div>{{statistic.course}}+</div>
-                <div>Khóa học</div>
+ <div class="show-off">
+        <div class="row">
+            <div class="col-sm">
+                <img src="icons/show-off-courses.png" width="58px" style="float: left; margin-right: 20px;">
+                <div>
+                    <span class="show-off-number">
+                        {{statistic.course}}+
+                    </span>
+                    <br>
+                    Khóa học
+                </div>
             </div>
-        </div>
-         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-             <img src="icons/StatisticStudent.png" alt="">
-              <div style="display: inline-block">
-                <div>{{statistic.student}}}+</div>
-                <div>Học viên</div>
+            <div class="col-sm">
+                <img src="icons/show-off-students.png" width="58px" style="float: left; margin-right: 20px;">
+                <div>
+                    <span class="show-off-number">
+                        {{statistic.student}}+
+                    </span>
+                    <br>
+                    Học viên
+                </div>
             </div>
-        </div>
-         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-             <img src="icons/StatisticTeacher.png" alt="">
-              <div style="display: inline-block">
-                <div>{{statistic.teacher}}+</div>
-                <div>Giảng viên</div>
+            <div class="col-sm">
+                <img src="icons/show-off-teachers.png" width="58px" style="float: left; margin-right: 20px;">
+                <div>
+                    <span class="show-off-number">
+                        {{statistic.teacher}}+
+                    </span>
+                    <br>
+                    Giảng viên
+                </div>
             </div>
         </div>
     </div>
 </template>
+
+<script>
+import { mapState } from "vuex";
+
+export default {
+  data() {
+    return {};
+  },
+  computed: {
+    ...mapState(["statistic"])
+  }
+};
+</script>
