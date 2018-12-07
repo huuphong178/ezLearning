@@ -14,16 +14,16 @@ import util.DateUtil;
  */
 public class User {
 
-    String username;
-    String password;
-    String email;
-    int role;
-    String displayname;
-    String address;
-    String phone;
-    String degree;
-    String dob;
-    String avatar;
+    protected String username;
+    protected String password;
+    protected String email;
+    protected int role;
+    protected String displayname;
+    protected String address;
+    protected String phone;
+    protected String degree;
+    protected String dob;
+    protected String avatar;
 
     public User(String[] user) {
         this.username = user[0];
@@ -41,7 +41,7 @@ public class User {
 
     
 
-    public User(String username, String password, String email, int role, String displayname, String address, String phone, String degree, String dob) {
+    public User(String username, String password, String email, int role, String displayname, String address, String phone, String degree, String dob, String avatar) {
         this.username = username;
         this.password = password;
         this.email = email;
@@ -51,7 +51,7 @@ public class User {
         this.phone = phone;
         this.degree = degree;
         this.dob = dob;
-        //this.avatar = avatar;
+        this.avatar = avatar;
     }
 
     public String getAvatar() {
