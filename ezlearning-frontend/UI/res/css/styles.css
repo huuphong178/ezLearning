@@ -323,10 +323,6 @@ body {
     text-transform: none;
 }
 
-button:hover{
-    opacity: 0.9;
-}
-
 .form-warning{
     text-align: center !important;
     margin-top: 10px !important;
