@@ -2,24 +2,13 @@ import axios from 'axios'
 
 export default {
     init(ctx){
-      //danh mục navbar
-      var banner = [
-        {
-          id: 1,
-          name: "Giáo dục",
-          catname: "aaa",
-          teachername: "An"
+      axios.get("http://localhost:3000/category").then(response => {
+        if (response.status == 200){
+          ctx.commit('SET_CATOGARIES', response.data);
         }
-      ]
-      ctx.commit('SET_BANNER', banner);
-
-      // axios.get("http:domain:port/category").then(response => {
-      //   if (response.status == 200){
-      //     ctx.commit('SET_CATOGARIES', response.data);
-      //   }
-      // }).catch(err => {
-      //   alert("Error:" + err);
-      // });
+      }).catch(err => {
+        alert("Error:" + err);
+      });
 
       //banner
       // axios.get("http:domain:port/course/random?n=5").then(response => {
@@ -30,8 +19,9 @@ export default {
       //   alert("Error:" + err);
       // });
 
-      // //thống kê
-      // axios.get(`http:domain:port/`).then(response => {
+      //thống kê   chưa có api
+      // axios.get(`http://localhost:3000/statistic`).then(response => {
+      //   alert(JSON.stringify(response));
       //   if (response.status == 200){
       //     ctx.commit('SET_STATISTIC', response.data);
       //   }

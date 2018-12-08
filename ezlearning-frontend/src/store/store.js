@@ -9,7 +9,7 @@ export default new Vuex.Store({
     catogaries: [],
     courseBanner: [],
     statistic: [],
-    saleCourese: [],
+    saleCoureses: [],
   },
   mutations: {
     SET_CATOGARIES(state, payload)

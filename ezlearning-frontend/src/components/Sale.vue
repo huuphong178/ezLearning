@@ -1,5 +1,5 @@
 <template>
- <div class="container" style="margin-top: 90px; margin-bottom: 50px;">
+ <div>
         <div id="vouchers">
             <div style="margin-bottom: 10px;">
                 <span class="section-title">Khuyến mãi</span>

@@ -50,7 +50,7 @@ export default {
   },
   methods: {
     ListCats(){
-
+      //hiện menu danh mục
     },
     LogIn() {},
     Signup() {},
