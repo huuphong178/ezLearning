@@ -15,7 +15,7 @@ export default {
 
       // axios.get("http:domain:port/category").then(response => {
       //   if (response.status == 200){
-      //     ctx.commit(SET_CATOGARIES, response.data);
+      //     ctx.commit('SET_CATOGARIES', response.data);
       //   }
       // }).catch(err => {
       //   alert("Error:" + err);
@@ -24,7 +24,7 @@ export default {
       //banner
       // axios.get("http:domain:port/course/random?n=5").then(response => {
       //   if (response.status == 200){
-      //     ctx.commit(SET_BANNER, response.data);
+      //     ctx.commit('SET_BANNER', response.data);
       //   }
       // }).catch(err => {
       //   alert("Error:" + err);
@@ -33,7 +33,7 @@ export default {
       // //thống kê
       // axios.get(`http:domain:port/`).then(response => {
       //   if (response.status == 200){
-      //     ctx.commit(SET_STATISTIC, response.data);
+      //     ctx.commit('SET_STATISTIC', response.data);
       //   }
       // }).catch(err => {
       //   alert("Error:" + err);
@@ -42,7 +42,7 @@ export default {
       // //sale
       // axios.get(`http:domain:port/course/promotion?from=${a}&to=${y-m-d}&n=7`).then(response => {
       //   if (response.status == 200){
-      //     ctx.commit(SET_SALE, response.data);
+      //     ctx.commit('SET_SALE', response.data);
       //   }
       // }).catch(err => {
       //   alert("Error:" + err);
