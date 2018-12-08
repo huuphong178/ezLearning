@@ -26,16 +26,6 @@
       </div>
     </div>
   </div>
-
-      <!-- <b-collapse is-nav id="nav_collapse" class="row">
-        <b-navbar-nav class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-          <b-nav-item-dropdown text="Danh mục">
-            <div v-for="cat in catogaries" :key="cat.id">
-              <b-dropdown-item href="#">{{cat.name}}</b-dropdown-item>
-            </div>
-          </b-nav-item-dropdown>
-        </b-navbar-nav>
-         -->
 </template>
 
 <script>

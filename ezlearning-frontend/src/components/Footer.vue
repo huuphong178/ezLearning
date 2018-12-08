@@ -1,25 +1,61 @@
 <template>
-  <div class="row">
-    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-        EzLearning
+   <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <img src="/icons/logos/footer.png" width="155px">
+                </div>
+                <div class="col-sm-2" style="margin-left: 20px;">
+                    <div class="footer-section-title">Về EZLearning</div>
+                    <div>
+                        <ul>
+                            <li>Giới thiệu</li>
+                            <li>Điều khoản sử dụng</li>
+                            <li>Quy chế hoạt động</li>
+                            <li>Chính sách bảo mật</li>
+                            <li>Chăm sóc khách hàng</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-4" style="margin-left: 20px;">
+                    <div class="footer-section-title">Danh mục</div>
+                    <div>
+                        <ul class="split">
+                            <div v-for="cat in catogaries" :key="cat.id">
+                            <li>{{cat.name}}</li>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-2" style="margin-left: 20px;">
+                    <div class="footer-section-title">Liên hệ</div>
+                    <div>
+                        <ul>
+                            <li>Liên hệ</li>
+                            <li>Facebook</li>
+                            <li>Điều khoản người dùng</li>
+                            <li>Trở thành giảng viên</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div style="width: 100%; text-align: center">
+                @2018 EZLearning
+            </div>
+        </div>
     </div>
-    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-        <h5> Về EzLearning</h5>
-        <a href="">Giới thiệu</a> <br/>
-        <a>Điều khoản sử dụng</a>  <br/>
-        <a>Quy chế hoạt động</a> <br/>
-        <a>Chính sách bảo mật</a> <br/>
-        <a>Chăm sóc khách hàng</a>
-    </div>
-    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-        <h5>Danh mục</h5>
-       
-    </div>
-    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-
-    </div>
-    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-        <h5>Liên hệ</h5>
-    </div>
-  </div>
 </template>
+
+<script>
+import { mapState } from "vuex";
+
+export default {
+  data() {
+    return {};
+  },
+  computed: {
+    ...mapState(["catogaries"])
+  }
+};
+</script>

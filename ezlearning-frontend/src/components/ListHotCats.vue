@@ -1,0 +1,52 @@
+<template>
+<div id="hot-cats">
+            <div style="margin-bottom: 10px;">
+                <span class="section-title">Danh mục hot</span>
+                <button class="button-white-small" style="float: right;">Xem thêm</button>
+            </div>
+            <div class="hot-cats-container">
+                <div class="hot-cats lang">
+                    <img src="icons/hot-cats/lang.png" width="41px" style="margin-bottom: 5px;">
+                    <br>
+                    Ngoại ngữ
+                </div>
+                <div class="hot-cats marketing">
+                    <img src="icons/hot-cats/marketing.png" width="32px" style="margin-bottom: 5px;">
+                    <br>
+                    Marketing
+                </div>
+                <div class="hot-cats business">
+                    <img src="icons/hot-cats/business.png" width="34px" style="margin-bottom: 5px;">
+                    <br>
+                    Kinh doanh
+                </div>
+                <div class="hot-cats personal">
+                    <img src="icons/hot-cats/personal.png" width="32px" style="margin-bottom: 5px;">
+                    <br>
+                    Phát triển cá nhân
+                </div>
+                <div class="hot-cats design">
+                    <img src="icons/hot-cats/design.png" width="28px" style="margin-bottom: 5px;">
+                    <br>
+                    Đồ họa
+                </div>
+                <div class="hot-cats programming">
+                    <img src="icons/hot-cats/programming.png" width="32px" style="margin-bottom: 5px;">
+                    <br>
+                    Lập trình
+                </div>
+            </div>
+        </div>
+</template>
+
+<script>
+// @ is an alias to /src
+import CatItem from '@/components/CatItem.vue'
+
+export default {
+  name: 'home',
+  components: {
+    CatItem
+  }
+}
+</script>

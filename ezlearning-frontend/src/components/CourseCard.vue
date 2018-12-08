@@ -13,11 +13,11 @@
                                 </div>
                                 <div>
                                     <div>
-                                        <img src="icons/ratings/rate-full.png" width="18px">
-                                        <img src="icons/ratings/rate-full.png" width="18px">
-                                        <img src="icons/ratings/rate-full.png" width="18px">
-                                        <img src="icons/ratings/rate-full.png" width="18px">
-                                        <img src="icons/ratings/rate-outline.png" width="18px">
+                                        <img src="/icons/ratings/rate-full.png" width="18px">
+                                        <img src="/icons/ratings/rate-full.png" width="18px">
+                                        <img src="/icons/ratings/rate-full.png" width="18px">
+                                        <img src="/icons/ratings/rate-full.png" width="18px">
+                                        <img src="/icons/ratings/rate-outline.png" width="18px">
                                         <span>(04)</span>
                                     </div>
                                     <div class="tile-preview-name">
@@ -25,7 +25,7 @@
                                     </div>
                                     <div>
                                         <div class="tile-ava-container" style="float: left; margin-right: 15px; margin-top: 5px">
-                                            <img src="imgs/teachers/teacher1.png" class="tile-ava-img">
+                                            <img src="/imgs/teachers/teacher1.png" class="tile-ava-img">
                                         </div>
                                         <span>
                                             Trần Đình Dần (Master Trần)
@@ -51,11 +51,11 @@
                                 </div>
                                 <div style="bottom: 0; position: absolute;">
                                     <div>
-                                        <img src="icons/ratings/rate-full-white.png" width="18px">
-                                        <img src="icons/ratings/rate-full-white.png" width="18px">
-                                        <img src="icons/ratings/rate-full-white.png" width="18px">
-                                        <img src="icons/ratings/rate-full-white.png" width="18px">
-                                        <img src="icons/ratings/rate-outline-white.png" width="18px">
+                                        <img src="/icons/ratings/rate-full-white.png" width="18px">
+                                        <img src="/icons/ratings/rate-full-white.png" width="18px">
+                                        <img src="/icons/ratings/rate-full-white.png" width="18px">
+                                        <img src="/icons/ratings/rate-full-white.png" width="18px">
+                                        <img src="/icons/ratings/rate-outline-white.png" width="18px">
                                         <span>(04)</span>
                                     </div>
                                     <div class="tile-course-name">
@@ -63,7 +63,7 @@
                                     </div>
                                     <div>
                                         <div class="tile-ava-container" style="float: left; margin-right: 15px; margin-top: 5px">
-                                            <img src="imgs/teachers/teacher1.png" class="tile-ava-img">
+                                            <img src="/imgs/teachers/teacher1.png" class="tile-ava-img">
                                         </div>
                                         <span>
                                             Trần Đình Dần (Master Trần)
@@ -77,7 +77,7 @@
                             </div>
                         </div>
                         <div>
-                            <img src="imgs/courses/course1.png" class="tile-cover">
+                            <img src="/imgs/courses/course1.png" class="tile-cover">
                         </div>
                     </div>
                 </div>
