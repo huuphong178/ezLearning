@@ -60,10 +60,61 @@
                         <img src="res/icons/search.png" style="float: right; margin-top: 3px" width="13px">
                     </div>
                 </div>
-                <div class="col-sm text-right" style="width: 40%; margin-top: 5px;">
+                <div id="not-logged-in" class="col-sm text-right" style="width: 40%; margin-top: 5px; display: none;">
                     <span>Đăng nhập</span>
                     <span class="sign-up-btn" style="margin-left: 30px;">Đăng ký</span>
                 </div>
+                <div id="logged-in-student" class="col-sm text-right" style="width: 40%;">
+                        <span class="sign-up-btn" style="margin-left: 30px;">Kích hoạt</span>
+                        <img src="res/icons/cart.png" width="16px" style="margin-left: 20px;">
+                        <div class="cart" style="margin-left: 5px;">0</div>
+                        <span id="nav-profile-s" style="cursor: pointer;">
+                            <div class="navbar-ava-container" style="margin-left: 20px;">
+                                <img src="res/imgs/students/student1.png" class="navbar-ava-img">
+                            </div>
+                            <img src="res/icons/more-cat.png" width="11px" style="margin-left: 10px">
+                        </span>
+                        <div id="dropdown-profile" class="menu-dropdown" style="display: none; right: -60px; min-width: 230px; text-align: left;">
+                            <div class="dropdown-addon-top" style="font-weight: bold;">
+                                Võ Thịnh Chuẩn
+                            </div>
+                            <div class="dropdown-content">
+                                <div class="dropdown">
+                                    <ul>
+                                        <li>Các khóa học của tôi</li>
+                                        <li>Lịch sử giao dịch</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="dropdown-addon">
+                                Đăng xuất
+                            </div>
+                        </div>
+                    </div>
+                    <div id="logged-in-teacher" class="col-sm text-right" style="width: 40%; display: none;">
+                        <span class="sign-up-btn" style="margin-left: 30px;">Tạo khóa học</span>
+                        <span id="nav-profile-t" style="cursor: pointer;">
+                            <div class="navbar-ava-container" style="margin-left: 20px;">
+                                <img src="res/imgs/students/student1.png" class="navbar-ava-img">
+                            </div>
+                            <img src="res/icons/more-cat.png" width="11px" style="margin-left: 10px">
+                        </span>
+                        <div id="dropdown-profile" class="menu-dropdown" style="display: none; right: -60px; min-width: 230px; text-align: left;">
+                            <div class="dropdown-addon-top" style="font-weight: bold;">
+                                Võ Thịnh Chuẩn
+                            </div>
+                            <div class="dropdown-content">
+                                <div class="dropdown">
+                                    <ul>
+                                        <li>Các khóa học của tôi</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="dropdown-addon">
+                                Đăng xuất
+                            </div>
+                        </div>
+                    </div>
             </div>
         </div>
     </div>
@@ -76,7 +127,7 @@
                 <div class="row" style="width: 100%">
                     <div class="col-sm" style="width: 35%">
                         <img src="res/icons/logos/navbar-white.png" width="138px">
-                        <span id="nav-cats-banner"  style="margin-left: 50px; cursor: pointer;">
+                        <span id="nav-cats-banner" style="margin-left: 50px; cursor: pointer;">
                             Danh mục
                             <img src="res/icons/more-cat-white.png" width="11px" style="margin-left: 15px">
                         </span>
@@ -113,9 +164,60 @@
                             <img src="res/icons/search-white.png" style="float: right; margin-top: 3px" width="13px">
                         </div>
                     </div>
-                    <div class="col-sm text-right" style="width: 40%">
+                    <div id="not-logged-in-b" class="col-sm text-right" style="width: 40%; display: none;">
                         <span>Đăng nhập</span>
                         <span class="sign-up-btn-white" style="margin-left: 30px;">Đăng ký</span>
+                    </div>
+                    <div id="logged-in-student-b" class="col-sm text-right" style="width: 40%;">
+                        <span class="sign-up-btn-white" style="margin-left: 30px;">Kích hoạt</span>
+                        <img src="res/icons/cart-white.png" width="16px" style="margin-left: 20px;">
+                        <div class="cart-white" style="margin-left: 5px;">0</div>
+                        <span id="nav-profile-banner-s" style="cursor: pointer;">
+                            <div class="navbar-ava-container" style="margin-left: 20px;">
+                                <img src="res/imgs/students/student1.png" class="navbar-ava-img">
+                            </div>
+                            <img src="res/icons/more-cat-white.png" width="11px" style="margin-left: 10px">
+                        </span>
+                        <div id="dropdown-profile" class="menu-dropdown" style="display: none; right: -60px; min-width: 230px; text-align: left;">
+                            <div class="dropdown-addon-top" style="font-weight: bold;">
+                                Võ Thịnh Chuẩn
+                            </div>
+                            <div class="dropdown-content">
+                                <div class="dropdown">
+                                    <ul>
+                                        <li>Các khóa học của tôi</li>
+                                        <li>Lịch sử giao dịch</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="dropdown-addon">
+                                Đăng xuất
+                            </div>
+                        </div>
+                    </div>
+                    <div id="logged-in-teacher-b" class="col-sm text-right" style="width: 40%; display: none">
+                        <span class="sign-up-btn-white" style="margin-left: 30px;">Tạo khóa học</span>
+                        <span id="nav-profile-banner-t" style="cursor: pointer;">
+                            <div class="navbar-ava-container" style="margin-left: 20px;">
+                                <img src="res/imgs/students/student1.png" class="navbar-ava-img">
+                            </div>
+                            <img src="res/icons/more-cat-white.png" width="11px" style="margin-left: 10px">
+                        </span>
+                        <div id="dropdown-profile" class="menu-dropdown" style="display: none; right: -60px; min-width: 230px; text-align: left;">
+                            <div class="dropdown-addon-top" style="font-weight: bold;">
+                                Võ Thịnh Chuẩn
+                            </div>
+                            <div class="dropdown-content">
+                                <div class="dropdown">
+                                    <ul>
+                                        <li>Các khóa học của tôi</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="dropdown-addon">
+                                Đăng xuất
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
