@@ -48,7 +48,7 @@ body {
     cursor: pointer;
 }
 
-.navbar{
+.navbar {
     background: #fff;
     box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05);
     height: 60px;
@@ -85,4 +85,37 @@ body {
 
 .search-box input::placeholder {
     color: #ccc;
+}
+
+.footer {
+    background: #F9F9F9;
+    color: #888;
+    padding: 60px 0px 25px 0px;
+}
+
+.footer-section-title {
+    font-weight: bold;
+    line-height: 33px;
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #000;
+}
+
+.footer ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+.footer ul li {
+    display: block;
+    line-height: 30px;
+}
+
+.split {
+    -moz-column-count: 2;
+    -moz-column-gap: 10px;
+    -webkit-column-count: 2;
+    -webkit-column-gap: 10px;
+    column-count: 2;
+    column-gap: 10px;
 }

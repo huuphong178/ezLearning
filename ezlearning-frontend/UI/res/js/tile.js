@@ -7,10 +7,14 @@ $(".tile-course").hover(
     }
 )
 
-$("#popular-left").click(function(){
+$("#popular-right").click(function(){
     $("#popular-list").animate({marginLeft: "-102%"}, 600);
+    $("#popular-right").fadeOut("fast");
+    $("#popular-left").fadeIn("fast");
 })
 
-$("#popular-right").click(function(){
+$("#popular-left").click(function(){
     $("#popular-list").animate({marginLeft: "0%"}, 600);
+    $("#popular-right").fadeIn("fast");
+    $("#popular-left").fadeOut("fast");
 })

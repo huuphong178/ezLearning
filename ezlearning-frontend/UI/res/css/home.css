@@ -64,3 +64,147 @@
     font-weight: bold;
     color: #888;
 }
+
+.hot-cats-container {
+    display: grid;
+    grid-column-gap: 15px;
+    grid-row-gap: 40px;
+    grid-template-columns: repeat(6, calc((100% / 6.45)));
+    margin-bottom: 25px;
+}
+
+.hot-cats {
+    box-shadow: 1px 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+    color: #fff;
+    padding: 10px 10px 5px 10px;
+    cursor: pointer;
+}
+
+.hot-cats:hover {
+    opacity: 0.75;
+}
+
+.lang {
+    background: #FF003D;
+}
+
+.marketing {
+    background: #6800ED;
+}
+
+.business {
+    background: #FEB45B;
+}
+
+.personal {
+    background: #C70084;
+}
+
+.design {
+    background: #00B2CB;
+}
+
+.programming {
+    background: #0029FF;
+}
+
+.fteachers-container {
+    display: grid;
+    grid-column-gap: 25px;
+    grid-row-gap: 40px;
+    grid-template-columns: repeat(4, calc((100% / 3.41) - 100px));
+    grid-template-rows: 320px;
+    margin-bottom: 25px;
+}
+
+.fteachers {
+    padding: 40px 30px;
+    color: #000;
+    background: #FFFFFF;
+    box-shadow: 1px 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.fteachers-name {
+    font-weight: bold;
+    line-height: 34px;
+    font-size: 24px;
+}
+
+.fteachers-rate-count {
+    font-size: 12px;
+    color: #CCCCCC;
+    font-weight: normal;
+}
+
+.fteachers-student-count {
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.fteachers-course-count {
+    font-size: 24px;
+    color: #75D354;
+}
+
+.fteachers-course {
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.fteachers-course-tile{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    position: relative;
+}
+
+.fteachers-course-price{
+    position: absolute;
+    z-index: 5;
+    bottom: 0;
+    margin-bottom: -13px;
+    margin-left: 40px;
+}
+
+.fteachers-price {
+    font-size: 14px !important;
+    padding: 4px 16px !important;
+}
+
+.fteachers-title {
+    margin-top: 10px;
+    font-size: 16px;
+    line-height: normal;
+}
+
+.fteachers-ava-container{
+    height: 114px;
+    width: 114px;
+    overflow: hidden;
+    border-radius: 50%;
+    box-shadow: 1px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.fteachers-ava-img{
+    height: 100%;
+    width: auto;
+}
+
+.fteachers-cover-container{
+    height: 90px;
+    width: 148px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 1px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.fteachers-cover-img{
+    height: 100%;
+    width: auto;
+}
