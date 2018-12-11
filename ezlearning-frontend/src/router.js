@@ -21,7 +21,7 @@ export default new Router({
       component: Courses
     },
     {
-      path: '/search',
+      path: '/search/:query',
       name: 'search',
       component: Search
     },
