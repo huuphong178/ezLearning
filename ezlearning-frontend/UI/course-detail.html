@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="res/icons/logos/favicon.png" />
+    <link href="res/css/styles.css" rel="stylesheet" type="text/css">
+    <link href="res/css/course-detail.css" rel="stylesheet" type="text/css">
+    <link href="res/css/tile.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <title>Course Detail</title>
+</head>
+
+<body style="position: relative;">
+
+    <!--Modal-->
+
+    <div id="su-si-modal" class="modal-backdrop" style="background-color: rgba(0,0,0,0.25); display: none;">
+        <div class="modal" role="dialog" style="display: block; padding-top: 25px;">
+            <div class="modal-dialog" role="document" style="width: 430px;">
+                <div class="modal-content modal-style" style="border: none !important; border-radius: 10px;">
+                    <div class="modal-top">
+                        <div class="modal-top-tab" style="width: 80%;">
+                            <div id="sign-up-tab" class="modal-tab-item active" style="float: left">Đăng ký</div>
+                            <div id="sign-in-tab" class="modal-tab-item" style="float: left; margin-left: 10px;">Đăng
+                                nhập</div>
+                        </div>
+                        <img id="su-si-close" src="res/icons/modal-close.png" width="13px" style="float: right; margin-top: 23px; cursor: pointer;">
+                    </div>
+                    <div id="sign-up-modal" class="modal-main">
+                        <p class="modal-instruction">
+                            Đăng ký tài khoản để sở hữu những khóa học chất lượng trọn đời
+                        </p>
+                        <div id="sign-up-form" class="modal-form">
+                            <div>
+                                <label class="label-normal">Họ tên</label>
+                                <input class="input-normal" type="text">
+                            </div>
+                            <div>
+                                <label class="label-normal">Email hoặc Số điện thoại</label>
+                                <input class="input-normal" type="text">
+                            </div>
+                            <div>
+                                <label class="label-normal">Mật khẩu</label>
+                                <input class="input-normal" type="password">
+                            </div>
+                            <div id="su-warn" class="form-warning" style="display: none;"></div>
+                            <button id="sign-up-submit" class="big-button" style="width: 100%; margin-top: 15px;">Tạo
+                                tài khoản</button>
+                        </div>
+                        <div class="sign-up-policy">
+                            Bằng cách nhấn vào nút Đăng ký, bạn đã đồng ý với <a href="#">Điều khoản sử dụng</a> và <a
+                                href="#">Chính sách bảo
+                                mật</a> của chúng tôi
+                        </div>
+                        <p>hoặc</p>
+                        <button class="big-button fb-sign-up" style="width: 100%;">
+                            <img src="res/icons/fb-sign-up.png" width="7px" style="margin-right: 20px;">
+                            Đăng ký bằng Facebook
+                        </button>
+                    </div>
+                    <div id="sign-in-modal" class="modal-main" style="display: none;">
+                        <p class="modal-instruction">
+                            Chào mừng trở lại
+                        </p>
+                        <div id="sign-up-form" class="modal-form">
+                            <div>
+                                <label class="label-normal">Email hoặc Số điện thoại</label>
+                                <input class="input-normal" type="text">
+                            </div>
+                            <div>
+                                <label class="label-normal">Mật khẩu</label>
+                                <input class="input-normal" type="password">
+                            </div>
+                            <div id="si-warn" class="form-warning" style="display: none;"> </div>
+                            <button id="sign-in-submit" class="big-button" style="width: 100%; margin-top: 15px;">ĐĂNG
+                                NHẬP</button>
+                        </div>
+                        <p style="margin-top: 15px;">hoặc</p>
+                        <button class="big-button fb-sign-up" style="width: 100%;">
+                            <img src="res/icons/fb-sign-up.png" width="7px" style="margin-right: 20px;">
+                            Đăng nhập bằng Facebook
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Navbar-->
+
+    <div class="navbar" style="width: 100%; position: fixed; z-index: 15;">
+        <div class="container">
+            <div class="row" style="width: 100%">
+                <div class="col-sm" style="width: 35%; margin-top: 3px;">
+                    <img src="res/icons/logos/navbar.png" width="138px">
+                    <span id="nav-cats" style="margin-left: 50px; cursor: pointer;">
+                        Danh mục
+                        <img src="res/icons/more-cat.png" width="11px" style="margin-left: 15px">
+                    </span>
+                    <div id="dropdown-cats" class="menu-dropdown" style="display: none; left: 75px; min-width: 350px !important;">
+                        <div class="dropdown-content">
+                            <div class="dropdown">
+                                <ul class="split">
+                                    <li>Ngoại ngữ</li>
+                                    <li>Marketing</li>
+                                    <li>Tin học</li>
+                                    <li>Kinh doanh</li>
+                                    <li>Thiết kế</li>
+                                    <li>Lập trình</li>
+                                    <li>Đa phương tiện</li>
+                                    <li>Thể thao</li>
+                                    <li>Sức khỏe</li>
+                                    <li>Âm nhạc</li>
+                                    <li>Nghệ thuật</li>
+                                    <li>Hôn nhân gia đình</li>
+                                    <li>Nuôi dạy con</li>
+                                    <li>Phong thủy/Nhân tướng học</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="dropdown-addon">
+                            Tất cả khóa học
+                            <img id="allcats" src="res/icons/all-cats.png" width="15px" style="margin-top: 3px; float: right">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm" style="width: 40%; margin: auto;">
+                    <div class="search-box">
+                        <input type="text" placeholder="Tìm kiếm khóa học, giảng viên, ...">
+                        <img src="res/icons/search.png" style="float: right; margin-top: 3px" width="13px">
+                    </div>
+                </div>
+                <div id="not-logged-in" class="col-sm text-right" style="width: 40%; margin-top: 5px;">
+                    <span class="sign-in-btn" style="cursor: pointer;">Đăng nhập</span>
+                    <span class="sign-up-btn" style="margin-left: 30px; cursor: pointer;">Đăng ký</span>
+                </div>
+                <div id="logged-in-student" class="col-sm text-right" style="width: 40%; display: none;">
+                    <span class="sign-up-btn" style="margin-left: 30px;">Kích hoạt</span>
+                    <img src="res/icons/cart.png" width="16px" style="margin-left: 20px;">
+                    <div class="cart" style="margin-left: 5px;">0</div>
+                    <span id="nav-profile-s" style="cursor: pointer;">
+                        <div class="navbar-ava-container" style="margin-left: 20px;">
+                            <img src="res/imgs/students/student1.png" class="navbar-ava-img">
+                        </div>
+                        <img src="res/icons/more-cat.png" width="11px" style="margin-left: 10px">
+                    </span>
+                    <div id="dropdown-profile" class="menu-dropdown" style="display: none; right: -60px; min-width: 230px; text-align: left;">
+                        <div class="dropdown-addon-top" style="font-weight: bold;">
+                            Võ Thịnh Chuẩn
+                        </div>
+                        <div class="dropdown-content">
+                            <div class="dropdown">
+                                <ul>
+                                    <li>Các khóa học của tôi</li>
+                                    <li>Lịch sử giao dịch</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="dropdown-addon">
+                            Đăng xuất
+                        </div>
+                    </div>
+                </div>
+                <div id="logged-in-teacher" class="col-sm text-right" style="width: 40%; display: none;">
+                    <span class="sign-up-btn" style="margin-left: 30px;">Tạo khóa học</span>
+                    <span id="nav-profile-t" style="cursor: pointer;">
+                        <div class="navbar-ava-container" style="margin-left: 20px;">
+                            <img src="res/imgs/students/student1.png" class="navbar-ava-img">
+                        </div>
+                        <img src="res/icons/more-cat.png" width="11px" style="margin-left: 10px">
+                    </span>
+                    <div id="dropdown-profile" class="menu-dropdown" style="display: none; right: -60px; min-width: 230px; text-align: left;">
+                        <div class="dropdown-addon-top" style="font-weight: bold;">
+                            Võ Thịnh Chuẩn
+                        </div>
+                        <div class="dropdown-content">
+                            <div class="dropdown">
+                                <ul>
+                                    <li>Các khóa học của tôi</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="dropdown-addon">
+                            Đăng xuất
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="height: 60px; content: ''"></div>
+
+    <!--Cover-->
+    <div>
+        <div class="course-cover-container">
+            <div class="course-cover-info">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <span class="course-cover-title">Nhập môn ngôn ngữ lập trình Javascript</span>
+                        </div>
+                        <div class="col-sm-4 text-right align-bottom">
+                            <div class="course-cover-oi">
+                                <div>
+                                    241 học viên
+                                </div>
+                                <div>
+                                    <span>
+                                        <img src="res/icons/ratings/rate-full-white.png" width="18px">
+                                        <img src="res/icons/ratings/rate-full-white.png" width="18px">
+                                        <img src="res/icons/ratings/rate-full-white.png" width="18px">
+                                        <img src="res/icons/ratings/rate-half-white.png" width="18px">
+                                        <img src="res/icons/ratings/rate-outline-white.png" width="18px">
+                                    </span>
+                                    <span style="float: right; margin-left: 10px;">(07)</span>
+                                </div>
+                                <div>
+                                    <div style="display: inline-block;">
+                                        <img src="res/imgs/teachers/teacher3.png" class="course-cover-ava">
+                                    </div>
+                                    <span style="margin-left: 10px;">Phan Văn Luân</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="course-cover-overlay"></div>
+            <img src="res/imgs/courses/course5.png" class="course-cover-img">
+        </div>
+    </div>
+
+    <!--Tab bar-->
+
+    <div class="course-tab">
+        <div class="container" style="height: 100%;">
+            <div class="row" style="height: 100%;">
+                <div class="col-sm-9">
+                    <div class="row" style="height: 100%; padding-right: 25px;">
+                        <div class="col-sm-3 tab-enabled">
+                            <img src="res/icons/course-detail/info.png" width="23px" class="tab-icon">
+                            Thông tin chung
+                        </div>
+                        <div class="col-sm-3 tab-disabled">
+                            <img src="res/icons/course-detail/lecture.png" width="17px" class="tab-icon">
+                            Giáo trình
+                        </div>
+                        <div class="col-sm-3 tab-disabled">
+                            <img src="res/icons/course-detail/teacher.png" width="19px" class="tab-icon">
+                            Giảng viên
+                        </div>
+                        <div class="col-sm-3 tab-disabled">
+                            <img src="res/icons/course-detail/rates.png" width="21px" class="tab-icon">
+                            Đánh giá
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3 payment-tab">
+                    <img src="res/icons/course-detail/payment.png" width="22px" class="tab-icon">
+                    Thanh toán
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Payment-->
+    <div id="payment" class="container course-detail" style="">
+        <div class="row">
+            <div class="col-sm-9"></div>
+
+            <div class="col-sm-3" style="padding-left: 0px; padding-right: 0px; right: 0px;">
+                <div class="tab-content">
+                    <div class="cover-content">
+                        <img src="res/imgs/courses/course5.png" class="cover-content-img">
+                    </div>
+                    <div>
+                        <div style="float: left; padding-top: 10px;">
+                                <img src="res/icons/course-detail/payment-color.png" width="22px">
+                        </div>
+                        <div class="course-price">599,000 đ</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Content-->
+
+    <div id="content" class="container course-detail">
+        <div class="row">
+
+            <div class="col-sm-9" style="padding-left: 0px; padding-right: 25px;">
+
+                <!--Info-->
+
+                <div class="tab-content">
+                    <div class="tab-content-title">
+                        Thông tin chung
+                    </div>
+                    <div>
+                        Nếu như vài năm trước đây JavaScript chỉ là một ngôn ngữ lập trình ít người quan tâm thì gần
+                        đây cùng với sự phát triển mạnh mẽ của HTML5, Boostrap, NodeJs đã biến JavaScript thành một
+                        trong 2 ngôn ngữ lập trình, thiết kế web quan trọng nhất. Do vậy, nắm rõ về JavaScript sẽ giúp
+                        bạn có lợi thế lớn trong công việc.
+                        <br><br>
+                        Hiểu được nhu cầu tìm hiểu về JavaScript ngày càng lớn hiện nay, tôi cùng Edumall đã hợp tác
+                        sản suất khóa học "Một giờ học JavaScript" nhằm giúp các bạn nắm được kiến thức và lập trình
+                        được các chương trình cơ bản chỉ trong 1 giờ.
+                        <br><br>
+                        Không chỉ cung cấp lý thuyết, khóa học còn mang đến cơ hội thực hành bằng cách hướng dẫn
+                        bạn tạo ra project, lưu file và xử lý biến. Sau khi hoàn thành khóa học các bạn sẽ:
+                        <br><br>
+                        + Tự lập trình được các ứng dụng cơ bản trong thời gian ngắn.
+                        <br><br>
+                        + Được trang bị một nền tảng kiến thức cơ bản vững chắc về JavaScript.
+                        <br><br>
+                        + Thành thạo sử dụng các công cụ cơ bản của JavaScript.
+                        <br><br>
+                        Công nghệ thay đổi từng ngày, đừng chờ đợi rồi đi sau xu thế, hãy nắm lấy cơ hội và tham gia
+                        cùng tôi ngay hôm nay.
+                    </div>
+                </div>
+
+                <!--Lecture-->
+
+                <div class="tab-content">
+                    <div class="tab-content-title">
+                        Thông tin chung
+                    </div>
+                    <div class="row" style="margin-bottom: 15px;">
+                        <div class="col-sm-10 parent-title">
+                        </div>
+                        <div class="col-sm-2">
+                            <span class="lecture-count" style="color: #000">24 bài</span>
+                        </div>
+                    </div>
+                    <div class="parent">
+                        <div class="row">
+                            <div class="col-sm-10 parent-title">
+                                Phần 1: Tìm hiểu về Javascript
+                            </div>
+                            <div class="col-sm-2">
+                                <span class="lecture-count">15 bài</span>
+                                <img src="res/icons/course-detail/lecture-expand.png" width="17px" class="chapter-expand">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="parent">
+                        <div class="row">
+                            <div class="col-sm-10 parent-title">
+                                Phần 2: Tương tác cơ bản với web
+                            </div>
+                            <div class="col-sm-2">
+                                <span class="lecture-count">16 bài</span>
+                                <img src="res/icons/course-detail/lecture-expand.png" width="17px" class="chapter-expand">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="parent">
+                        <div class="row">
+                            <div class="col-sm-10 parent-title">
+                                Phần 3: Thực hành làm ứng dụng nhỏ
+                            </div>
+                            <div class="col-sm-2">
+                                <span class="lecture-count">2 bài</span>
+                                <img src="res/icons/course-detail/lecture-expand.png" width="17px" class="flip chapter-expand">
+                            </div>
+                        </div>
+                        <div class="lecture">
+                            <img src="res/icons/course-detail/lecture-play.png" width="30px">
+                            <span class="lecture-title">
+                                Bài 22: Project: Lời hay ý đẹp
+                            </span>
+                        </div>
+                        <div class="lecture">
+                            <img src="res/icons/course-detail/lecture-play.png" width="30px">
+                            <span class="lecture-title">
+                                Bài 23: Project: Quản lý To-do
+                            </span>
+                        </div>
+                    </div>
+                    <div class="parent">
+                        <div class="row">
+                            <div class="col-sm-10 parent-title">
+                                Phần 4: Tổng kết
+                            </div>
+                            <div class="col-sm-2">
+                                <span class="lecture-count">1 bài</span>
+                                <img src="res/icons/course-detail/lecture-expand.png" width="17px" class="chapter-expand">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!--Footer-->
+
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <img src="res/icons/logos/footer.png" width="155px">
+                </div>
+                <div class="col-sm-2" style="margin-left: 20px;">
+                    <div class="footer-section-title">Về EZLearning</div>
+                    <div>
+                        <ul>
+                            <li>Giới thiệu</li>
+                            <li>Điều khoản sử dụng</li>
+                            <li>Quy chế hoạt động</li>
+                            <li>Chính sách bảo mật</li>
+                            <li>Chăm sóc khách hàng</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-4" style="margin-left: 20px;">
+                    <div class="footer-section-title">Danh mục</div>
+                    <div>
+                        <ul class="split">
+                            <li>Ngoại ngữ</li>
+                            <li>Marketing</li>
+                            <li>Tin học</li>
+                            <li>Kinh doanh</li>
+                            <li>Thiết kế</li>
+                            <li>Lập trình</li>
+                            <li>Đa phương tiện</li>
+                            <li>Thể thao</li>
+                            <li>Sức khỏe</li>
+                            <li>Âm nhạc</li>
+                            <li>Nghệ thuật</li>
+                            <li>Hôn nhân gia đình</li>
+                            <li>Nuôi dạy con</li>
+                            <li>Phong thủy/Nhân tướng học</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-2" style="margin-left: 20px;">
+                    <div class="footer-section-title">Liên hệ</div>
+                    <div>
+                        <ul>
+                            <li>Liên hệ</li>
+                            <li>Facebook</li>
+                            <li>Điều khoản người dùng</li>
+                            <li>Trở thành giảng viên</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div style="width: 100%; text-align: center">
+                @2018 EZLearning
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="res/js/scripts.js"></script>
+    <script src="res/js/course-detail.js"></script>
+    <script src="res/js/tile.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"></script>
+</body>
+
+</html>
