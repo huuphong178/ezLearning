@@ -1,13 +1,21 @@
 <template>
   <div id="app">
+      <NavBarGeneral/>
     <router-view/>
+       <Footer/>
   </div>
 </template>
 
 
 <script>
-// @ is an alias to /src
+import NavBarGeneral from "@/components/NavBarGeneral.vue";
+import Footer from "@/components/Footer.vue";
+
 export default {
-  name: 'app'
+  name: 'app',
+  components:{
+    NavBarGeneral,
+    Footer
+  }
 }
 </script>

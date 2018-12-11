@@ -1,6 +1,5 @@
 <template>
   <div style="position: relative;">
-    <NavBarGeneral/>
     <!-- <NavBarHome/> -->
     <!-- <BannerHome/> -->
     <Statistic/>
@@ -16,7 +15,6 @@
       <ListFamousTeacher/>
     </div>
     
-      <Footer/>
   </div>
 </template>
 
@@ -31,12 +29,10 @@
 //     });
 // });
 import NavBarHome from "@/components/NavBarHome.vue";
-import NavBarGeneral from "@/components/NavBarGeneral.vue";
 import BannerHome from "@/components/BannerHome.vue";
 import Statistic from "@/components/Statistic.vue";
 import Sale from "@/components/Sale.vue";
 import ListHotCats from "@/components/ListHotCats.vue";
-import Footer from "@/components/Footer.vue";
 import ListCourseCard from "@/components/ListCourseCard.vue";
 import ListFamousTeacher from "@/components/ListFamousTeacher.vue";
 
@@ -45,12 +41,10 @@ import { mapActions } from "vuex";
 export default {
   name: "home",
   components: {
-    NavBarGeneral,
     BannerHome,
     Statistic,
     Sale,
     ListHotCats,
-    Footer,
     ListCourseCard,
     ListFamousTeacher
   },

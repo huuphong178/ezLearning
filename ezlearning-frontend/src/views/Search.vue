@@ -1,6 +1,5 @@
 <template>
   <div>
-    <NavBarGeneral/>
     <div class="container" style="padding-top: 90px; margin-bottom: 50px;">
       <div id="vouchers">
         <div style="margin-bottom: 10px;">
@@ -29,15 +28,12 @@
         </div>
       </div>
     </div>
-    <Footer/>
   </div>
 </template>
 
 <script>
 
 import CourseCard from "@/components/CourseCard.vue";
-import Footer from "@/components/Footer.vue";
-import NavBarGeneral from "@/components/NavBarGeneral.vue";
 
 import { mapActions } from "vuex";
 
@@ -50,8 +46,6 @@ export default {
   },
   components: {
     CourseCard,
-    Footer,
-    NavBarGeneral
   },
   created() {
       this.query = this.$route.params.query;

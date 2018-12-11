@@ -1,6 +1,5 @@
 <template>
 <div style="position: relative;">
-    <NavBarGeneral/>
   <div class="container" style="padding-top: 90px; margin-bottom: 50px;">
         <div id="vouchers">
             <div style="margin-bottom: 10px;">
@@ -12,20 +11,17 @@
             </div>
         </div>
     </div>
-    <Footer/>
     </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import CourseCard from '@/components/CourseCard.vue'
-import Footer from '@/components/Footer.vue'
-import NavBarGeneral from '@/components/NavBarGeneral.vue'
 
 import { mapActions } from 'vuex';
 
 export default {
-  name: 'home',
+  name: 'CoursesByCat',
   data(){
       return{
           catId: ""
@@ -33,8 +29,6 @@ export default {
   },
   components: {
     CourseCard,
-    Footer,
-    NavBarGeneral
   },
   created() {
       this.catId = this.$route.params.catId;

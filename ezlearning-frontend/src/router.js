@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
-import Courses from './views/Courses.vue'
+import CoursesByCat from './views/CoursesByCat.vue'
 import Search from './views/Search.vue'
+import CourseDetail from './views/CourseDetail.vue'
 
 Vue.use(Router);
 
@@ -16,14 +17,19 @@ export default new Router({
       component: Home
     },
     {
-      path: '/courses/:catId',
-      name: 'courses',
-      component: Courses
+      path: '/courses-by-cat/:catId',
+      name: 'CoursesByCat',
+      component: CoursesByCat
     },
     {
       path: '/search/:query',
       name: 'search',
       component: Search
+    },
+    {
+      path: '/course/:courseId',
+      name: 'CourseDetail',
+      component: CourseDetail
     }
   ]
 })

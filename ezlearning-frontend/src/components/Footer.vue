@@ -57,7 +57,7 @@ export default {
   },
   methods: {
     Catogaries(catID) {
-      this.$router.replace(`/courses/${catID}`);
+      this.$router.replace(`/courses-by-cat/${catID}`);
     }
   }
 };
