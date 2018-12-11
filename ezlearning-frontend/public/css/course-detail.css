@@ -1,0 +1,170 @@
+.course-cover-container {
+    height: 364px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.course-cover-img {
+    height: auto;
+    width: 100%;
+}
+
+.course-cover-overlay {
+    height: 364px;
+    width: 100%;
+    background: rgba(0, 41, 255, 0.75);
+    position: absolute;
+    z-index: 1;
+}
+
+.course-cover-info {
+    bottom: 0;
+    position: absolute;
+    color: #fff;
+    width: 100%;
+    z-index: 2;
+    padding: 50px 0px;
+}
+
+.course-cover-title {
+    font-size: 48px;
+    font-weight: bold;
+    line-height: normal;
+}
+
+.course-cover-oi {
+    font-weight: normal;
+    line-height: 40px;
+}
+
+.course-cover-ava {
+    height: 100%;
+    height: 33px;
+    width: 33px;
+    width: auto;
+    border-radius: 50%;
+}
+
+.course-tab {
+    background: #FAFAFA;
+    height: 48px;
+    display: inline-block;
+    width: 100%;
+    color: #75D354;
+    font-weight: bold;
+    font-size: 14px;
+    vertical-align: middle;
+    text-align: center;
+    display: inline-block;
+    padding-top: 12px;
+    z-index: 5;
+}
+
+.tab-enabled {
+    text-align: center;
+    width: auto;
+    height: 100%;
+    border-bottom: 2px solid #75D354;
+}
+
+.tab-disabled {
+    width: auto;
+    vertical-align: middle;
+    height: 100%;
+    text-align: center;
+    -webkit-filter: grayscale(100%);
+    /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.tab-disabled:hover {
+    opacity: 1;
+}
+
+.tab-icon {
+    margin-right: 10px;
+}
+
+.payment-tab {
+    background: #75D354;
+    margin-top: -12px !important;
+    padding-top: 12px;
+    color: #fff;
+}
+
+.course-detail {
+    margin-bottom: 50px;
+}
+
+.tab-content {
+    background: #FFFFFF;
+    box-shadow: 1px 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    padding: 40px;
+    color: #000;
+    font-weight: normal;
+    font-size: 17px;
+    margin-top: 30px;
+}
+
+.tab-content-title {
+    font-size: 24px;
+    margin-bottom: 14px;
+    font-weight: bold;
+}
+
+.parent-title {
+    color: #4685FF;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.lecture-count {
+    color: #888888;
+    font-weight: bold;
+}
+
+.chapter-expand {
+    margin-left: 20px;
+    float: right;
+    margin-top: 10px;
+}
+
+.lecture {
+    margin: 15px;
+}
+
+.lecture-title {
+    color: #888888;
+    font-weight: normal;
+    margin-left: 20px;
+}
+
+.parent {
+    padding: 15px 0px;
+    border-top: 1px solid #eee;
+}
+
+.cover-content {
+    margin: -40px 0px 0px -40px;
+    border-radius: 15px 15px 0px 0px;
+    height: 140px;
+    width: calc(100% + 80px);
+    overflow: hidden;
+}
+
+.cover-content-img {
+    height: 100%;
+    width: 100%;
+}
+
+.course-price {
+    font-size: 32px;
+    font-weight: bold;
+    text-align: right;
+    float: right;
+    color: #46B420;
+}

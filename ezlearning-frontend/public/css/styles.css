@@ -152,7 +152,7 @@ body {
     column-gap: 10px;
 }
 
-.menu-dropdown{
+.menu-dropdown {
     margin-top: 10px;
     box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.25);
     background: #fff;
@@ -161,7 +161,7 @@ body {
     color: #888888;
 }
 
-.menu-dropdown::before{
+.menu-dropdown::before {
     position: absolute;
     width: 14px;
     height: 14px;
@@ -175,7 +175,7 @@ body {
     display: block;
 }
 
-.dropdown-addon-top{
+.dropdown-addon-top {
     background: #fff;
     padding: 15px 30px;
     border-radius: 10px 10px 0px 0px;
@@ -183,34 +183,34 @@ body {
     border-bottom: 1px solid #eee;
 }
 
-.dropdown-addon-top:hover{
+.dropdown-addon-top:hover {
     color: #75D254;
     cursor: pointer;
 }
 
-.dropdown-addon{
+.dropdown-addon {
     background: #F8F9FB;
     padding: 15px 30px;
     border-radius: 0px 0px 10px 10px;
 }
 
-.dropdown-addon:hover{
+.dropdown-addon:hover {
     color: #75D254;
     cursor: pointer;
 }
 
-.dropdown-content{
+.dropdown-content {
     padding: 20px 30px 0px 30px;
     font-weight: normal;
     font-size: 14px;
     line-height: 34px;
 }
 
-.flip{
+.flip {
     transform: rotate(180deg);
 }
 
-.navbar-ava-container{
+.navbar-ava-container {
     border-radius: 100px;
     height: 35px;
     width: 35px !important;
@@ -218,8 +218,116 @@ body {
     box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.15);
 }
 
-.navbar-ava-img{
+.navbar-ava-img {
     height: 100%;
     width: auto;
     border-radius: 100%;
+}
+
+.modal-style {
+    box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.25);
+}
+
+.modal-top {
+    background: #F8F9FB;
+    border-radius: 15px 15px 0px 0px;
+    height: 60px;
+    padding-left: 30px;
+    padding-right: 30px;
+    position: relative;
+}
+
+.modal-top-tab {
+    bottom: 0;
+    position: absolute;
+}
+
+.modal-tab-item {
+    padding: 15px;
+    border: 0px;
+    color: rgba(0, 0, 0, 0.25);
+    font-size: 16px;
+    font-weight: bold;
+    width: auto;
+    cursor: pointer;
+}
+
+.active {
+    color: #000;
+    border: 0px;
+    border-bottom: 1px solid #000;
+}
+
+.modal-main {
+    padding: 20px 40px 40px 40px;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    color: #000;
+}
+
+.modal-instruction {
+    font-size: 18px;
+    font-weight: normal;
+    margin: 0px 30px 20px 30px;
+}
+
+.input-normal {
+    height: 38px;
+    border-radius: 5px;
+    border: 1px solid #CCCCCC;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.label-normal {
+    font-size: 14px;
+    font-weight: normal;
+    display: block;
+    margin-top: 10px;
+}
+
+.modal-form {
+    width: 100%;
+    text-align: left;
+}
+
+.big-button {
+    background: #75D354;
+    box-shadow: 1px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    font-weight: normal;
+    font-size: 14px;
+    text-transform: uppercase;
+    border: 0px;
+    height: 42px;
+    text-align: center;
+    color: #fff;
+}
+
+.sign-up-policy{
+    font-weight: normal;
+    color: #888;
+    margin: 10px 20px;
+}
+
+.sign-up-policy>a{
+    color: #0075ff;
+    text-decoration: none;
+}
+
+.fb-sign-up{
+    background: #3B5998;
+    font-weight: bold;
+    text-transform: none;
+}
+
+.form-warning{
+    text-align: center !important;
+    margin-top: 10px !important;
+    margin-bottom: -10px !important;
+    color: red;
+    font-size: 12px;
+    font-weight: normal;
 }

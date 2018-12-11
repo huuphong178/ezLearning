@@ -7,7 +7,7 @@ export default {
           ctx.commit('SET_CATOGARIES', response.data);
         }
       }).catch(err => {
-        alert("Error:" + err);
+        alert(err);
       });
 
       //banner

@@ -45,7 +45,6 @@ import { mapActions } from "vuex";
 export default {
   name: "home",
   components: {
-    NavBarHome,
     NavBarGeneral,
     BannerHome,
     Statistic,

@@ -2,9 +2,9 @@
   <div class="navbar" style="width: 100%; position: fixed; z-index: 10">
     <div class="row" style="width: 100%">
       <div class="col-sm" style="width: 35%; margin-top: 3px;">
-        <router-link :to="'/'">
-          <img src="/icons/logos/navbar.png" width="138px">
-        </router-link>
+        <!-- <router-link :to="{ name: 'home' }"> -->
+          <img v-on:click="Home()" src="/icons/logos/navbar.png" width="138px">
+        <!-- </router-link> -->
         <span style="margin-left: 50px" id="nav-cats">
           Danh mục
           <img src="/icons/more-cat.png" width="11px" style="margin-left: 15px">
@@ -18,9 +18,9 @@
             <div class="dropdown">
               <ul class="split">
                 <div v-for="cat in catogaries" :key="cat.id">
-                  <router-link :to="`/courses/${cat.id}`">
-                    <li>{{cat.name}}</li>
-                  </router-link>
+                  <!-- <router-link :to="`/courses/${cat.id}`"> -->
+                  <li v-on:click="Catogaries(cat.id)">{{cat.name}}</li>
+                  <!-- </router-link> -->
                 </div>
               </ul>
             </div>
@@ -52,8 +52,18 @@
   </div>
 </template>
 
-
 <script>
+$(document).ready(function () {
+$(".tile-course").hover(
+    function () {
+        $(this).parent("div").find(".tile-preview").show();
+    },
+    function () {
+        $(this).parent("div").find(".tile-preview").hide();
+    }
+);
+});
+
 import { mapState } from "vuex";
 
 export default {
@@ -62,6 +72,15 @@ export default {
   },
   computed: {
     ...mapState(["catogaries"])
+  },
+  methods:{
+    Home(){
+      this.$router.replace('/')
+    },
+    Catogaries(catID){
+      this.$router.replace(`/courses/${catID}`);
+    }
   }
 };
+
 </script>
