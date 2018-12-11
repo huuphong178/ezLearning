@@ -8,14 +8,14 @@
           <br>
           <div class="row">
             <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-              <span class="section-keyword">ABC</span>
+              <span class="section-keyword">{{query}}</span>
             </div>
             <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"></div>
             <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
               Đánh giá &ensp;
               <span class="box">
                 5 sao trở lên
-                <img src="icons/more-cat.png" width="11px" style="margin-left: 15px">
+                <img src="/icons/more-cat.png" width="11px" style="margin-left: 15px">
               </span>
             </div>
             <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
@@ -43,10 +43,18 @@ import { mapActions } from "vuex";
 
 export default {
   name: "home",
+   data(){
+      return{
+          query: ""
+      }
+  },
   components: {
     CourseCard,
     Footer,
     NavBarGeneral
+  },
+  created() {
+      this.query = this.$route.params.query;
   }
 };
 </script>

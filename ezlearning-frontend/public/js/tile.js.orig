@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+ $(document).ready(function () {
+=======
 $(document).ready(function () {
+>>>>>>> 1de4d001249c94dbb25f7d521a0b6280b2668752
 $(".tile-course").hover(
     function () {
         $(this).parent("div").find(".tile-preview").show();
@@ -6,17 +10,29 @@ $(".tile-course").hover(
     function () {
         $(this).parent("div").find(".tile-preview").hide();
     }
+<<<<<<< HEAD
+);
+=======
 )
+>>>>>>> 1de4d001249c94dbb25f7d521a0b6280b2668752
 
 $("#popular-right").click(function(){
     $("#popular-list").animate({marginLeft: "-102%"}, 600);
     $("#popular-right").fadeOut("fast");
     $("#popular-left").fadeIn("fast");
+<<<<<<< HEAD
+});
+=======
 })
+>>>>>>> 1de4d001249c94dbb25f7d521a0b6280b2668752
 
 $("#popular-left").click(function(){
     $("#popular-list").animate({marginLeft: "0%"}, 600);
     $("#popular-right").fadeIn("fast");
     $("#popular-left").fadeOut("fast");
+<<<<<<< HEAD
+});
+=======
 })
+>>>>>>> 1de4d001249c94dbb25f7d521a0b6280b2668752
 })
