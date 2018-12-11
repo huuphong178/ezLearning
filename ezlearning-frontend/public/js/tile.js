@@ -8,15 +8,15 @@ $(".tile-course").hover(
     }
 )
 
-$("#popular-right").click(function(){
-    $("#popular-list").animate({marginLeft: "-102%"}, 600);
-    $("#popular-right").fadeOut("fast");
-    $("#popular-left").fadeIn("fast");
+$(".popular-right").click(function(){
+    $(this).parents('.popular').find(".popular-list").animate({marginLeft: "-102%"}, 600);
+    $(this).fadeOut("fast");
+    $(this).parents(".popular").find(".popular-left").fadeIn("fast");
 })
 
-$("#popular-left").click(function(){
-    $("#popular-list").animate({marginLeft: "0%"}, 600);
-    $("#popular-right").fadeIn("fast");
-    $("#popular-left").fadeOut("fast");
+$(".popular-left").click(function(){
+    $(this).parents(".popular").find(".popular-list").animate({marginLeft: "0%"}, 600);
+    $(this).parents(".popular").find(".popular-right").fadeIn("fast");
+    $(this).fadeOut("fast");
 })
 })
