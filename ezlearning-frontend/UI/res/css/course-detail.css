@@ -311,3 +311,19 @@
     font-weight: bold;
     color: #888;
 }
+
+.rate-act{
+    cursor: pointer;
+}
+
+.re-rate{
+    color: #888;
+    font-size: 16px;
+    text-align: center;
+    display: none;
+}
+
+.re-rate > a{
+    color: #4685FF !important;
+    cursor: pointer;
+}
