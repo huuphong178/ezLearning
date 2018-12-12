@@ -41,8 +41,10 @@
         </div>
         <div class="col-sm" style="width: 40%; margin: auto;">
           <div class="search-box">
-            <input type="text" placeholder="Tìm kiếm khóa học, giảng viên, ...">
-            <img src="/icons/search.png" style="float: right; margin-top: 3px" width="13px">
+            <input v-model="query" type="text" placeholder="Tìm kiếm khóa học, giảng viên, ...">
+            <router-link :to="`/search/${query}`" v-on:click="applySearch(query)">
+              <img src="/icons/search.png" style="float: right; margin-top: 3px" width="13px">
+            </router-link>
           </div>
         </div>
         <div class="col-sm text-right" style="width: 40%; margin-top: 5px;">
@@ -104,7 +106,8 @@
                   style="width: 100%; margin-top: 15px;"
                 >Tạo tài khoản</button>
               </div>
-              <div class="sign-up-policy">Bằng cách nhấn vào nút Đăng ký, bạn đã đồng ý với
+              <div class="sign-up-policy">
+                Bằng cách nhấn vào nút Đăng ký, bạn đã đồng ý với
                 <a href="#">Điều khoản sử dụng</a> và
                 <a href="#">
                   Chính sách bảo
@@ -166,15 +169,24 @@ $(document).ready(function() {
   );
 });
 
-import { mapState } from "vuex";
+import { mapState, mapActions } from "vuex";
 
 export default {
   data() {
-    return {};
+    return {
+      query: ""
+    };
   },
   computed: {
     ...mapState(["catogaries"])
   },
-  methods: {}
+  methods: {
+    ...mapActions(["applySearch"])
+  },
+  watch: {
+    $route(to, from) {
+      this.query = "";
+    }
+  }
 };
 </script>

@@ -37,5 +37,17 @@ export default {
       // }).catch(err => {
       //   alert("Error:" + err);
       // });
+    },
+    applySearch(ctx, query) {
+      // /course/search?categoryname=abc
+      alert(1);
+      axios.get(`http://localhost:3000/course/search?categoryname=${query}`).then(response => {
+        if (response.status == 200){
+          ctx.commit('SET_COURSES_SEARCH', response.data);
+        }
+      }).catch(err => {
+        alert(err);
+      });
+      
     }
   }

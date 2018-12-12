@@ -6,10 +6,11 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    catogaries: [],
+    catogaries: [],  //for page courses-by-cat
     courseBanner: [],
     statistic: [],
     saleCoureses: [],
+    coursesSearch: [],  //for page search
   },
   mutations: {
     SET_CATOGARIES(state, payload)
@@ -25,6 +26,9 @@ export default new Vuex.Store({
     },
     SET_SALE(state, payload){
       state.saleCourese = payload;
+    },
+    SET_COURSES_SEARCH(state, payload) {
+      state.coursesSearch = payload;
     }
   },
   actions,
