@@ -49,6 +49,11 @@ export default {
   },
   created() {
       this.query = this.$route.params.query;
+  },
+   watch: {
+    $route(to, from) {
+      this.query = to.params.query;
+    }
   }
 };
 </script>

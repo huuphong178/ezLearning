@@ -39,8 +39,6 @@ export default {
       // });
     },
     applySearch(ctx, query) {
-      // /course/search?categoryname=abc
-      alert(1);
       axios.get(`http://localhost:3000/course/search?categoryname=${query}`).then(response => {
         if (response.status == 200){
           ctx.commit('SET_COURSES_SEARCH', response.data);
@@ -49,5 +47,28 @@ export default {
         alert(err);
       });
       
+    },
+    signIn(ctx, data){
+      alert(JSON.stringify(data));
+      axios.post(`http://localhost:3000/login`, data).then(response => {
+        if (response.status == 200){
+          this.signIn = true;
+          ctx.commit('SET_USER', data);
+        }
+      }).catch(err => {
+        alert(err);
+      });
+    },
+    signUp(ctx, data){
+      alert(JSON.stringify(data));
+      axios.post(`http://localhost:3000/signup`, data).then(response => {
+        if (response.status == 200){
+          alert("success");
+          this.signUp = true;
+          // ctx.commit('SET_USER', data);
+        }
+      }).catch(err => {
+        alert(err);
+      });
     }
   }

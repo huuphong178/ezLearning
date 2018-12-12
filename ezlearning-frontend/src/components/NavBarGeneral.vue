@@ -42,8 +42,13 @@
         <div class="col-sm" style="width: 40%; margin: auto;">
           <div class="search-box">
             <input v-model="query" type="text" placeholder="Tìm kiếm khóa học, giảng viên, ...">
-            <router-link :to="`/search/${query}`" v-on:click="applySearch(query)">
-              <img src="/icons/search.png" style="float: right; margin-top: 3px" width="13px">
+            <router-link :to="`/search/${query}`">
+              <img
+                src="/icons/search.png"
+                v-on:click="applySearch(query)"
+                style="float: right; margin-top: 3px"
+                width="13px"
+              >
             </router-link>
           </div>
         </div>
@@ -75,11 +80,12 @@
                   style="float: left; margin-left: 10px;"
                 >Đăng nhập</div>
               </div>
-              <img
+              <img v-on:click="CloseSignInForm()"
                 id="su-si-close"
                 src="/icons/modal-close.png"
                 width="13px"
                 style="float: right; margin-top: 23px; cursor: pointer;"
+                
               >
             </div>
             <div id="sign-up-modal" class="modal-main">
@@ -89,21 +95,22 @@
               <div id="sign-up-form" class="modal-form">
                 <div>
                   <label class="label-normal">Họ tên</label>
-                  <input class="input-normal" type="text">
+                  <input class="input-normal" type="text" v-model="dataSignUp.username">
                 </div>
                 <div>
                   <label class="label-normal">Email hoặc Số điện thoại</label>
-                  <input class="input-normal" type="text">
+                  <input class="input-normal" type="text" v-model="dataSignUp.phone">
                 </div>
                 <div>
                   <label class="label-normal">Mật khẩu</label>
-                  <input class="input-normal" type="password">
+                  <input class="input-normal" type="password" v-model="dataSignUp.password">
                 </div>
                 <div id="su-warn" class="form-warning" style="display: none;"></div>
                 <button
                   id="sign-up-submit"
                   class="big-button"
                   style="width: 100%; margin-top: 15px;"
+                  v-on:click="signUp(dataSignUp)"
                 >Tạo tài khoản</button>
               </div>
               <div class="sign-up-policy">
@@ -115,7 +122,11 @@
                 </a> của chúng tôi
               </div>
               <p>hoặc</p>
-              <button class="big-button fb-sign-up" style="width: 100%;">
+              <button
+                class="big-button fb-sign-up"
+                style="width: 100%;"
+                v-on:click="SignUpFacebook()"
+              >
                 <img src="/icons/fb-sign-up.png" width="7px" style="margin-right: 20px;">
                 Đăng ký bằng Facebook
               </button>
@@ -125,22 +136,28 @@
               <div id="sign-up-form" class="modal-form">
                 <div>
                   <label class="label-normal">Email hoặc Số điện thoại</label>
-                  <input class="input-normal" type="text">
+                  <input class="input-normal" type="text" v-model="dataSignIn.username">
                 </div>
                 <div>
                   <label class="label-normal">Mật khẩu</label>
-                  <input class="input-normal" type="password">
+                  <input class="input-normal" type="password" v-model="dataSignIn.password">
                 </div>
                 <div id="si-warn" class="form-warning" style="display: none;"></div>
                 <button
                   id="sign-in-submit"
                   class="big-button"
                   style="width: 100%; margin-top: 15px;"
+                  v-on:click="signIn(dataSignIn)"
                 >ĐĂNG NHẬP</button>
               </div>
               <p style="margin-top: 15px;">hoặc</p>
               <button class="big-button fb-sign-up" style="width: 100%;">
-                <img src="/icons/fb-sign-up.png" width="7px" style="margin-right: 20px;">
+                <img
+                  src="/icons/fb-sign-up.png"
+                  width="7px"
+                  style="margin-right: 20px;"
+                  v-on:click="SignInFacebook()"
+                >
                 Đăng nhập bằng Facebook
               </button>
             </div>
@@ -174,14 +191,27 @@ import { mapState, mapActions } from "vuex";
 export default {
   data() {
     return {
-      query: ""
+      query: "",
+      dataSignIn: {},
+      dataSignUp: {}
     };
   },
   computed: {
     ...mapState(["catogaries"])
   },
   methods: {
-    ...mapActions(["applySearch"])
+    ...mapActions(["applySearch"]),
+    ...mapActions(["signIn"]),
+    ...mapActions(["signUp"]),
+    SignInFacebook() {},
+    SignUpFacebook() {},
+    CloseSignInForm() {
+      document.getElementById("si-warn").style.display = "none";
+      document.getElementById("su-warn").style.display = "none";
+
+      this.dataSignIn = {};
+      this.dataSignUp = {};
+    }
   },
   watch: {
     $route(to, from) {

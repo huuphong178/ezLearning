@@ -11,6 +11,8 @@ export default new Vuex.Store({
     statistic: [],
     saleCoureses: [],
     coursesSearch: [],  //for page search
+    signInSuccess: false,
+    signUpSuccess: false
   },
   mutations: {
     SET_CATOGARIES(state, payload)
@@ -29,6 +31,9 @@ export default new Vuex.Store({
     },
     SET_COURSES_SEARCH(state, payload) {
       state.coursesSearch = payload;
+    },
+    SET_USER(state , payload){
+      this.$localStorage.set("user", payload);
     }
   },
   actions,

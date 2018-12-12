@@ -145,12 +145,12 @@ function siWarning(msg) {
 
 $("#sign-up-submit").click(function(){
     $("#su-warn").show();
-    suWarning("Test 1");
+    suWarning("Đăng ký thất bại, vui lòng thử lại!");
 })
 
 $("#sign-in-submit").click(function(){
     $("#si-warn").show();
-    siWarning("Test 2");
+    siWarning("Đăng nhập thất bại, vui lòng thử lại!");
 })
 
 $(".sign-up-btn").click(function(){
