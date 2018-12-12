@@ -22,6 +22,20 @@
     overflow: hidden;
     background: #fff;
     position: relative;
+    /* First we need to help some browsers along for this to work.
+     Just because a vendor prefix is there, doesn't mean it will
+     work in a browser made by that vendor either, it's just for
+     future-proofing purposes I guess. */
+    -o-transition: .2s;
+    -ms-transition: .2s;
+    -moz-transition: .2s;
+    -webkit-transition: .2s;
+    /* ...and now for the proper property */
+    transition: .2s;
+}
+
+.tile:hover {
+    box-shadow: 1px 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 .tile-course {
@@ -90,24 +104,24 @@
     padding: 3px 0px;
 }
 
-.tile-ava-container{
+.tile-ava-container {
     height: 33px;
     width: 33px;
     overflow: hidden;
     border-radius: 50%;
 }
 
-.tile-ava-img{
+.tile-ava-img {
     height: 100%;
     width: auto;
 }
 
-.tile-old-price{
+.tile-old-price {
     text-decoration-line: line-through;
     font-weight: bold;
 }
 
-.tile-preview{
+.tile-preview {
     position: absolute;
     color: #888;
     height: 100%;
@@ -129,12 +143,12 @@
     color: #000;
 }
 
-.tile-preview-des{
+.tile-preview-des {
     color: #000;
     margin: 5px 0px;
 }
 
-.arrow-white{
+.arrow-white {
     top: 80px;
     width: 52px;
     height: 52px;
@@ -148,15 +162,15 @@
     cursor: pointer;
 }
 
-.left{
+.left {
     left: -26px;
 }
 
-.right{
+.right {
     left: calc(100% - 30px);
 }
 
-.slide-arrow{
+.slide-arrow {
     width: 52px;
     margin: 30px;
     position: absolute;

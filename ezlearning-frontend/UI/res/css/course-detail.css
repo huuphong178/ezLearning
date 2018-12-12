@@ -108,7 +108,7 @@
     font-weight: bold;
 }
 
-.parent-title {
+.chapter-title {
     color: #4685FF;
     font-weight: bold;
     cursor: pointer;
@@ -135,7 +135,7 @@
     margin-left: 20px;
 }
 
-.parent {
+.chapter {
     padding: 15px 0px;
     border-top: 1px solid #eee;
 }
