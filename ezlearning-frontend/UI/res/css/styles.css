@@ -66,6 +66,18 @@ body {
     color: #fff;
 }
 
+.small-btn {
+    padding: 3px 18px;
+    border-radius: 100px;
+    border: 0px;
+    height: 32px;
+    background: #75D254;
+    box-shadow: 1px 4px 8px rgba(0, 0, 0, 0.1);
+    color: #fff;
+    font-weight: bold;
+    font-size: 14px;
+}
+
 .cart {
     padding-top: 7px;
     padding-bottom: 7px;
@@ -281,6 +293,15 @@ body {
     font-size: 16px;
 }
 
+.input-small {
+    height: 32px;
+    border-radius: 100px;
+    border: 0px;
+    background: rgba(0, 0, 0, 0.05);
+    padding: 10px;
+    font-size: 16px;
+}
+
 .label-normal {
     font-size: 14px;
     font-weight: normal;
@@ -304,26 +325,28 @@ body {
     height: 42px;
     text-align: center;
     color: #fff;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
-.sign-up-policy{
+.sign-up-policy {
     font-weight: normal;
     color: #888;
     margin: 10px 20px;
 }
 
-.sign-up-policy>a{
+.sign-up-policy>a {
     color: #0075ff;
     text-decoration: none;
 }
 
-.fb-sign-up{
+.fb-sign-up {
     background: #3B5998;
     font-weight: bold;
     text-transform: none;
 }
 
-.form-warning{
+.form-warning {
     text-align: center !important;
     margin-top: 10px !important;
     margin-bottom: -10px !important;
