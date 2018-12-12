@@ -22,7 +22,11 @@
           <div>
             <ul class="split">
               <div v-for="cat in catogaries" :key="cat.id">
-                <li v-on:click="Catogaries(cat.id)">{{cat.name}}</li>
+                <router-link :to="`/courses-by-cat/${cat.id}`">
+                <li>
+                  {{cat.name}}
+                </li>
+                </router-link>
               </div>
             </ul>
           </div>

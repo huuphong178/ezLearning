@@ -7,7 +7,7 @@ import CourseDetail from './views/CourseDetail.vue'
 
 Vue.use(Router);
 
-export default new Router({
+var router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
@@ -32,4 +32,11 @@ export default new Router({
       component: CourseDetail
     }
   ]
-})
+});
+
+// router.beforeEach(to, from, next)
+// {
+
+// }
+
+export default router;
