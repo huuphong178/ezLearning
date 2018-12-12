@@ -161,42 +161,46 @@
 
                         <!--Curriculum-->
 
-                        <div id="curr" class="tab-content" style="display: none">
-                            <div class="chapter" style="margin-top: -3px;">
-                                <div class="row">
-                                    <div class="col-sm-10 chapter-title">
-                                        Phần 1: Tìm hiểu về Javascript
+                        <div id="curr" class="tab-content" style="display: block; position: relative; height: 100%;">
+                            <div style="height: 100% !important; overflow: hidden;">
+                                <div class="scroll-curr">
+                                    <div class="chapter" style="margin-top: -3px;">
+                                        <div class="row">
+                                            <div class="col-sm-10 chapter-title">
+                                                Phần 1: Tìm hiểu về Javascript
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="chapter">
-                                <div class="row">
-                                    <div class="col-sm-12 chapter-title">
-                                        Phần 2: Tương tác cơ bản với web
+                                    <div class="chapter">
+                                        <div class="row">
+                                            <div class="col-sm-12 chapter-title">
+                                                Phần 2: Tương tác cơ bản với web
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="chapter">
-                                <div class="row">
-                                    <div class="col-sm-12 chapter-title">
-                                        Phần 3: Thực hành làm ứng dụng nhỏ
+                                    <div class="chapter">
+                                        <div class="row">
+                                            <div class="col-sm-12 chapter-title">
+                                                Phần 3: Thực hành làm ứng dụng nhỏ
+                                            </div>
+                                        </div>
+                                        <div class="lecture">
+                                            <span class="lecture-title">
+                                                Bài 22: Project: Lời hay ý đẹp
+                                            </span>
+                                        </div>
+                                        <div class="lecture">
+                                            <span class="lecture-title">
+                                                Bài 23: Project: Quản lý To-do
+                                            </span>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="lecture">
-                                    <span class="lecture-title">
-                                        Bài 22: Project: Lời hay ý đẹp
-                                    </span>
-                                </div>
-                                <div class="lecture">
-                                    <span class="lecture-title">
-                                        Bài 23: Project: Quản lý To-do
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="chapter">
-                                <div class="row">
-                                    <div class="col-sm-12 chapter-title">
-                                        Phần 4: Tổng kết
+                                    <div class="chapter">
+                                        <div class="row">
+                                            <div class="col-sm-12 chapter-title">
+                                                Phần 4: Tổng kết
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -220,85 +224,33 @@
 
                         <!--Comments-->
 
-                        <div id="cmt" class="tab-content" style="display: block; position: relative; height: 100%;">
+                        <div id="cmt" class="tab-content" style="display: none; position: relative; height: 100%;">
 
                             <div id="cmt-box" class="cmt-box">
                                 <input class="input-normal" type="text" style="width: 75%; height: 32px">
                                 <button id="rate-submit" class="big-button" style="height: 32px; margin-left: 10px;">Gửi</button>
                             </div>
-                            <div class="scroll-cmt">
+                            <div style="height: 100% !important; overflow: hidden;">
+                                <div class="scroll-cmt">
 
-                                <div class="container cmt-seperator" style="padding-left: 0px; padding-right: 0px;">
-                                    <div class="row comment-margin">
-                                        <div class="col-sm-2">
-                                            <img src="res/imgs/students/student2.png" class="rater-ava">
+                                    <div class="container cmt-seperator" style="padding-left: 0px; padding-right: 0px;">
+                                        <div class="row comment-margin">
+                                            <div class="col-sm-2">
+                                                <img src="res/imgs/students/student2.png" class="rater-ava">
+                                            </div>
+                                            <div class="col-sm-10" style="padding-left: 15px !important;">
+                                                <div class="rater-name">Nguyễn Công Thành</div>
+                                                <div class="rater-date">2 ngày trước</div>
+                                            </div>
                                         </div>
-                                        <div class="col-sm-10" style="padding-left: 25px !important;">
-                                            <div class="rater-name">Nguyễn Công Thành</div>
-                                            <div class="rater-date">2 ngày trước</div>
+                                        <div class="rater-cmt">
+                                            Bài giảng chất lượng, dễ hiểu, mong rằng thầy sẽ có nhiều bài giảng dạy
+                                            cao
+                                            hơn nữa :v
                                         </div>
                                     </div>
-                                    <div class="rater-cmt">
-                                        Bài giảng chất lượng, dễ hiểu, mong rằng thầy sẽ có nhiều bài giảng dạy
-                                        cao
-                                        hơn nữa :v
-                                    </div>
+    
                                 </div>
-
-                                <div class="container cmt-seperator" style="padding-left: 0px; padding-right: 0px;">
-                                    <div class="row comment-margin">
-                                        <div class="col-sm-2">
-                                            <img src="res/imgs/students/student2.png" class="rater-ava">
-                                        </div>
-                                        <div class="col-sm-10" style="padding-left: 25px !important;">
-                                            <div class="rater-name">Nguyễn Công Thành</div>
-                                            <div class="rater-date">2 ngày trước</div>
-                                        </div>
-                                    </div>
-                                    <div class="rater-cmt">
-                                        Bài giảng chất lượng, dễ hiểu, mong rằng thầy sẽ có nhiều bài giảng dạy
-                                        nâng
-                                        cao
-                                        hơn nữa :v
-                                    </div>
-                                </div>
-
-                                <div class="container cmt-seperator" style="padding-left: 0px; padding-right: 0px;">
-                                    <div class="row comment-margin">
-                                        <div class="col-sm-2">
-                                            <img src="res/imgs/students/student2.png" class="rater-ava">
-                                        </div>
-                                        <div class="col-sm-10" style="padding-left: 25px !important;">
-                                            <div class="rater-name">Nguyễn Công Thành</div>
-                                            <div class="rater-date">2 ngày trước</div>
-                                        </div>
-                                    </div>
-                                    <div class="rater-cmt">
-                                        Bài giảng chất lượng, dễ hiểu, mong rằng thầy sẽ có nhiều bài giảng dạy
-                                        nâng
-                                        cao
-                                        hơn nữa :v
-                                    </div>
-                                </div>
-
-                                <div class="container cmt-seperator" style="padding-left: 0px; padding-right: 0px;">
-                                    <div class="row comment-margin">
-                                        <div class="col-sm-2">
-                                            <img src="res/imgs/students/student2.png" class="rater-ava">
-                                        </div>
-                                        <div class="col-sm-10" style="padding-left: 25px !important;">
-                                            <div class="rater-name">Nguyễn Công Thành</div>
-                                            <div class="rater-date">2 ngày trước</div>
-                                        </div>
-                                    </div>
-                                    <div class="rater-cmt">
-                                        Bài giảng chất lượng, dễ hiểu, mong rằng thầy sẽ có nhiều bài giảng dạy
-                                        nâng
-                                        cao
-                                        hơn nữa :v
-                                    </div>
-                                </div>
-
                             </div>
                         </div>
 
