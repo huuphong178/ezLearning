@@ -1,18 +1,18 @@
-.cover {
+.profile-cover {
     height: 293px;
     width: 100%;
     background: #FDFDFD;
     position: relative;
 }
 
-.ava {
+.profile-ava {
     height: 153px;
     width: 153px;
     border-radius: 50%;
     box-shadow: 1px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.label {
+.profile-label {
     background: rgba(0, 0, 0, 0.25);
     border-radius: 100px;
     padding: 5px 10px;
@@ -23,7 +23,7 @@
     width: auto;
 }
 
-.name {
+.profile-name {
     font-size: 36px;
     font-weight: bold;
 }
@@ -74,6 +74,9 @@
 
 .tab-disabled:hover {
     opacity: 1;
+    -webkit-filter: none;
+    /* Safari 6.0 - 9.0 */
+    filter: none;
 }
 
 .tab-icon {

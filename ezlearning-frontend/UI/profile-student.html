@@ -8,6 +8,7 @@
     <link rel="icon" href="res/icons/logos/favicon.png" />
     <link href="res/css/styles.css" rel="stylesheet" type="text/css">
     <link href="res/css/profile.css" rel="stylesheet" type="text/css">
+    <link href="res/css/cart.css" rel="stylesheet" type="text/css">
     <link href="res/css/tile.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
@@ -96,19 +97,19 @@
     <!--Cover-->
     <div>
 
-        <div class="cover">
+        <div class="profile-cover">
             <div class="container" style="height: 100%;">
                 <div class="row" style="height: 100%;">
                     <div class="col-sm-8 no-padding">
                         <div class="row" style="margin-top: 50px;">
                             <div class="col-sm-3">
-                                <img src="res/imgs/students/student2.png" class="ava">
+                                <img src="res/imgs/students/student2.png" class="profile-ava">
                             </div>
                             <div class="col-sm-9" style="padding-top: 30px;">
-                                <div class="label">
+                                <div class="profile-label">
                                     Học sinh
                                 </div>
-                                <div class="name">
+                                <div class="profile-name">
                                     Võ Thịnh Chuẩn
                                 </div>
                                 <div class="course-count">
@@ -118,11 +119,11 @@
                         </div>
                         <div class="tab-group">
                             <div class="row" style="height: 100%; width: 50%;">
-                                <div id="info-tab" class="col tab tab-enabled">
+                                <div id="course-tab" class="col tab tab-enabled">
                                     <img src="res/icons/profile/ur-course.png" width="18px" class="tab-icon">
                                     Khóa học của bạn
                                 </div>
-                                <div id="lecture-tab" class="col tab tab-disabled">
+                                <div id="payment-tab" class="col tab tab-disabled">
                                     <img src="res/icons/profile/paymen-history.png" width="18px" class="tab-icon">
                                     Lịch sử giao dịch
                                 </div>
@@ -182,12 +183,12 @@
         <div class="container">
 
             <!--Course-->
-            <div class="tab-content">
+            <div id="course" class="tab-content">
                 <div class="tile-container" style="grid-template-rows: 230px;">
                     <div style="height: 100%; position: relative;">
                         <div class="tile tile-course" style="height: 230px">
                             <div class="tile-info" style="background-color: rgba(0, 178, 203, 0.75);">
-                                <div style="position: relative; height: 190px;">
+                                <div style="position: relative; height: 195px;">
                                     <div>
                                         <div class="tile-cat">
                                             Kế toán
@@ -205,6 +206,18 @@
                                                 Trần Đình Dần (Master Trần)
                                             </span>
                                         </div>
+                                        <div>
+                                            <div class="row" style="margin-top: 15px;">
+                                                <div class="col-sm-9">
+                                                    <div class="process-bg">
+                                                        <div class="process-bar" style="width: 70%"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-3 process-num no-padding">
+                                                    70%
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -213,6 +226,453 @@
                             </div>
                         </div>
                     </div>
+                    <div style="height: 100%; position: relative;">
+                        <div class="tile tile-course" style="height: 230px">
+                            <div class="tile-info" style="background-color: rgba(0, 178, 203, 0.75);">
+                                <div style="position: relative; height: 195px;">
+                                    <div>
+                                        <div class="tile-cat">
+                                            Kế toán
+                                        </div>
+                                    </div>
+                                    <div style="bottom: 0; position: absolute;">
+                                        <div class="tile-course-name">
+                                            Trọn bộ làm video và kỹ thuật AE
+                                        </div>
+                                        <div>
+                                            <div class="tile-ava-container" style="float: left; margin-right: 15px; margin-top: 5px">
+                                                <img src="res/imgs/teachers/teacher1.png" class="tile-ava-img">
+                                            </div>
+                                            <span>
+                                                Trần Đình Dần (Master Trần)
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <div class="row" style="margin-top: 15px;">
+                                                <div class="col-sm-9">
+                                                    <div class="process-bg">
+                                                        <div class="process-bar" style="width: 70%"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-3 process-num no-padding">
+                                                    70%
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <img src="res/imgs/courses/course1.png" class="tile-cover">
+                            </div>
+                        </div>
+                    </div>
+                    <div style="height: 100%; position: relative;">
+                        <div class="tile tile-course" style="height: 230px">
+                            <div class="tile-info" style="background-color: rgba(0, 178, 203, 0.75);">
+                                <div style="position: relative; height: 195px;">
+                                    <div>
+                                        <div class="tile-cat">
+                                            Kế toán
+                                        </div>
+                                    </div>
+                                    <div style="bottom: 0; position: absolute;">
+                                        <div class="tile-course-name">
+                                            Trọn bộ làm video và kỹ thuật AE
+                                        </div>
+                                        <div>
+                                            <div class="tile-ava-container" style="float: left; margin-right: 15px; margin-top: 5px">
+                                                <img src="res/imgs/teachers/teacher1.png" class="tile-ava-img">
+                                            </div>
+                                            <span>
+                                                Trần Đình Dần (Master Trần)
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <div class="row" style="margin-top: 15px;">
+                                                <div class="col-sm-9">
+                                                    <div class="process-bg">
+                                                        <div class="process-bar" style="width: 70%"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-3 process-num no-padding">
+                                                    70%
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <img src="res/imgs/courses/course1.png" class="tile-cover">
+                            </div>
+                        </div>
+                    </div>
+                    <div style="height: 100%; position: relative;">
+                        <div class="tile tile-course" style="height: 230px">
+                            <div class="tile-info" style="background-color: rgba(0, 178, 203, 0.75);">
+                                <div style="position: relative; height: 195px;">
+                                    <div>
+                                        <div class="tile-cat">
+                                            Kế toán
+                                        </div>
+                                    </div>
+                                    <div style="bottom: 0; position: absolute;">
+                                        <div class="tile-course-name">
+                                            Trọn bộ làm video và kỹ thuật AE
+                                        </div>
+                                        <div>
+                                            <div class="tile-ava-container" style="float: left; margin-right: 15px; margin-top: 5px">
+                                                <img src="res/imgs/teachers/teacher1.png" class="tile-ava-img">
+                                            </div>
+                                            <span>
+                                                Trần Đình Dần (Master Trần)
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <div class="row" style="margin-top: 15px;">
+                                                <div class="col-sm-9">
+                                                    <div class="process-bg">
+                                                        <div class="process-bar" style="width: 70%"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-3 process-num no-padding">
+                                                    70%
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <img src="res/imgs/courses/course1.png" class="tile-cover">
+                            </div>
+                        </div>
+                    </div>
+                    <div style="height: 100%; position: relative;">
+                        <div class="tile tile-course" style="height: 230px">
+                            <div class="tile-info" style="background-color: rgba(0, 178, 203, 0.75);">
+                                <div style="position: relative; height: 195px;">
+                                    <div>
+                                        <div class="tile-cat">
+                                            Kế toán
+                                        </div>
+                                    </div>
+                                    <div style="bottom: 0; position: absolute;">
+                                        <div class="tile-course-name">
+                                            Trọn bộ làm video và kỹ thuật AE
+                                        </div>
+                                        <div>
+                                            <div class="tile-ava-container" style="float: left; margin-right: 15px; margin-top: 5px">
+                                                <img src="res/imgs/teachers/teacher1.png" class="tile-ava-img">
+                                            </div>
+                                            <span>
+                                                Trần Đình Dần (Master Trần)
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <div class="row" style="margin-top: 15px;">
+                                                <div class="col-sm-9">
+                                                    <div class="process-bg">
+                                                        <div class="process-bar" style="width: 70%"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-3 process-num no-padding">
+                                                    70%
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <img src="res/imgs/courses/course1.png" class="tile-cover">
+                            </div>
+                        </div>
+                    </div>
+                    <div style="height: 100%; position: relative;">
+                        <div class="tile tile-course" style="height: 230px">
+                            <div class="tile-info" style="background-color: rgba(0, 178, 203, 0.75);">
+                                <div style="position: relative; height: 195px;">
+                                    <div>
+                                        <div class="tile-cat">
+                                            Kế toán
+                                        </div>
+                                    </div>
+                                    <div style="bottom: 0; position: absolute;">
+                                        <div class="tile-course-name">
+                                            Trọn bộ làm video và kỹ thuật AE
+                                        </div>
+                                        <div>
+                                            <div class="tile-ava-container" style="float: left; margin-right: 15px; margin-top: 5px">
+                                                <img src="res/imgs/teachers/teacher1.png" class="tile-ava-img">
+                                            </div>
+                                            <span>
+                                                Trần Đình Dần (Master Trần)
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <div class="row" style="margin-top: 15px;">
+                                                <div class="col-sm-9">
+                                                    <div class="process-bg">
+                                                        <div class="process-bar" style="width: 70%"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-3 process-num no-padding">
+                                                    70%
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <img src="res/imgs/courses/course1.png" class="tile-cover">
+                            </div>
+                        </div>
+                    </div>
+                    <div style="height: 100%; position: relative;">
+                        <div class="tile tile-course" style="height: 230px">
+                            <div class="tile-info" style="background-color: rgba(0, 178, 203, 0.75);">
+                                <div style="position: relative; height: 195px;">
+                                    <div>
+                                        <div class="tile-cat">
+                                            Kế toán
+                                        </div>
+                                    </div>
+                                    <div style="bottom: 0; position: absolute;">
+                                        <div class="tile-course-name">
+                                            Trọn bộ làm video và kỹ thuật AE
+                                        </div>
+                                        <div>
+                                            <div class="tile-ava-container" style="float: left; margin-right: 15px; margin-top: 5px">
+                                                <img src="res/imgs/teachers/teacher1.png" class="tile-ava-img">
+                                            </div>
+                                            <span>
+                                                Trần Đình Dần (Master Trần)
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <div class="row" style="margin-top: 15px;">
+                                                <div class="col-sm-9">
+                                                    <div class="process-bg">
+                                                        <div class="process-bar" style="width: 70%"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-3 process-num no-padding">
+                                                    70%
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <img src="res/imgs/courses/course1.png" class="tile-cover">
+                            </div>
+                        </div>
+                    </div>
+                    <div style="height: 100%; position: relative;">
+                        <div class="tile tile-course" style="height: 230px">
+                            <div class="tile-info" style="background-color: rgba(0, 178, 203, 0.75);">
+                                <div style="position: relative; height: 195px;">
+                                    <div>
+                                        <div class="tile-cat">
+                                            Kế toán
+                                        </div>
+                                    </div>
+                                    <div style="bottom: 0; position: absolute;">
+                                        <div class="tile-course-name">
+                                            Trọn bộ làm video và kỹ thuật AE
+                                        </div>
+                                        <div>
+                                            <div class="tile-ava-container" style="float: left; margin-right: 15px; margin-top: 5px">
+                                                <img src="res/imgs/teachers/teacher1.png" class="tile-ava-img">
+                                            </div>
+                                            <span>
+                                                Trần Đình Dần (Master Trần)
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <div class="row" style="margin-top: 15px;">
+                                                <div class="col-sm-9">
+                                                    <div class="process-bg">
+                                                        <div class="process-bar" style="width: 70%"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-3 process-num no-padding">
+                                                    70%
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <img src="res/imgs/courses/course1.png" class="tile-cover">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Payment history-->
+            <div id="payment" class="tab-content" style="display: none; padding-top: 10px; padding-bottom: 45px;">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <div class="box-content" style="padding: 20px 30px 10px 30px !important;">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="order-id">
+                                            Đơn #47489217490812
+                                        </div>
+                                        <div class="order-date">
+                                            Ngày 20/11/2018
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 text-right">
+                                        <div class="order-o-price">599,000</div>
+                                        <div class="order-discount">0</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12 text-right">
+                                        <div class="order-price">599,000</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-7">
+                            <div class="box-content cart-item">
+                                <div class="row">
+                                    <div class="col-sm-4 no-padding">
+                                        <div class="course-cover-cart">
+                                            <img src="res/imgs/courses/course5.png" class="course-cover-cart-img">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8 cart-item-info" style="padding-right: 0px">
+                                        <div>
+                                            <span class="cart-item-title">
+                                                    Nhập môn ngôn ngữ lập trình Javascript
+                                            </span>
+                                        </div>
+                                        <div class="row" style="margin-top: 5px;">
+                                            <div class="col-sm-6">
+                                                <img src="res/imgs/teachers/teacher2.png" class="cart-item-ava">
+                                                <span class="cart-item-name">Phan Văn Luân</span>
+                                            </div>
+                                            <div class="col-sm-6 text-right">
+                                                <span class="cart-item-price">599,000</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box-content cart-item">
+                                    <div class="row">
+                                        <div class="col-sm-4 no-padding">
+                                            <div class="course-cover-cart">
+                                                <img src="res/imgs/courses/course5.png" class="course-cover-cart-img">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-8 cart-item-info" style="padding-right: 0px">
+                                            <div>
+                                                <span class="cart-item-title">
+                                                        Nhập môn ngôn ngữ lập trình Javascript
+                                                </span>
+                                            </div>
+                                            <div class="row" style="margin-top: 5px;">
+                                                <div class="col-sm-6">
+                                                    <img src="res/imgs/teachers/teacher2.png" class="cart-item-ava">
+                                                    <span class="cart-item-name">Phan Văn Luân</span>
+                                                </div>
+                                                <div class="col-sm-6 text-right">
+                                                    <span class="cart-item-price">599,000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                            <div class="col-sm-5">
+                                <div class="box-content" style="padding: 20px 30px 10px 30px !important;">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="order-id">
+                                                Đơn #47489217490812
+                                            </div>
+                                            <div class="order-date">
+                                                Ngày 20/11/2018
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 text-right">
+                                            <div class="order-o-price">599,000</div>
+                                            <div class="order-discount">0</div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 text-right">
+                                            <div class="order-price">599,000</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-7">
+                                <div class="box-content cart-item">
+                                    <div class="row">
+                                        <div class="col-sm-4 no-padding">
+                                            <div class="course-cover-cart">
+                                                <img src="res/imgs/courses/course5.png" class="course-cover-cart-img">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-8 cart-item-info" style="padding-right: 0px">
+                                            <div>
+                                                <span class="cart-item-title">
+                                                        Nhập môn ngôn ngữ lập trình Javascript
+                                                </span>
+                                            </div>
+                                            <div class="row" style="margin-top: 5px;">
+                                                <div class="col-sm-6">
+                                                    <img src="res/imgs/teachers/teacher2.png" class="cart-item-ava">
+                                                    <span class="cart-item-name">Phan Văn Luân</span>
+                                                </div>
+                                                <div class="col-sm-6 text-right">
+                                                    <span class="cart-item-price">599,000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-content cart-item">
+                                        <div class="row">
+                                            <div class="col-sm-4 no-padding">
+                                                <div class="course-cover-cart">
+                                                    <img src="res/imgs/courses/course5.png" class="course-cover-cart-img">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-8 cart-item-info" style="padding-right: 0px">
+                                                <div>
+                                                    <span class="cart-item-title">
+                                                            Nhập môn ngôn ngữ lập trình Javascript
+                                                    </span>
+                                                </div>
+                                                <div class="row" style="margin-top: 5px;">
+                                                    <div class="col-sm-6">
+                                                        <img src="res/imgs/teachers/teacher2.png" class="cart-item-ava">
+                                                        <span class="cart-item-name">Phan Văn Luân</span>
+                                                    </div>
+                                                    <div class="col-sm-6 text-right">
+                                                        <span class="cart-item-price">599,000</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
                 </div>
             </div>
 
@@ -284,6 +744,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="res/js/scripts.js"></script>
     <script src="res/js/tile.js"></script>
+    <script src="res/js/profile.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"></script>
