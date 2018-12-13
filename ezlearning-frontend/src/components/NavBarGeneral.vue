@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="navbar" style="width: 100%; position: fixed; z-index: 10">
+      <div class="container">
       <div class="row" style="width: 100%">
         <div class="col-sm" style="width: 35%; margin-top: 3px;">
           <router-link to="/">
@@ -52,9 +53,45 @@
             </router-link>
           </div>
         </div>
-        <div class="col-sm text-right" style="width: 40%; margin-top: 5px;">
+        <div
+          v-if="signInSuccess == true"
+          class="col-sm text-right"
+          style="width: 40%; margin-top: 5px;"
+        >
           <span class="sign-in-btn">Đăng nhập</span>
           <span class="sign-up-btn" style="margin-left: 30px;">Đăng ký</span>
+        </div>
+        <div
+          v-if="signInSuccess == false"
+          id="logged-in-student"
+          class="col-sm text-right"
+          style="width: 40%"
+        >
+          <span class="sign-up-btn" style="margin-left: 30px;">Kích hoạt</span>
+          <img src="/icons/cart.png" width="16px" style="margin-left: 20px;">
+          <div class="cart" style="margin-left: 5px;">{{cart.length}}</div>
+          <span id="nav-profile-s" style="cursor: pointer;">
+            <div class="navbar-ava-container" style="margin-left: 20px;">
+              <img src="/imgs/students/student1.png" class="navbar-ava-img">
+            </div>
+            <img src="/icons/more-cat.png" width="11px" style="margin-left: 10px">
+          </span>
+          <div
+            id="dropdown-profile"
+            class="menu-dropdown"
+            style="display: none; right: -60px; min-width: 230px; text-align: left;"
+          >
+            <div class="dropdown-addon-top" style="font-weight: bold;">Võ Thịnh Chuẩn</div>
+            <div class="dropdown-content">
+              <div class="dropdown">
+                <ul>
+                  <li>Các khóa học của tôi</li>
+                  <li>Lịch sử giao dịch</li>
+                </ul>
+              </div>
+            </div>
+            <div class="dropdown-addon" v-on:click="logOut()">Đăng xuất</div>
+          </div>
         </div>
       </div>
     </div>
@@ -80,12 +117,12 @@
                   style="float: left; margin-left: 10px;"
                 >Đăng nhập</div>
               </div>
-              <img v-on:click="CloseSignInForm()"
+              <img
+                v-on:click="CloseSignInForm()"
                 id="su-si-close"
                 src="/icons/modal-close.png"
                 width="13px"
                 style="float: right; margin-top: 23px; cursor: pointer;"
-                
               >
             </div>
             <div id="sign-up-modal" class="modal-main">
@@ -165,6 +202,7 @@
         </div>
       </div>
     </div>
+    </div>
   </div>
 </template>
 
@@ -197,12 +235,17 @@ export default {
     };
   },
   computed: {
-    ...mapState(["catogaries"])
+    ...mapState(["catogaries"]),
+    ...mapState(["signInSuccess"]),
+    ...mapState(["cart"]),
+
   },
   methods: {
     ...mapActions(["applySearch"]),
     ...mapActions(["signIn"]),
     ...mapActions(["signUp"]),
+    ...mapActions(["logOut"]),
+
     SignInFacebook() {},
     SignUpFacebook() {},
     CloseSignInForm() {
@@ -211,7 +254,7 @@ export default {
 
       this.dataSignIn = {};
       this.dataSignUp = {};
-    }
+    },
   },
   watch: {
     $route(to, from) {

@@ -17,7 +17,7 @@ var router = new Router({
       component: Home
     },
     {
-      path: '/courses-by-cat/:catId',
+      path: '/courses-by-cat/:catId', // gồm cả danh mục hot
       name: 'CoursesByCat',
       component: CoursesByCat
     },

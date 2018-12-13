@@ -13,15 +13,10 @@
     </div>
     <div style="width: 100%; padding: 5px; overflow: hidden;">
       <div class="popular-list" style="width: 200%;">
-        <div class="tile-container-long">
-          <CourseCard/>
-          <CourseCard/>
-          <CourseCard/>
-          <CourseCard/>
-          <CourseCard/>
-          <CourseCard/>
-          <CourseCard/>
-          <CourseCard/>
+        <div class="tile-container-long" >
+          <div v-for="courseItem in listCourse" :key="courseItem">
+              <CourseCard v-bind:course="courseItem"/>
+          </div>
         </div>
       </div>
     </div>
@@ -30,6 +25,7 @@
 
 <script>
 import CourseCard from "@/components/CourseCard.vue";
+import { mapState } from "vuex";
 
 export default {
   name: "ListCourseCard",
@@ -38,6 +34,9 @@ export default {
   },
   components: {
     CourseCard
-  }
+  },
+  computed: {
+    ...mapState(["listCourse"]),
+  },
 };
 </script>

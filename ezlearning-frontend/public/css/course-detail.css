@@ -66,6 +66,9 @@
     width: auto;
     height: 100%;
     border-bottom: 2px solid #75D354;
+    -webkit-filter: none;
+    /* Safari 6.0 - 9.0 */
+    filter: none;
 }
 
 .tab-disabled {
@@ -99,24 +102,13 @@
     margin-bottom: 50px;
 }
 
-.tab-content {
-    background: #FFFFFF;
-    box-shadow: 1px 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 15px;
-    padding: 40px;
-    color: #000;
-    font-weight: normal;
-    font-size: 17px;
-    margin-top: 30px;
-}
-
 .tab-content-title {
     font-size: 24px;
     margin-bottom: 14px;
     font-weight: bold;
 }
 
-.parent-title {
+.chapter-title {
     color: #4685FF;
     font-weight: bold;
     cursor: pointer;
@@ -143,16 +135,16 @@
     margin-left: 20px;
 }
 
-.parent {
+.chapter {
     padding: 15px 0px;
     border-top: 1px solid #eee;
 }
 
 .cover-content {
-    margin: -40px 0px 0px -40px;
+    margin: -30px 0px 0px -30px;
     border-radius: 15px 15px 0px 0px;
     height: 140px;
-    width: calc(100% + 80px);
+    width: calc(100% + 60px);
     overflow: hidden;
 }
 
@@ -167,4 +159,160 @@
     text-align: right;
     float: right;
     color: #46B420;
+}
+
+.teacher-info {
+    color: #888;
+    font-size: 18px;
+    width: 100%;
+    padding: 20px !important;
+}
+
+.teacher-name {
+    font-weight: bold;
+    font-size: 24px;
+    color: #000;
+}
+
+.teacher-title {
+    font-weight: normal;
+    font-size: 14px;
+}
+
+.teacher-rate-count {
+    font-weight: normal;
+    font-size: 14px;
+}
+
+.teacher-count {
+    color: #000;
+}
+
+.info-seperator {
+    border-left: 1px solid #eee;
+    padding-left: 50px !important;
+}
+
+.teacher-ava {
+    border-radius: 50%;
+    box-shadow: 1px 4px 8px rgba(0, 0, 0, 0.2);
+    width: 114px;
+    height: 114px;
+}
+
+.rate-seperator {
+    border-right: 1px solid #eee;
+}
+
+.rate-avg {
+    font-size: 64px;
+}
+
+.rate-count {
+    color: #888;
+}
+
+.rate-pipe-bg {
+    width: 100%;
+    height: 13px;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    position: relative;
+}
+
+.rate-pipe {
+    height: 13px;
+    background: #FF8A00;
+    border-radius: 10px;
+    position: absolute;
+}
+
+.rate-detail {
+    margin: 10px 0px;
+}
+
+.comment-seperator {
+    margin: 40px 0px;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.rater-ava {
+    box-shadow: 1px 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 100px;
+    width: 72px;
+    height: 72px
+}
+
+.rater-name {
+    margin-top: 12px;
+    color: #888;
+    font-weight: bold;
+}
+
+.rater-cmt {
+    font-size: 16px;
+}
+
+.comment-margin {
+    margin: 30px 0px;
+}
+
+.your-comment-title {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.price-sections {
+    padding: 10px 0px;
+}
+
+.discount-section-seperator {
+    border-top: 1px solid #eee;
+    margin: 0px -30px;
+    padding: 20px;
+}
+
+.discount-title {
+    font-weight: bold;
+}
+
+.add-to-cart {
+    background: #FF2E2E;
+    border-radius: 0px 0px 15px 15px;
+    height: 42px;
+    margin-top: 0px !important;
+    margin: -30px;
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+    padding-top: 10px;
+    text-transform: uppercase;
+}
+
+.course-addinfo{
+    padding: 15px 25px !important;
+    font-size: 14px;
+    line-height: 34px;
+}
+
+.course-addin-title{
+    font-weight: bold;
+    color: #888;
+}
+
+.rate-act{
+    cursor: pointer;
+}
+
+.re-rate{
+    color: #888;
+    font-size: 16px;
+    text-align: center;
+    display: none;
+}
+
+.re-rate > a{
+    color: #4685FF !important;
+    cursor: pointer;
 }

@@ -70,5 +70,11 @@ export default {
       }).catch(err => {
         alert(err);
       });
+    },
+    logOut(ctx){
+      ctx.commit('UPDATE_LOGIN_STATUS');
+    },
+    addCart(ctx, course){
+      ctx.commit('ADD_CART', course);
     }
   }
