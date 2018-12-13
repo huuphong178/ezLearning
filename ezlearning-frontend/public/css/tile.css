@@ -176,3 +176,24 @@
     position: absolute;
     z-index: 10;
 }
+
+.process-bg{
+    border-radius: 4px;
+    height: 4px;
+    width: 100%;
+    position: relative;
+    background: rgba(255, 255, 255, 0.25);
+    margin-top: 7px;
+}
+
+.process-bar{
+    background: #fff;
+    border-radius: 4px;
+    height: 4px;
+    content: '';
+}
+
+.process-num{
+    font-size: 14px;
+    font-weight: bold;
+}

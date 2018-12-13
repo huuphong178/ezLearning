@@ -1,4 +1,3 @@
-$(document).ready(function () {
 $("#fteachers-right").click(function () {
     $("#fteachers-list").animate({
         marginLeft: "-102%"
@@ -165,5 +164,4 @@ $(".sign-in-btn").click(function(){
 
 $("#su-si-close").click(function(){
     $("#su-si-modal").fadeOut("fast");
-})
 })

@@ -4,6 +4,8 @@ import Home from './views/Home.vue'
 import CoursesByCat from './views/CoursesByCat.vue'
 import Search from './views/Search.vue'
 import CourseDetail from './views/CourseDetail.vue'
+import Profile from './views/Profile.vue'
+
 
 Vue.use(Router);
 
@@ -30,6 +32,11 @@ var router = new Router({
       path: '/course/:courseId',
       name: 'CourseDetail',
       component: CourseDetail
+    },
+    {
+      path: '/profile/:role?:userid',
+      name: 'Profile',
+      component: Profile
     }
   ]
 });
