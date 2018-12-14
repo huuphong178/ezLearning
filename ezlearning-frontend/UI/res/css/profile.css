@@ -127,3 +127,26 @@ li>a>img {
     padding-top: 45px;
     padding-bottom: 20px;
 }
+
+.rate-gray {
+    color: #888;
+}
+
+.student-count {
+    font-size: 14px;
+}
+
+.student-count-num {
+    font-size: 18px;
+}
+
+.btn-bar{
+    margin-top: 5px;
+    text-align: center;
+}
+
+.tprofile-title{
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 40px;
+}

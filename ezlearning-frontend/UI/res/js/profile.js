@@ -8,4 +8,14 @@ $(document).ready(function () {
         $(".tab-content").hide();
         $("#" + id).show();
     })
+
+    $("#tprofile-edit-btn").click(function(){
+        $("#tprofile-edit").show();
+        $("#tprofile-info").hide();
+    })
+
+    $("#tprofile-save-btn").click(function(){
+        $("#tprofile-info").show();
+        $("#tprofile-edit").hide();
+    })
 })
