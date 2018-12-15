@@ -100,8 +100,7 @@
     <div
       id="su-si-modal"
       class="modal-backdrop"
-      style="background-color: rgba(0,0,0,0.25); display: none;"
-    >
+      style="background-color: rgba(0,0,0,0.25); display: none;">
       <div class="modal" role="dialog" style="display: block; padding-top: 25px;">
         <div class="modal-dialog" role="document" style="width: 430px;">
           <div

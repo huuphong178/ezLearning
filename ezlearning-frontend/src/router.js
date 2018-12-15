@@ -5,7 +5,7 @@ import CoursesByCat from './views/CoursesByCat.vue'
 import Search from './views/Search.vue'
 import CourseDetail from './views/CourseDetail.vue'
 import Profile from './views/Profile.vue'
-
+import Lecture from './views/Lecture.vue'
 
 Vue.use(Router);
 
@@ -37,6 +37,11 @@ var router = new Router({
       path: '/profile/:role?:userid',
       name: 'Profile',
       component: Profile
+    },
+    {
+      path: '/lecture/:courseid?:lectureid',
+      name: 'Lecture',
+      component: Lecture
     }
   ]
 });

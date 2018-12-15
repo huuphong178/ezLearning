@@ -67,7 +67,7 @@ $(document).ready(function () {
             $("#payment").css("position", "fixed");
             $("#payment").css("top", "60px");
             $(".course-detail").css("margin-top", "48px");
-        } else { 
+        } else {
             $('.course-tab').css("position", "absolute");
             $(".course-tab").css("top", "424px");
             $("#payment").css("position", "absolute");

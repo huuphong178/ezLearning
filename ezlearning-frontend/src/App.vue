@@ -6,7 +6,6 @@
   </div>
 </template>
 
-
 <script>
 import NavBarGeneral from "@/components/NavBarGeneral.vue";
 import Footer from "@/components/Footer.vue";

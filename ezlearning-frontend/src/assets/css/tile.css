@@ -1,0 +1,199 @@
+.tile-container {
+    display: grid;
+    grid-column-gap: 25px;
+    grid-row-gap: 40px;
+    grid-template-columns: repeat(5, calc((100% / 3.675) - 100px));
+    grid-template-rows: 320px;
+    margin-bottom: 25px;
+}
+
+.tile-container-long {
+    display: grid;
+    grid-column-gap: 25px;
+    grid-row-gap: 40px;
+    grid-template-columns: repeat(10, calc((50% / 3.675) - 100px));
+    grid-template-rows: 320px;
+    margin-bottom: 25px;
+}
+
+.tile {
+    box-shadow: 1px 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    overflow: hidden;
+    background: #fff;
+    position: relative;
+    /* First we need to help some browsers along for this to work.
+     Just because a vendor prefix is there, doesn't mean it will
+     work in a browser made by that vendor either, it's just for
+     future-proofing purposes I guess. */
+    -o-transition: .2s;
+    -ms-transition: .2s;
+    -moz-transition: .2s;
+    -webkit-transition: .2s;
+    /* ...and now for the proper property */
+    transition: .2s;
+}
+
+.tile:hover {
+    box-shadow: 1px 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.tile-course {
+    height: 300px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.tile-banner {
+    width: 100%;
+    height: auto;
+    position: absolute;
+}
+
+.tile-cover {
+    width: auto;
+    height: 300px;
+    left: 50%;
+}
+
+.tile-info {
+    position: absolute;
+    padding: 20px 20px 30px 20px;
+    color: #fff;
+    height: 100%;
+    width: 100%;
+    font-weight: normal;
+    font-size: 14px;
+}
+
+.tile-price {
+    position: absolute;
+    bottom: 0;
+    right: 30px;
+    z-index: 4;
+}
+
+.tile-discount {
+    color: #fff;
+    background: #FF2E2E;
+    border-radius: 20px;
+    padding: 0px 10px;
+    font-weight: bold;
+    font-size: 18px;
+    width: auto;
+    display: inline-block;
+}
+
+.tile-cat {
+    color: #fff;
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    padding: 2px 10px;
+    font-weight: bold;
+    font-size: 13px;
+    text-transform: uppercase;
+    width: auto;
+    display: inline-block;
+}
+
+.tile-course-name {
+    font-size: 18px;
+    font-weight: bold;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding: 3px 0px;
+}
+
+.tile-ava-container {
+    height: 33px;
+    width: 33px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.tile-ava-img {
+    height: 100%;
+    width: auto;
+}
+
+.tile-old-price {
+    text-decoration-line: line-through;
+    font-weight: bold;
+}
+
+.tile-preview {
+    position: absolute;
+    color: #888;
+    height: 100%;
+    width: 100%;
+    font-weight: normal;
+    font-size: 14px;
+    background: #fff;
+    padding: 20px 20px 30px 20px;
+    z-index: 3;
+    display: none;
+}
+
+.tile-preview-name {
+    font-size: 18px;
+    font-weight: bold;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding: 3px 0px;
+    color: #000;
+}
+
+.tile-preview-des {
+    color: #000;
+    margin: 5px 0px;
+}
+
+.arrow-white {
+    top: 80px;
+    width: 52px;
+    height: 52px;
+    border-radius: 100px;
+    position: absolute;
+    z-index: 10;
+    padding: 13px;
+    text-align: center;
+    box-shadow: 1px 4px 8px rgba(0, 0, 0, 0.2);
+    background: #fff;
+    cursor: pointer;
+}
+
+.left {
+    left: -26px;
+}
+
+.right {
+    left: calc(100% - 30px);
+}
+
+.slide-arrow {
+    width: 52px;
+    margin: 30px;
+    position: absolute;
+    z-index: 10;
+}
+
+.process-bg{
+    border-radius: 4px;
+    height: 4px;
+    width: 100%;
+    position: relative;
+    background: rgba(255, 255, 255, 0.25);
+    margin-top: 7px;
+}
+
+.process-bar{
+    background: #fff;
+    border-radius: 4px;
+    height: 4px;
+    content: '';
+}
+
+.process-num{
+    font-size: 14px;
+    font-weight: bold;
+}
