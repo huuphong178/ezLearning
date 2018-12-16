@@ -6,12 +6,14 @@
 package handler;
 
 import bus.UserBUS;
+import com.google.gson.JsonObject;
 import dao.UserDAO;
 import dto.User;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import util.StringUtil;
@@ -23,6 +25,7 @@ import util.StringUtil;
 public class UserHandler extends BaseHandler {
 
     private final UserBUS bus = new UserBUS(new UserDAO());
+
     @Override
     protected String doGetHandler(HttpServletRequest req, HttpServletResponse resp) throws Exception {
         String pathInfo = req.getPathInfo();
@@ -55,14 +58,21 @@ public class UserHandler extends BaseHandler {
     @Override
     protected void doPostHandler(HttpServletRequest req, HttpServletResponse resp) throws Exception {
         String pathInfo = req.getPathInfo();
+        System.err.println(pathInfo);
+        String body= getRequestBody(req);
         if (StringUtil.isEmpty(pathInfo)) {
             pathInfo = "/";
         }
         switch (pathInfo) {
             case "/":
-                String body = getRequestBody(req);
                 User user = (User) gson.fromJson(body, User.class);
                 bus.insert(user);
+                break;
+            case "/login":
+                ServletOutputStream out = resp.getOutputStream();
+                boolean status=true;
+                out.print("{\"status\": \"true\"}");
+                resp.setStatus(HttpServletResponse.SC_OK);
                 break;
         }
     }
@@ -77,7 +87,7 @@ public class UserHandler extends BaseHandler {
             String body = getRequestBody(req);
             User user = (User) gson.fromJson(body, User.class);
             bus.update(id, user);
-        }   
+        }
     }
 
     @Override

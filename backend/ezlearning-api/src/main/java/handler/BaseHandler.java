@@ -68,8 +68,8 @@ public abstract class BaseHandler extends HttpServlet {
         ServletOutputStream out = resp.getOutputStream();
         try {
             doPostHandler(req, resp);
-            out.print(resultSUCCESS);
-            resp.setStatus(HttpServletResponse.SC_OK);
+            //out.print(resultSUCCESS);
+            //resp.setStatus(HttpServletResponse.SC_OK);
         } catch (Exception ex) {
             out.print(resultERROR);
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
