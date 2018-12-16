@@ -232,6 +232,78 @@ public class CourseHandler extends BaseHandler{
                 if(!listRatingNew.isEmpty())
                     return gson.toJson(listRatingNew);
                 break;
+            case "/teach":
+                String queryTeach = req.getQueryString();                
+                Collection<Course> listCourseTeach = new ArrayList<>();
+                if(!StringUtil.isEmpty(queryTeach)){
+                    Map<String, String> params = StringUtil.getParams(queryTeach, "&");
+                    String n = params.get("n");
+                    String id = params.get("teacherid");
+                    
+                    String selectFrom = "SELECT c.*"
+                            + " FROM course c, user u";
+                    String where = " WHERE c.teacherid = u.username AND c.teacherid = '" + id + "' ORDER BY c.date DESC";
+                    String sql = selectFrom + where;
+                    System.out.println("SQL: " + sql);
+                    
+                    
+                    ArrayList<Course> temptList = new ArrayList<>();
+                    ArrayList<String[]> tempt = bus.executeSelectSQL(sql);
+                    for (String[] str : tempt) {
+                        Course item = new Course(str);
+                        temptList.add(item);
+                    }
+                    
+                    if(!StringUtil.isEmpty(n)){
+                        Integer number = Integer.parseInt(n);
+                        int loop = number <= temptList.size() ? number : temptList.size();
+                        for(int i = 0; i < loop; i++){                          
+                            listCourseTeach.add(temptList.get(i));
+                        }
+                    }else{
+                        listCourseTeach.addAll(temptList);
+                    }
+                }
+                
+                if(!listCourseTeach.isEmpty())
+                    return gson.toJson(listCourseTeach);
+                break;
+            case "/studentid":
+                String queryStudentID = req.getQueryString();                
+                Collection<Course> listCourseStudentID = new ArrayList<>();
+                if(!StringUtil.isEmpty(queryStudentID)){
+                    Map<String, String> params = StringUtil.getParams(queryStudentID, "&");
+                    String n = params.get("n");
+                    String id = params.get("id");
+                    
+                    String selectFrom = "SELECT c.*"
+                            + " FROM course c, receiptdetail re";
+                    String where = " WHERE c.id = re.courseid AND re.studentid = '" + id + "' ORDER BY re.id DESC";
+                    String sql = selectFrom + where;
+                    System.out.println("SQL: " + sql);
+                    
+                    
+                    ArrayList<Course> temptList = new ArrayList<>();
+                    ArrayList<String[]> tempt = bus.executeSelectSQL(sql);
+                    for (String[] str : tempt) {
+                        Course item = new Course(str);
+                        temptList.add(item);
+                    }
+                    
+                    if(!StringUtil.isEmpty(n)){
+                        Integer number = Integer.parseInt(n);
+                        int loop = number <= temptList.size() ? number : temptList.size();
+                        for(int i = 0; i < loop; i++){                          
+                            listCourseStudentID.add(temptList.get(i));
+                        }
+                    }else{
+                        listCourseStudentID.addAll(temptList);
+                    }
+                }
+                
+                if(!listCourseStudentID.isEmpty())
+                    return gson.toJson(listCourseStudentID);
+                break;
             case "/search":
                 return doSearch(req);
         }
