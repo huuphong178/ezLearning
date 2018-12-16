@@ -17,6 +17,7 @@ import handler.MethodHandler;
 import handler.RatingHandler;
 import handler.ReceiptDetailHandler;
 import handler.ReceiptHandler;
+import handler.TeacherHandler;
 import handler.UserHandler;
 import handler.VoucherHandler;
 import java.util.EnumSet;
@@ -64,11 +65,11 @@ public class Main {
         handler.addServlet(ReceiptHandler.class, "/receipt/*");
         handler.addServlet(RatingHandler.class, "/rating/*");
         handler.addServlet(MethodHandler.class, "/method/*");
-        
+        handler.addServlet(TeacherHandler.class, "/teacher/*");
         handler.addFilter(CORSResponseFilter.class, "/*", EnumSet.of(DispatcherType.REQUEST));
         try {
             server.start();
-            System.out.print("Service run at port: " + AppConfig.PORT);
+            System.out.println("Service run at port: " + AppConfig.PORT);
             server.join();
         } catch (Exception ex) {
             //   Logger.getLogger(Application.class.getName()).log(Level.SEVERE, null, ex);

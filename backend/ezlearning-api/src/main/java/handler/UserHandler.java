@@ -58,20 +58,33 @@ public class UserHandler extends BaseHandler {
     @Override
     protected void doPostHandler(HttpServletRequest req, HttpServletResponse resp) throws Exception {
         String pathInfo = req.getPathInfo();
-        System.err.println(pathInfo);
-        String body= getRequestBody(req);
+        ServletOutputStream out = resp.getOutputStream();
+        String body = getRequestBody(req);
         if (StringUtil.isEmpty(pathInfo)) {
             pathInfo = "/";
         }
         switch (pathInfo) {
             case "/":
-                User user = (User) gson.fromJson(body, User.class);
-                bus.insert(user);
+               // User user = (User) gson.fromJson(body, User.class);
+              //  bus.insert(user);
                 break;
             case "/login":
-                ServletOutputStream out = resp.getOutputStream();
-                boolean status=true;
-                out.print("{\"status\": \"true\"}");
+                boolean status = true;
+                JsonObject obj = gson.fromJson(body, JsonObject.class);
+                String username = obj.get("username").getAsString();
+                String password = obj.get("password").getAsString();
+                User ret = bus.login(username, password);
+                if (ret != null) {
+                    out.print("{\"status\": \"true\"}");
+                } else {
+                    out.print("{\"status\": \"false\"}");
+                }
+                resp.setStatus(HttpServletResponse.SC_OK);
+                break;
+            case "/signup":
+                User user = (User) gson.fromJson(body, User.class);
+                if(bus.insert(user)!=0)
+                    out.print("{\"status\": \"true\"}");
                 resp.setStatus(HttpServletResponse.SC_OK);
                 break;
         }

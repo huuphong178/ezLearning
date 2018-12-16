@@ -71,7 +71,7 @@ public abstract class BaseHandler extends HttpServlet {
             //out.print(resultSUCCESS);
             //resp.setStatus(HttpServletResponse.SC_OK);
         } catch (Exception ex) {
-            out.print(resultERROR);
+            out.print("{\"status\": \"false\"}");
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
         } finally {
             out.flush();

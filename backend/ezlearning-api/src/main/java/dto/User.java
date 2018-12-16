@@ -35,7 +35,7 @@ public class User {
         this.phone = user[6];
         this.degree = user[7];
         this.dob =user[8];
-        this.avatar = user[8];
+        this.avatar = user[9];
 
     }
 

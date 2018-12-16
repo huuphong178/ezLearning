@@ -5,6 +5,7 @@
  */
 package dao;
 
+import dto.Teacher;
 import dto.User;
 import java.awt.Image;
 import java.awt.image.RenderedImage;
@@ -51,6 +52,16 @@ public class UserDAO extends ObjectDAO<User> {
         return item;
     }
 
+    public User login(String username, String password) throws Exception {
+        String sql = "select * from user where username='" + username + "'and password ='" + password + "'";
+        User item = null;
+        ArrayList<String[]> users = new ArrayList<>(XTData.loadData(sql));
+        if (!users.isEmpty()) {
+            item = new User(users.get(0));
+        }
+        return item;
+    }
+
     @Override
     public int insert(User dto) throws Exception {
         String sql = "Insert Into user(username, password, email, role , displayname, address, phone, degree, dob, avatar) Values(?,?,?,?,?,?,?,?,?,?)";
@@ -84,10 +95,26 @@ public class UserDAO extends ObjectDAO<User> {
         ps.setString(9, username);
         return ps.executeUpdate();
     }
+
     @Override
     public int delete(String username) throws Exception {
         String sql = "delete from user where username='" + username + "'";
         return XTData.runSQL(sql);
+    }
+
+    public ArrayList<User> getTeacherBest(int n) throws Exception {
+        String sql = "SELECT u.*, AVG(c.rating) as 'rate' from course c, `user` u\n"
+                + "where u.username=c.teacherid \n"
+                + "GROUP BY c.teacherid \n"
+                + "ORDER BY rate DESC\n"
+                + "LIMIT " + n;
+        ArrayList<String[]> users = new ArrayList<>(XTData.loadData(sql));
+        ArrayList<User> result = new ArrayList<>();
+        for (String[] row : users) {
+            User teacher = new Teacher(row);
+            result.add(teacher);
+        }
+        return result;
     }
 
     private byte[] ConverFile(String filepathlocal) {
