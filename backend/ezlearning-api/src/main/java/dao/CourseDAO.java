@@ -86,5 +86,7 @@ public class CourseDAO extends ObjectDAO<Course>{
         return XTData.runSQL(sql);
     }
 
-    
+    public ArrayList<String[]> executeSelectSQL(String sql) throws Exception{       
+        return new ArrayList<>(XTData.loadData(sql));
+    }
 }

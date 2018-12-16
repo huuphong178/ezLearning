@@ -21,13 +21,17 @@ public class StringUtil {
     }
     
     public static Map<String, String> getParams(String query, String regex){
-        Map<String, String> result = new HashMap<>();
-        String[] arr = query.split(regex);
-        for(String param : arr){
-            String[] split = param.split("=");
-            result.put(split[0], split[1]);
+        if(query != null){
+            Map<String, String> result = new HashMap<>();
+            String[] arr = query.split(regex);
+            for(String param : arr){
+                String[] split = param.split("=");
+                result.put(split[0], split[1]);
+            }
+            
+            return result;
         }
         
-        return result;
+        return new HashMap<>();
     }
 }
