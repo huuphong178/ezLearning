@@ -8,9 +8,13 @@ package handler;
 import bus.CourseBUS;
 import dao.CourseDAO;
 import dto.Course;
+import dto.PopularCourse;
+import dto.PromotionCourse;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import util.GenerateIDUtil;
@@ -49,6 +53,187 @@ public class CourseHandler extends BaseHandler{
                 
                 if(!listCourse.isEmpty())
                     return gson.toJson(listCourse);
+                break;
+            case "/random":
+                String queryRandom = req.getQueryString();                
+                Collection<Course> listCourseRandom = new ArrayList<>();
+                if(!StringUtil.isEmpty(queryRandom)){
+                    Map<String, String> params = StringUtil.getParams(queryRandom, "&");
+                    String n = params.get("n");
+                    if(!StringUtil.isEmpty(n)){
+                        ArrayList<Course> temptList = new ArrayList<>();
+                        HashMap<Integer, Integer> indexUsed = new HashMap<>();
+                        temptList = bus.getAll();
+                        for(int i = 0; i < Integer.parseInt(n); i++){
+                            Random rand = new Random(); 
+                            int index = rand.nextInt(temptList.size());
+                            if(indexUsed.containsKey(index)){
+                                i--;
+                            }else{
+                                indexUsed.put(index, index);
+                            }
+                            
+                            listCourseRandom.add(temptList.get(index));
+                        }
+                    }
+                }
+                
+                if(!listCourseRandom.isEmpty())
+                    return gson.toJson(listCourseRandom);
+                break;
+            case "/promotion":
+                String queryPromotion = req.getQueryString();                
+                Collection<PromotionCourse> listCoursePromotion = new ArrayList<>();
+                if(!StringUtil.isEmpty(queryPromotion)){
+                    Map<String, String> params = StringUtil.getParams(queryPromotion, "&");
+                    String from = params.get("from");
+                    String to = params.get("to");
+                    String n = params.get("n");
+                    if(!StringUtil.isEmpty(from) && !StringUtil.isEmpty(to)){
+                        ArrayList<PromotionCourse> temptList = new ArrayList<>();
+                        String selectFrom = "SELECT c.id, c.name, c.rating, c.price, c.catid, cat.name as 'catname', u.displayname as 'teachername', u.avatar, v.percentage, v.from_date, v.to_date"
+                                            + " FROM course c, user u, category cat, voucher v";
+                        String where = " WHERE ((v.from_date <= '" + to + "' AND '" + to + "' <= v.to_date) OR (v.to_date >= '" + from + "' AND '" + from + "' >= v.from_date) "
+                                + "OR (v.from_date >= '" + from + "' AND v.to_date <= '" + to + "'))"
+                                + " AND c.catid = cat.id AND c.teacherid = u.username AND c.id = v.courseid";
+                        String sql = selectFrom + where;
+                        
+                        System.out.println("SQL: " + sql);
+                        
+                        ArrayList<String[]> tempt = bus.executeSelectSQL(sql);
+                        for(String[] str : tempt){
+                            PromotionCourse item = new PromotionCourse(str);
+                            Long price = Long.parseLong(item.getPrice());
+                            Long sale = (price * Long.parseLong(item.getPercentage()))/100;
+                            Long promotionalPrice = price-sale;
+                            item.setPromotionalPrice(promotionalPrice.toString());
+                            temptList.add(item);
+                        }
+                        
+                        if(!StringUtil.isEmpty(n)){
+                            int number = Integer.parseInt(n);
+                            int loop = number <= temptList.size() ? number : temptList.size();
+                            for(int i =0 ;i < loop;i++){
+                                listCoursePromotion.add(temptList.get(i));
+                            }
+                        }else{
+                            listCoursePromotion.addAll(temptList);
+                        }
+                        
+                    }
+                }
+                
+                if(!listCoursePromotion.isEmpty())
+                    return gson.toJson(listCoursePromotion);
+                break;
+            case "/popular":
+                String queryPopular = req.getQueryString();                
+                Collection<PopularCourse> listPopularCourse = new ArrayList<>();
+                if(true){
+                    Map<String, String> params = StringUtil.getParams(queryPopular, "&");
+                    String n = params.get("n");
+                    
+                    ArrayList<PopularCourse> temptList = new ArrayList<>();
+                    String selectFrom = "SELECT receipt.courseid, c.name as 'coursename', c.price, u.username, u.avatar, c.rating, cat.id as 'catid', cat.name as 'catname', count(*)"
+                            + " FROM receiptdetail receipt, category cat, course c, user u";
+                    String where = " WHERE c.id = receipt.courseid AND c.catid = cat.id AND c.teacherid = u.username"
+                            + " GROUP BY receipt.courseid"
+                            + " ORDER BY count(*) DESC";
+                    String sql = selectFrom + where;
+                    System.out.println("SQL: " + sql);
+
+                    ArrayList<String[]> tempt = bus.executeSelectSQL(sql);
+                    for (String[] str : tempt) {
+                        PopularCourse item = new PopularCourse(str);
+                        temptList.add(item);
+                    }
+
+                    if (!StringUtil.isEmpty(n)) {
+                        int number = Integer.parseInt(n);
+                        int loop = number <= temptList.size() ? number : temptList.size();
+                        for (int i = 0; i < loop; i++) {
+                            listPopularCourse.add(temptList.get(i));
+                        }
+                    } else {
+                        listPopularCourse.addAll(temptList);
+                    }
+                }
+                
+                if(!listPopularCourse.isEmpty())
+                    return gson.toJson(listPopularCourse);
+                break;
+            case "/rating":
+                String queryRating = req.getQueryString();                
+                Collection<PopularCourse> listRatingCourse = new ArrayList<>();
+                if(true){
+                    Map<String, String> params = StringUtil.getParams(queryRating, "&");
+                    String n = params.get("n");
+                    
+                    ArrayList<PopularCourse> temptList = new ArrayList<>();
+                    String selectFrom = "SELECT c.id, c.name as 'coursename', c.price, u.username, u.avatar, c.rating, cat.id as 'catid', cat.name as 'catname', '1'"
+                            + " FROM category cat, course c, user u";
+                    String where = " WHERE c.catid = cat.id AND c.teacherid = u.username"
+                            + " ORDER BY rating DESC";
+                    String sql = selectFrom + where;
+                    System.out.println("SQL: " + sql);
+
+                    ArrayList<String[]> tempt = bus.executeSelectSQL(sql);
+                    for (String[] str : tempt) {
+                        PopularCourse item = new PopularCourse(str);
+                        temptList.add(item);
+                    }
+
+                    if (!StringUtil.isEmpty(n)) {
+                        int number = Integer.parseInt(n);
+                        int loop = number <= temptList.size() ? number : temptList.size();
+                        for (int i = 0; i < loop; i++) {
+                            listRatingCourse.add(temptList.get(i));
+                        }
+                    } else {
+                        listRatingCourse.addAll(temptList);
+                    }
+                }
+                
+                if(!listRatingCourse.isEmpty())
+                    return gson.toJson(listRatingCourse);
+                break;
+            case "/new":
+                String queryNew = req.getQueryString();                
+                Collection<PopularCourse> listRatingNew = new ArrayList<>();
+                if(true){
+                    Map<String, String> params = StringUtil.getParams(queryNew, "&");
+                    String n = params.get("n");
+                    
+                    ArrayList<PopularCourse> temptList = new ArrayList<>();
+                    String selectFrom = "SELECT c.id, c.name as 'coursename', c.price, u.username, u.avatar, c.rating, cat.id as 'catid', cat.name as 'catname', c.date"
+                            + " FROM category cat, course c, user u";
+                    String where = " WHERE c.catid = cat.id AND c.teacherid = u.username"
+                            + " ORDER BY date DESC";
+                    String sql = selectFrom + where;
+                    System.out.println("SQL: " + sql);
+
+                    ArrayList<String[]> tempt = bus.executeSelectSQL(sql);
+                    for (String[] str : tempt) {
+                        PopularCourse item = new PopularCourse(str);
+                        temptList.add(item);
+                    }
+
+                    if (!StringUtil.isEmpty(n)) {
+                        int number = Integer.parseInt(n);
+                        int loop = number <= temptList.size() ? number : temptList.size();
+                        for (int i = 0; i < loop; i++) {
+                            listRatingNew.add(temptList.get(i));
+                        }
+                    } else {
+                        listRatingNew.addAll(temptList);
+                    }
+                }
+                
+                if(!listRatingNew.isEmpty())
+                    return gson.toJson(listRatingNew);
+                break;
+            case "/search":
+                return doSearch(req);
         }
         
         return "";
@@ -87,6 +272,66 @@ public class CourseHandler extends BaseHandler{
     @Override
     protected void doDeleteHandler(HttpServletRequest req, HttpServletResponse resp) throws Exception{
         //chua get du lieu dc.
+    }
+    
+    private String doSearch(HttpServletRequest req) throws Exception{
+        String query = req.getQueryString();
+        Map<String, String> params = StringUtil.getParams(query, "&");
+        String catID = params.get("catid");
+        ArrayList<Course> temptList = new ArrayList<>();
+
+        if (catID != null) {
+            String sql = "SELECT c.*, cat.name"
+                    + " FROM course c, category cat"
+                    + " WHERE c.catid = cat.id AND c.catid = " + catID;
+            System.out.println("SQL: " + sql);
+
+            ArrayList<String[]> tempt = bus.executeSelectSQL(sql);
+            for (String[] str : tempt) {
+                Course item = new Course(str);
+                temptList.add(item);
+            }
+
+            if (!temptList.isEmpty()) {
+                String json = gson.toJson(temptList);
+                String[] str = tempt.get(0);
+                String catName = str[str.length - 1];
+                return "{ \"catName\": " + "\"" + catName + "\"," + "\"courses\":" + json + "}";
+            }
+        } else {
+            String courseName = req.getParameter("coursename");
+            String teacherName = req.getParameter("teachername");
+            String categoryName = req.getParameter("categoryname");
+            String sql = "";
+            if(courseName != null){
+                sql = "SELECT *"
+                    + " FROM course"
+                    + " WHERE name LIKE '%" + courseName + "%'";
+                System.out.println("SQL: " + sql);   
+            }else if(teacherName != null){
+                sql = "SELECT c.*"
+                    + " FROM course c, user u"
+                    + " WHERE c.teacherid = u.username AND u.displayname LIKE '%" + teacherName + "%'";
+                System.out.println("SQL: " + sql); 
+            }else if(categoryName != null){
+                sql = "SELECT c.*"
+                    + " FROM course c, category cat"
+                    + " WHERE c.catid = cat.id AND cat.name LIKE '%" + categoryName + "%'";
+                System.out.println("SQL: " + sql); 
+            }
+            
+            ArrayList<String[]> tempt = bus.executeSelectSQL(sql);
+            for (String[] str : tempt) {
+                Course item = new Course(str);
+                temptList.add(item);
+            }
+            
+            if (!temptList.isEmpty()) {
+                return gson.toJson(temptList);
+            }
+        }
+        
+        return "";
     }
     
 }
