@@ -150,7 +150,7 @@ $("#sign-up-submit").click(function(){
 
 $("#sign-in-submit").click(function(){
     $("#si-warn").show();
-    siWarning("Test 2");
+    siWarning("Đăng nhập không thành công, vui lòng thử lại");
 })
 
 $(".sign-up-btn").click(function(){

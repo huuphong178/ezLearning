@@ -1,7 +1,7 @@
 <template>
   <div style="height: 100%; position: relative;">
     <div class="tile-price" v-on:click="AddToCart(course)">
-      <button class="price-button">149,500 đ</button>
+      <button class="price-button">{{course.price}} đ</button>
     </div>
     <div class="tile tile-course">
     <router-link :to="`/course/${course.id}`">
@@ -19,7 +19,7 @@
               <img src="/icons/ratings/rate-outline.png" width="18px">
               <span>(04)</span>
             </div>
-            <div class="tile-preview-name">Trọn bộ làm video và kỹ thuật AE</div>
+            <div class="tile-preview-name">{{course.name}}</div>
             <div>
               <div
                 class="tile-ava-container"
@@ -30,8 +30,7 @@
               <span>Trần Đình Dần (Master Trần)</span>
             </div>
             <div class="tile-preview-des">
-              Dành cho những nhà làm marketing chuyên nghiệp bạn luôn phải cắt ghép nhân vật,
-              hình ảnh và phông nền xanh. Khóa ...
+              {{course.description}}
             </div>
           </div>
         </div>
@@ -52,7 +51,7 @@
               <img src="/icons/ratings/rate-outline-white.png" width="18px">
               <span>(04)</span>
             </div>
-            <div class="tile-course-name">Trọn bộ làm video và kỹ thuật AE</div>
+            <div class="tile-course-name">{{course.name}}</div>
             <div>
               <div
                 class="tile-ava-container"
@@ -81,8 +80,17 @@
 import { mapActions } from "vuex";
 
 export default {
+  data(){
+    return{
+    
+    }
+  },
     props:{
         course: {}
+    },
+    created() {
+  
+     
     },
     methods:{
       AddToCart(course){

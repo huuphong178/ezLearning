@@ -8,7 +8,9 @@
           <span class="section-keyword">{{catId}}</span>
         </div>
         <div class="tile-container">
-          <CourseCard/>
+          <div v-for="course in courseByCat" :key="course.id">
+            <CourseCard v-bind:course="course"/>
+          </div>
         </div>
       </div>
     </div>
@@ -18,6 +20,7 @@
 <script>
 // @ is an alias to /src
 import CourseCard from "@/components/CourseCard.vue";
+import { mapActions, mapState } from "vuex";
 
 export default {
   name: "CoursesByCat",
@@ -26,15 +29,28 @@ export default {
       catId: ""
     };
   },
+  created() {
+    this.catId = this.$route.params.catId;
+    if (this.catId == "all") {
+      this.$store.dispatch("getAllCourses");
+    } else {
+      this.$store.dispatch("getCourseByCat", this.catId);
+    }
+  },
   components: {
     CourseCard
   },
-  mounted() {
-    this.catId = this.$route.params.catId;
+  computed: {
+    ...mapState(["courseByCat"])
   },
   watch: {
     $route(to, from) {
       this.catId = to.params.catId;
+      if (this.catId == "all") {
+        this.$store.dispatch("getAllCourses");
+      } else {
+        this.$store.dispatch("getCourseByCat", this.catId);
+      }
     }
   }
 };

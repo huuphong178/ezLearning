@@ -105,8 +105,6 @@
 <script>
 import { mapState, mapActions } from "vuex";
 
-import '../assets/js/scripts.js'
-
 export default {
 name: "FormLogin",
   data() {

@@ -20,9 +20,9 @@ export default new Vuex.Store({
     courseBanner: [],
     statistic: [],
     saleCoureses: [],
+    courseByCat: [],
     coursesSearch: [],  //for page search
-    signInSuccess: false,
-    signUpSuccess: false,
+    user: null,
     cart: []
   },
   mutations: {
@@ -44,19 +44,16 @@ export default new Vuex.Store({
       state.coursesSearch = payload;
     },
     SET_USER(state , payload){
-      this.$localStorage.set("user", payload);
+      state.user = payload;
     },
     UPDATE_LOGIN_STATUS(state){
-      state.signInSuccess = true;
       state.cart = {};
     },
     ADD_CART(state, payload){
-      if (state.signInSuccess == false){
         state.cart.push(payload);
-      }
-      else {
-        // hiên popup đăng nhập
-      }
+    },
+    SET_COURSES_BY_CAT(state, payload){
+      state.courseByCat = payload;
     }
   },
   actions,

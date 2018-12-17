@@ -11,13 +11,6 @@ Vue.use(BootstrapVue);
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
-import './assets/js/course-detail.js'
-import './assets/js/lecture-detail.js'
-import './assets/js/profile.js'
-import './assets/js/scripts.js'
-import './assets/js/tile.js'
-
-
 Vue.use({
   install: function(Vue, options){
       Vue.prototype.$jQuery = require('jquery'); // you'll have this.$jQuery anywhere in your vue project

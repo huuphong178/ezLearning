@@ -1,8 +1,8 @@
 <template>
   <div style="position: relative">
-    <div v-if="notLogged === true">
+    <!-- <div v-if="notLogged === true">
         <FormLogin/>
-    </div>
+    </div> -->
 
     <div style="height: 60px; content: ''"></div>
 
@@ -527,11 +527,11 @@ export default {
     FormLogin
   },
   computed: {
-    ...mapState(["signInSuccess"])
+    ...mapState(["user"])
   },
   beforeRouteLeave(to, from, next) {
     if (to.name == "Lecture") {
-      if (this.signInSuccess == true) {
+      if (this.user != null) {
         next();
       } else {
         this.notLogged = true;

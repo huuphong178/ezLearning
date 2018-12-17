@@ -27,7 +27,7 @@
                 </ul>
               </div>
             </div>
-            <router-link :to="`/courses/all`">
+            <router-link :to="`/courses-by-cat/all`">
               <div class="dropdown-addon">
                 Tất cả khóa học
                 <img
@@ -54,7 +54,7 @@
           </div>
         </div>
         <div
-          v-if="signInSuccess == true"
+          v-if="user == null"
           class="col-sm text-right"
           style="width: 40%; margin-top: 5px;"
         >
@@ -62,7 +62,7 @@
           <span class="sign-up-btn" style="margin-left: 30px;">Đăng ký</span>
         </div>
         <div
-          v-if="signInSuccess == false"
+          v-if="user != null"
           id="logged-in-student"
           class="col-sm text-right"
           style="width: 40%"
@@ -97,7 +97,7 @@
     </div>
 
     <!--Modal-->
-    <div
+    <div v-if="user == null"
       id="su-si-modal"
       class="modal-backdrop"
       style="background-color: rgba(0,0,0,0.25); display: none;">
@@ -235,8 +235,8 @@ export default {
   },
   computed: {
     ...mapState(["catogaries"]),
-    ...mapState(["signInSuccess"]),
     ...mapState(["cart"]),
+    ...mapState(["user"]),
 
   },
   methods: {

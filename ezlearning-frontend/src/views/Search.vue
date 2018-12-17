@@ -12,12 +12,15 @@
             <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"></div>
             <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
               Đánh giá &ensp;
-              <span class="box">
-                5 sao trở lên
-                <img src="/icons/more-cat.png" width="11px" style="margin-left: 15px">
-              </span>
+              <select>
+                <option value="volvo">4 sao trở lên</option>
+                <option value="saab">3 sao trở lên</option>
+                <option value="opel">2 sao trở lên</option>
+                <option value="audi">1 sao trở lên</option>
+              </select>
             </div>
-            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" v-on:click="FilterPrice()">
               Giá &ensp;
               <span class="box">0đ - 1.000.000đ</span>
             </div>
@@ -32,25 +35,24 @@
 </template>
 
 <script>
-
 import CourseCard from "@/components/CourseCard.vue";
 
 import { mapActions } from "vuex";
 
 export default {
   name: "home",
-   data(){
-      return{
-          query: ""
-      }
+  data() {
+    return {
+      query: ""
+    };
   },
   components: {
-    CourseCard,
+    CourseCard
   },
   created() {
-      this.query = this.$route.params.query;
+    this.query = this.$route.params.query;
   },
-   watch: {
+  watch: {
     $route(to, from) {
       this.query = to.params.query;
     }
