@@ -1,6 +1,10 @@
 <template>
-  <div @mouseenter="mouseenter()" style="height: 100%; position: relative;">
-    <div class="tile-price" v-on:click="AddToCart(course, user)">
+  <div
+    @mouseenter="mouseenter()"
+    @mouseleave="mouseleave()"
+    style="height: 100%; position: relative;"
+  >
+    <div class="tile-price" v-on:click="AddToCart(course)">
       <button class="price-button">{{course.price}} đ</button>
     </div>
     <div class="tile tile-course">
@@ -88,24 +92,18 @@ export default {
     ...mapState(["user"])
   },
   methods: {
+    mouseleave() {
+      this.$jQuery(event.target)
+        .parent("div")
+        .find(".tile-preview")
+        .hide();
+    },
     mouseenter() {
       var self = this;
-      this.$jQuery(".tile-course").hover(
-        function() {
-          self
-            .$jQuery(this)
-            .parent("div")
-            .find(".tile-preview")
-            .show();
-        },
-        function() {
-          self
-            .$jQuery(this)
-            .parent("div")
-            .find(".tile-preview")
-            .hide();
-        }
-      );
+      this.$jQuery(event.target)
+        .parent("div")
+        .find(".tile-preview")
+        .show();
     },
     AddToCart(course, user) {
       if (user != null) {
