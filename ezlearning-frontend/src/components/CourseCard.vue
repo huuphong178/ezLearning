@@ -1,5 +1,5 @@
 <template>
-  <div style="height: 100%; position: relative;">
+  <div @mouseenter="mouseenter()" style="height: 100%; position: relative;">
     <div class="tile-price" v-on:click="AddToCart(course)">
       <button class="price-button">{{course.price}} đ</button>
     </div>
@@ -93,6 +93,25 @@ export default {
      
     },
     methods:{
+      mouseenter() {
+      var self = this;
+      this.$jQuery(".tile-course").hover(
+        function() {
+          self
+            .$jQuery(this)
+            .parent("div")
+            .find(".tile-preview")
+            .show();
+        },
+        function() {
+          self
+            .$jQuery(this)
+            .parent("div")
+            .find(".tile-preview")
+            .hide();
+        }
+      );
+    },
       AddToCart(course){
         this.$store.dispatch('addCart', course);
       }
