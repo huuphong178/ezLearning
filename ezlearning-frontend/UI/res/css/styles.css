@@ -72,6 +72,10 @@ body {
     font-size: 14px;
 }
 
+button {
+    cursor: pointer;
+}
+
 .cart {
     padding-top: 7px;
     padding-bottom: 7px;
@@ -232,6 +236,22 @@ body {
 
 .modal-style {
     box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.25);
+}
+
+.modal-padding {
+    padding: 25px 30px;
+}
+
+.tmodal-title {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.tmodal-msg {
+    font-size: 14px;
+    font-weight: normal;
+    color: #666;
 }
 
 .modal-top {

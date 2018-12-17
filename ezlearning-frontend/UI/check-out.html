@@ -17,6 +17,20 @@
 
 <body style="position: relative;">
 
+    <!--Modal-->
+
+    <div id="modal-template" class="modal-backdrop" style="background-color: rgba(0,0,0,0.25); display: none;">
+        <div class="modal" role="dialog" style="display: block; padding-top: 25px;">
+            <div class="modal-dialog" role="document" style="width: 430px;">
+                <div class="modal-content modal-style modal-padding" style="text-align: center; position: relative; border: none !important; border-radius: 10px;">
+                    <img id="tmodal-close" src="res/icons/modal-close.png" width="13px" style="position: absolute; float: right; cursor: pointer; right: 30px;">
+                    <div class="tmodal-title"></div>
+                    <div class="tmodal-msg"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!--Navbar-->
 
     <div class="navbar" style="width: 100%; position: fixed; z-index: 15;">
@@ -245,7 +259,7 @@
                 </div>
             </div>
             <div style="width: 100%; text-align: center; margin-bottom: 35px;">
-                <button id="sign-in-submit" class="big-button" style="width: 350px; margin-top: 15px;">THANH TOÁN</button>
+                <button id="checkout-submit" class="big-button" style="width: 350px; margin-top: 15px;">THANH TOÁN</button>
             </div>
 
         </div>

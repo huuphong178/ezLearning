@@ -127,41 +127,55 @@ $("#sign-in-tab").click(function () {
 })
 
 function suWarning(msg) {
-    $("#su-warn").css("opacity","0");
+    $("#su-warn").css("opacity", "0");
     setTimeout(function () {
-        $("#su-warn").animate({opacity: "1"},200);
+        $("#su-warn").animate({ opacity: "1" }, 200);
     }, 50);
     $("#su-warn").text(msg);
 }
 
 function siWarning(msg) {
-    $("#si-warn").css("opacity","0");
+    $("#si-warn").css("opacity", "0");
     setTimeout(function () {
-        $("#si-warn").animate({opacity: "1"},200);
+        $("#si-warn").animate({ opacity: "1" }, 200);
     }, 50);
     $("#si-warn").text(msg);
 }
 
-$("#sign-up-submit").click(function(){
+$("#sign-up-submit").click(function () {
     $("#su-warn").show();
     suWarning("Test 1");
 })
 
-$("#sign-in-submit").click(function(){
+$("#sign-in-submit").click(function () {
     $("#si-warn").show();
     siWarning("Test 2");
 })
 
-$(".sign-up-btn").click(function(){
+$(".sign-up-btn").click(function () {
     $("#su-si-modal").fadeIn("fast");
     signUpModal();
 })
 
-$(".sign-in-btn").click(function(){
+$(".sign-in-btn").click(function () {
     $("#su-si-modal").fadeIn("fast");
     signInModal();
 })
 
-$("#su-si-close").click(function(){
+$("#su-si-close").click(function () {
     $("#su-si-modal").fadeOut("fast");
+})
+
+function tmodalAction(title, msg) {
+    var modal = $("#modal-template");
+    modal.find(".tmodal-title").html(title);
+    modal.find(".tmodal-msg").html(msg);
+    modal.fadeIn();
+    modal.find("#tmodal-close").click(function(){
+        modal.fadeOut();
+    });
+}
+
+$("#checkout-submit").click(function(){
+    tmodalAction("Cái này là title","Này là msg");
 })
