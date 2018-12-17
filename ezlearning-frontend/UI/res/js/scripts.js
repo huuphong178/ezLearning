@@ -166,16 +166,38 @@ $("#su-si-close").click(function () {
     $("#su-si-modal").fadeOut("fast");
 })
 
-function tmodalAction(title, msg) {
+function tmodalAction(iconToggle, title, msg, addonToggle, addonText) {
+    //iconToggle: 1 - hiện icon thành công, 0 - hiện icon thất bại, khác - không hiện
+    //title: tiêu đề thông báo
+    //msg: nội dung thông báo
+    //addonToggle: 1 - hiện link dẫn đến trang khác (như Tất cả khóa học), khác - không hiện
+    //addon Text: nội dung link nếu addonToggle == 1
+    
     var modal = $("#modal-template");
     modal.find(".tmodal-title").html(title);
     modal.find(".tmodal-msg").html(msg);
+    if (iconToggle == 0) {
+        modal.find("#tmodal-failure").show();
+    }
+    else if (iconToggle == 1) {
+        modal.find("#tmodal-success").show();
+    }
+    if (addonToggle == 1) {
+        modal.find("#addon").show();
+        modal.find("#addon-text").html(addonText);
+    }
     modal.fadeIn();
-    modal.find("#tmodal-close").click(function(){
+    modal.find("#tmodal-close").click(function () {
         modal.fadeOut();
     });
 }
 
-$("#checkout-submit").click(function(){
-    tmodalAction("Cái này là title","Này là msg");
+$("#checkout-submit").click(function () {
+    tmodalAction(
+        1,
+        "Thanh toán thành công",
+        "Bạn đã thanh toán thành công khóa học",
+        1,
+        "Xem đơn hàng"
+    );
 })

@@ -22,10 +22,18 @@
     <div id="modal-template" class="modal-backdrop" style="background-color: rgba(0,0,0,0.25); display: none;">
         <div class="modal" role="dialog" style="display: block; padding-top: 25px;">
             <div class="modal-dialog" role="document" style="width: 430px;">
-                <div class="modal-content modal-style modal-padding" style="text-align: center; position: relative; border: none !important; border-radius: 10px;">
-                    <img id="tmodal-close" src="res/icons/modal-close.png" width="13px" style="position: absolute; float: right; cursor: pointer; right: 30px;">
-                    <div class="tmodal-title"></div>
-                    <div class="tmodal-msg"></div>
+                <div class="modal-content modal-style" style="position: relative; border: none !important; border-radius: 10px;">
+                    <div class="modal-padding" style="text-align: center;">
+                        <img id="tmodal-close" src="res/icons/modal-close.png" width="13px" style="position: absolute; float: right; cursor: pointer; right: 30px;">
+                        <img id="tmodal-success" src="res/icons/modal-success.png" width="47px" style="display: none; margin-bottom: 10px;">
+                        <img id="tmodal-failure" src="res/icons/modal-failure.png" width="47px" style="display: none; margin-bottom: 10px;"> 
+                        <div class="tmodal-title"></div>
+                        <div class="tmodal-msg"></div>
+                    </div>
+                    <div id="addon" class="dropdown-addon tmodal-addon" style="display:none;">
+                        <span id="addon-text">Tất cả khóa học</span>
+                        <img id="allcats" src="res/icons/all-cats.png" width="15px" style="margin-top: 3px; float: right">
+                    </div>
                 </div>
             </div>
         </div>

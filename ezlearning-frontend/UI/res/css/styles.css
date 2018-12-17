@@ -28,6 +28,7 @@ body {
     font-size: 14px;
     background: #fff;
     border: 0px;
+    cursor: pointer;
 }
 
 .price-button {
@@ -58,6 +59,7 @@ body {
     background: #75D254;
     box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
     color: #fff;
+    cursor: pointer;
 }
 
 .small-btn {
@@ -70,6 +72,7 @@ body {
     color: #fff;
     font-weight: bold;
     font-size: 14px;
+    cursor: pointer;
 }
 
 button {
@@ -254,6 +257,18 @@ button {
     color: #666;
 }
 
+.tmodal-addon {
+    font-size: 14px;
+    font-weight: bold;
+    color: #888;
+}
+
+.tmodal-addon:hover {
+    font-size: 14px;
+    font-weight: bold;
+    color: #75D354;
+}
+
 .modal-top {
     background: #F8F9FB;
     border-radius: 15px 15px 0px 0px;
@@ -341,6 +356,7 @@ button {
     color: #fff;
     padding-left: 15px;
     padding-right: 15px;
+    cursor: pointer;
 }
 
 .sign-up-policy {
@@ -411,7 +427,6 @@ button {
 }
 
 .select-custom::after {
-    
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 14px;
