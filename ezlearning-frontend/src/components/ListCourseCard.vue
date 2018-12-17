@@ -7,15 +7,15 @@
       <div class="popular-left arrow-white left" style="display: none;">
         <img src="icons/home-right.png" width="10px">
       </div>
-      <div class="popular-right arrow-white right">
+      <div @click="popularClick()" class="popular-right arrow-white right">
         <img src="icons/home-left.png" width="10px">
       </div>
     </div>
     <div style="width: 100%; padding: 5px; overflow: hidden;">
       <div class="popular-list" style="width: 200%;">
-        <div class="tile-container-long" >
+        <div class="tile-container-long">
           <div v-for="courseItem in listCourse" :key="courseItem.id">
-              <CourseCard v-bind:course="courseItem"/>
+            <CourseCard v-bind:course="courseItem"/>
           </div>
         </div>
       </div>
@@ -36,7 +36,16 @@ export default {
     CourseCard
   },
   computed: {
-    ...mapState(["listCourse"]),
+    ...mapState(["listCourse"])
   },
+  methods: {
+    popularClick() {
+      var self = this;
+      this.$jQuery(event.target)
+        .parent(".popular")
+        .find(".popular-list")
+        .animate({ marginLeft: "-102%" }, 600);
+    }
+  }
 };
 </script>
