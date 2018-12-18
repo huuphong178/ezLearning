@@ -79,7 +79,7 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapState } from "vuex";
 
 export default {
   data() {
@@ -88,7 +88,9 @@ export default {
   props: {
     course: {}
   },
-  created() {},
+  computed: {
+    ...mapState(["user"])
+  },
   methods: {
     mouseleave() {
       this.$jQuery(event.target)
@@ -103,8 +105,10 @@ export default {
         .find(".tile-preview")
         .show();
     },
-    AddToCart(course) {
-      this.$store.dispatch("addCart", course);
+    AddToCart(course, user) {
+      if (user != null) {
+        this.$store.dispatch("addCart", course);
+      }
     }
   }
 };

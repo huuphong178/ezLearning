@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export default {
     init(ctx){
-      axios.get("http://192.168.0.202:3000/category").then(response => {
+      axios.get("http://localhost:3000/category").then(response => {
         if (response.status == 200){
           ctx.commit('SET_CATOGARIES', response.data);
         }
@@ -20,7 +20,7 @@ export default {
       // });
 
       //thống kê   chưa có api
-      // axios.get(`http://192.168.0.202:3000/statistic`).then(response => {
+      // axios.get(`http://localhost:3000/statistic`).then(response => {
       //   alert(JSON.stringify(response));
       //   if (response.status == 200){
       //     ctx.commit('SET_STATISTIC', response.data);
@@ -39,7 +39,7 @@ export default {
       // });
     },
     applySearch(ctx, query) {
-      axios.get(`http://192.168.0.202:3000/course/search?categoryname=${query}`).then(response => {
+      axios.get(`http://localhost:3000/course/search?categoryname=${query}`).then(response => {
         if (response.status == 200){
           ctx.commit('SET_COURSES_SEARCH', response.data);
         }
@@ -49,8 +49,8 @@ export default {
       
     },
     signIn(ctx, data){
-      axios.post(`http://192.168.0.202:3000/user/login`, data).then(response => {
-        if (response.status == 200){
+      axios.post(`http://localhost:3000/user/login`, data).then(response => {
+        if (response.data.status == "true"){
           ctx.commit('SET_USER', data);
         }
       }).catch(err => {
@@ -59,7 +59,7 @@ export default {
     },
     signUp(ctx, data){
       alert(JSON.stringify(data));
-      axios.post(`http://192.168.0.202:3000/signup`, data).then(response => {
+      axios.post(`http://localhost:3000/signup`, data).then(response => {
         if (response.status == 200){
           alert("success");
           this.signUp = true;
@@ -76,7 +76,7 @@ export default {
       ctx.commit('ADD_CART', course);
     },
     getCourseByCat(ctx, catId){ 
-      axios.get(`http://192.168.0.202:3000/course/search?catid=${catId}`).then(response => {
+      axios.get(`http://localhost:3000/course/search?catid=${catId}`).then(response => {
         alert(JSON.stringify(response));
         if (response.status == 200){
           ctx.commit('SET_COURSES_BY_CAT', response.data.courses);
@@ -86,7 +86,7 @@ export default {
       });
     },
     getAllCourses(ctx){
-      axios.get(`http://192.168.0.202:3000/course/`).then(response => {
+      axios.get(`http://localhost:3000/course/`).then(response => {
         alert(JSON.stringify(response));
         if (response.status == 200){
           ctx.commit('SET_COURSES_BY_CAT', response.data);
