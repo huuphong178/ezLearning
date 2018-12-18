@@ -196,9 +196,11 @@ function tmodalAction(iconToggle, title, msg, addonToggle, addonText, btnToggle,
         modal.find("#tmodal-yes").html(btnYes);
     }
     modal.find("#tmodal-no").click(function(){
+        modal.fadeOut();
         return 0;
     })
     modal.find("#tmodal-yes").click(function(){
+        modal.fadeOut();
         return 1;
     })
     modal.fadeIn();
