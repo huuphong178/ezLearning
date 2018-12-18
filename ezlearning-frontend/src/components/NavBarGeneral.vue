@@ -69,7 +69,9 @@
         >
           <span class="sign-up-btn" style="margin-left: 30px;">Kích hoạt</span>
           <img src="/icons/cart.png" width="16px" style="margin-left: 20px;">
-          <div class="cart" style="margin-left: 5px;">{{cart.length}}</div>
+          <router-link to="/cart">
+            <div class="cart" style="margin-left: 5px;">{{cart.length}}</div>
+          </router-link>
           <span id="nav-profile-s" style="cursor: pointer;">
             <div class="navbar-ava-container" style="margin-left: 20px;">
               <img src="/imgs/students/student1.png" class="navbar-ava-img">

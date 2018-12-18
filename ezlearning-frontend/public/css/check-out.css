@@ -1,0 +1,43 @@
+.co-section-title {
+    font-weight: bold;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #888;
+}
+
+ul.methods {
+    list-style-type: none;
+    margin-top: 0px;
+    margin-left: -20px;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.method-item {
+    border-radius: 15px;
+    height: 80px;
+    width: 230px;
+    padding: 20px;
+    margin-right: 20px;
+    text-align: center;
+    border-radius: 15px;
+    display: block;
+    float: left;
+}
+
+.method-item.enabled {
+    background: #FFFFFF;
+    box-shadow: 1px 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.method-item.disabled {
+    background: #FAFAFA;
+    -webkit-filter: grayscale(100%);
+    /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+}
+
+.method-item>img {
+    max-width:100%;
+    max-height:100%;
+}

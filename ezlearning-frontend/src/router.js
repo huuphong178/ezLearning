@@ -6,6 +6,7 @@ import Search from './views/Search.vue'
 import CourseDetail from './views/CourseDetail.vue'
 import Profile from './views/Profile.vue'
 import Lecture from './views/Lecture.vue'
+import Cart from './views/Cart.vue'
 
 Vue.use(Router);
 
@@ -42,6 +43,11 @@ var router = new Router({
       path: '/lecture/:courseid?:lectureid',
       name: 'Lecture',
       component: Lecture
+    },
+    {
+      path: '/cart',
+      name: 'Cart',
+      component: Cart
     }
   ]
 });
