@@ -201,3 +201,11 @@ $("#checkout-submit").click(function () {
         "Xem đơn hàng"
     );
 })
+
+$("#activate-btn").click(function(){
+    $("#act-modal").fadeIn("fast");
+})
+
+$("#amodal-close").click(function(){
+    $("#act-modal").fadeOut("fast");
+})

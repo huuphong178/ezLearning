@@ -38,6 +38,77 @@
         </div>
     </div>
 
+    <!--Activation Modal-->
+
+    <div id="act-modal" class="modal-backdrop" style="background-color: rgba(0,0,0,0.25); display: none;">
+        <div class="modal" role="dialog" style="display: block; padding-top: 25px;">
+            <div class="modal-dialog" role="document" style="width: 430px;">
+                <div class="modal-content modal-style" style="position: relative; border: none !important; border-radius: 10px;">
+                    <div class="modal-padding">
+                        <img id="amodal-close" src="res/icons/modal-close.png" width="13px" style="position: absolute; float: right; cursor: pointer; right: 30px;">
+                        <div class="tmodal-title" style="text-align: center;">Kích hoạt khóa học</div>
+                        <div class="tmodal-msg">
+                            <div>
+                                <label class="label-normal">Mã khóa học</label>
+                                <input class="input-normal" type="text" placeholder="Nhập mã khóa học">
+                            </div>
+                        </div>
+                        <button id="big-submit" class="big-button" style="width: 100%; margin-top: 15px;">Kích hoạt</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Chapter Modal-->
+
+    <div id="cadd-modal" class="modal-backdrop" style="background-color: rgba(0,0,0,0.25); display: none;">
+        <div class="modal" role="dialog" style="display: block; padding-top: 25px;">
+            <div class="modal-dialog" role="document" style="width: 430px;">
+                <div class="modal-content modal-style" style="position: relative; border: none !important; border-radius: 10px;">
+                    <div class="modal-padding">
+                        <img id="cmodal-close" src="res/icons/modal-close.png" width="13px" style="position: absolute; float: right; cursor: pointer; right: 30px;">
+                        <div class="tmodal-title" style="text-align: center;">Tạo chương mới</div>
+                        <div class="tmodal-msg">
+                            <div>
+                                <label class="label-normal">Tên chương</label>
+                                <input class="input-normal" type="text" placeholder="Nhập tên chương">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Lecture Modal-->
+
+    <div id="ladd-modal" class="modal-backdrop" style="background-color: rgba(0,0,0,0.25); display: none;">
+        <div class="modal" role="dialog" style="display: block; padding-top: 25px;">
+            <div class="modal-dialog" role="document" style="width: 430px;">
+                <div class="modal-content modal-style" style="position: relative; border: none !important; border-radius: 10px;">
+                    <div class="modal-padding">
+                        <img id="lmodal-close" src="res/icons/modal-close.png" width="13px" style="position: absolute; float: right; cursor: pointer; right: 30px;">
+                        <div class="tmodal-title" style="text-align: center;">Tạo bài giảng mới</div>
+                        <div class="tmodal-msg">
+                            <div>
+                                <label class="label-normal">Tên bài giảng</label>
+                                <input class="input-normal" type="text" placeholder="Nhập tên bài giảng">
+                            </div>
+                            <label class="label-normal">Video</label>
+                            <input type="file" id="upload-input" style="display:none;">
+                            <label for="upload-input" id="custom-upload">
+                                <span class="small-btn" style="padding: 10px 20px;">Chọn tệp</span>
+                                <span id="filename" style="margin-left: 15px; font-size: 14px;">Chưa chọn tệp</span>
+                            </label>
+                        </div>
+                        <button id="big-submit" class="big-button" style="width: 100%; margin-top: 15px;">Tạo bài giảng</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!--Navbar-->
 
     <div class="navbar" style="width: 100%; position: fixed; z-index: 15;">
@@ -83,7 +154,7 @@
                     </div>
                 </div>
                 <div id="logged-in-student" class="col-sm text-right" style="width: 40%; display: block;">
-                    <span class="sign-up-btn" style="margin-left: 30px;">Kích hoạt</span>
+                    <span id="activate-btn" class="sign-up-btn" style="margin-left: 30px;">Kích hoạt</span>
                     <img src="res/icons/cart.png" width="16px" style="margin-left: 20px;">
                     <div class="cart" style="margin-left: 5px;">0</div>
                     <span id="nav-profile-s" style="cursor: pointer;">
@@ -121,7 +192,6 @@
 
         <div class="page-title">
             Quản lý bài giảng
-            <button id="checkout-submit" class="big-button" style="width: 150px; float: right">Lưu</button>
         </div>
 
         <!--Content-->
@@ -138,19 +208,20 @@
                 <!--Chapter list-->
 
                 <div class="chapter-list">
-                    <div class="chapter container">
+
+                    <div id="test" class="chapter container">
                         <div class="row">
                             <div class="col-sm-1">1</div>
                             <div class="col-sm-9">Phần 1: Tìm hiểu về Javascript</div>
                             <div class="col-sm-2" style="text-align: right">
                                 <div>
-                                    <img src="res/icons/lecture-create/add.png" width="15px" class="btn-img">
-                                    <img src="res/icons/lecture-create/delete.png" width="16px" class="btn-img">
-                                    <img src="res/icons/lecture-create/edit.png" width="15px" class="btn-img">
+                                    <img src="res/icons/lecture-create/add.png" width="15px" class="btn-img add-btn">
+                                    <img src="res/icons/lecture-create/delete.png" width="16px" class="btn-img delete-btn">
+                                    <img src="res/icons/lecture-create/edit.png" width="15px" class="btn-img edit-btn">
                                 </div>
                             </div>
 
-                            <div class="container">
+                            <div class="lecture-list container">
                                 <div class="row lecture">
                                     <div class="col-sm-1"></div>
                                     <div class="col-sm-9">
@@ -166,70 +237,18 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-2" style="text-align: right">
-                                        <img src="res/icons/lecture-create/delete.png" width="16px" class="btn-img">
-                                        <img src="res/icons/lecture-create/edit.png" width="15px" class="btn-img">
-                                    </div>
-                                </div>
-                                <div class="row lecture">
-                                    <div class="col-sm-1"></div>
-                                    <div class="col-sm-9">
-                                        <div class="row">
-                                            <div class="col-sm-1"></div>
-                                            <div class="col-sm-11">
-                                                <div class="row">
-                                                    <div class="col-sm-6">
-                                                        <input class="input-normal lecture-title" type="text"
-                                                            placeholder="Bài 22: Project: Lời hay ý đẹp">
-                                                    </div>
-                                                    <div class="col-sm-6">
-                                                        <input type="file" id="upload-input" style="display:none;">
-                                                        <label for="upload-input" id="custom-upload">
-                                                            <span class="small-btn" style="padding: 8px 20px;">Chọn
-                                                                tệp</span>
-                                                            <span id="filename" style="margin-left: 15px; font-size: 14px;">Chưa
-                                                                chọn tệp</span>
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2" style="text-align: right">
-                                        <img src="res/icons/lecture-create/delete.png" width="16px" class="btn-img">
-                                        <img src="res/icons/lecture-create/edit.png" width="15px" class="btn-img">
+                                        <img src="res/icons/lecture-create/delete.png" width="16px" class="btn-img ldelete-btn">
+                                        <img src="res/icons/lecture-create/edit.png" width="15px" class="btn-img ledit-btn">
                                     </div>
                                 </div>
                             </div>
 
                         </div>
                     </div>
-
-                    <div class="chapter container">
-
-                        <div class="row">
-                            <div class="col-sm-1">
-                                <input class="input-small" type="number" placeholder="2" style="width: 100% !important; text-align: center">
-                            </div>
-                            <div class="col-sm-6">
-                                <input class="input-small" type="text" placeholder="Phần 2: DEF" style="width: 100% !important">
-                            </div>
-                            <div class="col-sm-3">
-                                <button class="small-btn" style="margin-left: 10px;">Hoàn tất</button>
-                            </div>
-                            <div class="col-sm-2" style="text-align: right">
-                                <div style="display: none;">
-                                    <img src="res/icons/lecture-create/add.png" width="15px" class="btn-img">
-                                    <img src="res/icons/lecture-create/delete.png" width="16px" class="btn-img">
-                                    <img src="res/icons/lecture-create/edit.png" width="15px" class="btn-img">
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <button class="small-btn" style="margin-left: 10px;">Thêm bài giảng</button>
 
                 </div>
+
+                <button id="new-course" class="small-btn" style="margin-left: -50px;">Thêm bài giảng</button>
 
             </div>
 
@@ -301,7 +320,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="res/js/scripts.js"></script>
     <script src="res/js/tile.js"></script>
-    <script src="res/js/course-create.js"></script>
+    <script src="res/js/lecture-create.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"></script>
