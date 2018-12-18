@@ -38,6 +38,9 @@ export default {
       //   alert("Error:" + err);
       // });
     },
+    setIsLogged(ctx, data) {
+      ctx.commit('SET_LOGGED', data);
+    },
     applySearch(ctx, query) {
       axios.get(`http://localhost:3000/course/search?categoryname=${query}`).then(response => {
         if (response.status == 200){
