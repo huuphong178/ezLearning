@@ -7,11 +7,11 @@
           <router-link to="/">
             <img src="/icons/logos/navbar.png" width="138px">
           </router-link>
-          <span style="margin-left: 50px" id="nav-cats">
+          <span @mouseenter="navCatMouseEnter()" style="margin-left: 50px" id="nav-cats">
             Danh mục
             <img src="/icons/more-cat.png" width="11px" style="margin-left: 15px">
           </span>
-          <div
+          <div @mouseenter="dropdownCatsMouseEnter()" @mouseleave="dropdownCatsMouseLeave()"
             id="dropdown-cats"
             class="menu-dropdown"
             style="display: none; left: 75px; min-width: 350px !important;"
@@ -223,6 +223,15 @@ export default {
 
   },
   methods: {
+    dropdownCatsMouseEnter() {
+      this.$jQuery(event.target).fadeIn("fast");
+    },
+    navCatMouseEnter(){
+      this.$jQuery(event.target).parent().find("#dropdown-cats").fadeIn("fast");
+    },
+    dropdownCatsMouseLeave() {
+      this.$jQuery(event.target).fadeOut("fast");
+    },
     ...mapActions(["applySearch"]),
     ...mapActions(["signIn"]),
     ...mapActions(["signUp"]),

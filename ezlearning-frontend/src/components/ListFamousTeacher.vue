@@ -4,10 +4,20 @@
       <span class="section-title">Giảng viên tiêu biểu</span>
     </div>
     <div style="position: relative; width: 100%">
-      <div id="fteachers-left" class="arrow-white left" style="margin-top: 200px; display: none;">
+      <div
+        @click="fteachersLeftClick()"
+        id="fteachers-left"
+        class="arrow-white left"
+        style="margin-top: 200px; display: none;"
+      >
         <img src="icons/home-right.png" width="10px">
       </div>
-      <div id="fteachers-right" class="arrow-white right" style="margin-top: 200px;">
+      <div
+        @click="fteachersRightClick()"
+        id="fteachers-right"
+        class="arrow-white right"
+        style="margin-top: 200px;"
+      >
         <img src="icons/home-left.png" width="10px">
       </div>
     </div>
@@ -16,7 +26,7 @@
     >
       <div id="fteachers-list" style="width: 200%; height: 600px;">
         <div class="fteachers-container">
-            <FamousTeacher/>
+          <FamousTeacher/>
         </div>
       </div>
     </div>
@@ -24,12 +34,46 @@
 </template>
 
 <script>
-import FamousTeacher from '@/components/FamousTeacher.vue'
+import FamousTeacher from "@/components/FamousTeacher.vue";
 
 export default {
-  name: 'home',
+  name: "home",
   components: {
     FamousTeacher
+  },
+  methods: {
+    fteachersLeftClick() {
+      this.$jQuery(event.target)
+        .parents("#fteachers")
+        .find("#fteachers-list")
+        .animate(
+          {
+            marginLeft: "0%"
+          },
+          600
+        );
+      this.$jQuery(event.target)
+        .parents("#fteachers")
+        .find("#fteachers-right")
+        .fadeIn("fast");
+      this.$jQuery(event.target).fadeOut("fast");
+    },
+    fteachersRightClick() {
+      this.$jQuery(event.target)
+        .parents("#fteachers")
+        .find("#fteachers-list")
+        .animate(
+          {
+            marginLeft: "-102%"
+          },
+          600
+        );
+      this.$jQuery(event.target).fadeOut("fast");
+      this.$jQuery(event.target)
+        .parents("#fteachers")
+        .find("#fteachers-left")
+        .fadeIn("fast");
+    }
   }
-}
+};
 </script>
