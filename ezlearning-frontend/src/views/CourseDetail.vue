@@ -536,6 +536,8 @@ export default {
       } else {
         this.notLogged = true;
       }
+    } else {
+      next();
     }
   }
 };
