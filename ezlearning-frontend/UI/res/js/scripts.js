@@ -175,6 +175,7 @@ function tmodalAction(iconToggle, title, msg, addonToggle, addonText, btnToggle,
     //btnToggle: 1 - hiện dải nút, khác - không hiện
     //btnNo: nội dung nút Hủy
     //btnYes: nội dung nút Đồng ý
+    //return 0: hủy, return 1: đồng ý
     
     var modal = $("#modal-template");
     modal.find(".tmodal-title").html(title);
@@ -195,12 +196,10 @@ function tmodalAction(iconToggle, title, msg, addonToggle, addonText, btnToggle,
         modal.find("#tmodal-yes").html(btnYes);
     }
     modal.find("#tmodal-no").click(function(){
-        alert(0);
         return 0;
     })
     modal.find("#tmodal-yes").click(function(){
-        alert(1);
-        return 0;
+        return 1;
     })
     modal.fadeIn();
     modal.find("#tmodal-close").click(function () {
