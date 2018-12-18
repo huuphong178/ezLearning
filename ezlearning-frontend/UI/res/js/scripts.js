@@ -166,12 +166,15 @@ $("#su-si-close").click(function () {
     $("#su-si-modal").fadeOut("fast");
 })
 
-function tmodalAction(iconToggle, title, msg, addonToggle, addonText) {
+function tmodalAction(iconToggle, title, msg, addonToggle, addonText, btnToggle, btnNo, btnYes) {
     //iconToggle: 1 - hiện icon thành công, 0 - hiện icon thất bại, khác - không hiện
     //title: tiêu đề thông báo
     //msg: nội dung thông báo
     //addonToggle: 1 - hiện link dẫn đến trang khác (như Tất cả khóa học), khác - không hiện
     //addon Text: nội dung link nếu addonToggle == 1
+    //btnToggle: 1 - hiện dải nút, khác - không hiện
+    //btnNo: nội dung nút Hủy
+    //btnYes: nội dung nút Đồng ý
     
     var modal = $("#modal-template");
     modal.find(".tmodal-title").html(title);
@@ -186,6 +189,19 @@ function tmodalAction(iconToggle, title, msg, addonToggle, addonText) {
         modal.find("#addon").show();
         modal.find("#addon-text").html(addonText);
     }
+    if (btnToggle == 1) {
+        modal.find(".tmodal-btn").show();
+        modal.find("#tmodal-no").html(btnNo);
+        modal.find("#tmodal-yes").html(btnYes);
+    }
+    modal.find("#tmodal-no").click(function(){
+        alert(0);
+        return 0;
+    })
+    modal.find("#tmodal-yes").click(function(){
+        alert(1);
+        return 0;
+    })
     modal.fadeIn();
     modal.find("#tmodal-close").click(function () {
         modal.fadeOut();
@@ -197,8 +213,11 @@ $("#checkout-submit").click(function () {
         1,
         "Thanh toán thành công",
         "Bạn đã thanh toán thành công khóa học",
+        0,
+        "Xem đơn hàng",
         1,
-        "Xem đơn hàng"
+        "Hủy",
+        "Xóa"
     );
 })
 
