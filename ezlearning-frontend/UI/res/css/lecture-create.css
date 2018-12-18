@@ -12,3 +12,41 @@
     font-size: 13px;
     text-transform: uppercase;
 }
+
+.chapter-title {
+    font-size: 18px;
+    font-weight: normal;
+}
+
+.lecture-title {
+    font-size: 16px;
+    font-weight: normal;
+    color: #888;
+}
+
+.upload-status {
+    font-size: 14px;
+    font-weight: bold;
+    color: #888;
+}
+
+.chapter-list {
+    margin: 30px -50px 0 -50px;
+}
+
+.lecture {
+    margin-top: 10px;
+}
+
+.chapter.container {
+    border: 0px;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ccc !important;
+}
+
+.btn-img{
+    margin-left: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+}
