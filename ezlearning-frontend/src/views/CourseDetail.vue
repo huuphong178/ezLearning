@@ -512,13 +512,12 @@
 
 <script>
 // import * as query from "../assets/course-detail.js";
-import { mapState } from "vuex";
+import { mapState, mapActions } from "vuex";
 import FormLogin from "@/components/FormLogin.vue"
 
 export default {
   data() {
     return {
-      notLogged: false
     }
   },
   components:{
@@ -532,8 +531,7 @@ export default {
       if (this.user != null) {
         next();
       } else {
-        alert("notLogged");
-        this.notLogged = true;
+      this.$store.dispatch("setIsLogged", true);
       }
     } else {
       next();

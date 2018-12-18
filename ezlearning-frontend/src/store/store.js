@@ -6,6 +6,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    isLogged: false,
     catogaries: [],  //for page courses-by-cat,
     listCourse: [
       {
@@ -26,6 +27,10 @@ export default new Vuex.Store({
     cart: []
   },
   mutations: {
+    SET_LOGGED(state, payload)
+    {
+      state.isLogged = payload;
+    },
     SET_CATOGARIES(state, payload)
     {
       state.catogaries = payload;

@@ -8,8 +8,8 @@
         >
           <div class="modal-top">
             <div class="modal-top-tab" style="width: 80%;">
-              <div id="sign-up-tab" class="modal-tab-item active" style="float: left">Đăng ký</div>
-              <div
+              <div @click="signUpModal()" id="sign-up-tab" class="modal-tab-item active" style="float: left">Đăng ký</div>
+              <div @click="signInModal()"
                 id="sign-in-tab"
                 class="modal-tab-item"
                 style="float: left; margin-left: 10px;"
@@ -121,6 +121,20 @@ name: "FormLogin",
     ...mapActions(["signIn"]),
     ...mapActions(["signUp"]),
 
+    signInModal() {
+    this.$jQuery("#sign-up-modal").hide();
+    this.$jQuery("#sign-in-modal").show();
+    this.$jQuery("#sign-up-tab").removeClass("active");
+    this.$jQuery("#sign-in-tab").addClass("active");
+    },
+
+    signUpModal() {
+    this.$jQuery("#sign-up-modal").show();
+    this.$jQuery("#sign-in-modal").hide();
+    this.$jQuery("#sign-in-tab").removeClass("active");
+    this.$jQuery("#sign-up-tab").addClass("active");
+    },
+
     SignInFacebook() {},
     SignUpFacebook() {},
 
@@ -130,6 +144,7 @@ name: "FormLogin",
 
       this.dataSignIn = {};
       this.dataSignUp = {};
+      this.$store.dispatch("setIsLogged", false);
     }
   },
 };
