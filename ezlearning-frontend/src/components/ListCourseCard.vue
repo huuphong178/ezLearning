@@ -4,10 +4,10 @@
       <span class="section-title">{{sectionTitle}}</span>
     </div>
     <div style="position: relative; width: 100%">
-      <div class="popular-left arrow-white left" style="display: none;">
+      <div @click="popularLeftClick()" class="popular-left arrow-white left" style="display: none;">
         <img src="icons/home-right.png" width="10px">
       </div>
-      <div @click="popularClick()" class="popular-right arrow-white right">
+      <div @click="popularRightClick()" class="popular-right arrow-white right">
         <img src="icons/home-left.png" width="10px">
       </div>
     </div>
@@ -39,12 +39,27 @@ export default {
     ...mapState(["listCourse"])
   },
   methods: {
-    popularClick() {
-      var self = this;
+    popularLeftClick() {
       this.$jQuery(event.target)
-        .parent(".popular")
+        .parents(".popular")
+        .find(".popular-list")
+        .animate({marginLeft: "0%"}, 600);
+      this.$jQuery(event.target).fadeOut("fast");
+      this.$jQuery(event.target)
+        .parents(".popular")
+        .find(".popular-right")
+        .fadeIn("fast");
+    },
+    popularRightClick() {
+      this.$jQuery(event.target)
+        .parents(".popular")
         .find(".popular-list")
         .animate({ marginLeft: "-102%" }, 600);
+      this.$jQuery(event.target).fadeOut("fast");
+      this.$jQuery(event.target)
+        .parents(".popular")
+        .find(".popular-left")
+        .fadeIn("fast");
     }
   }
 };
