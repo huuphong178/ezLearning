@@ -4,7 +4,7 @@
     @mouseleave="mouseleave()"
     style="height: 100%; position: relative;"
   >
-    <div class="tile-price" v-on:click="AddToCart(course)">
+    <div class="tile-price" v-on:click="AddToCart(course, user)">
       <button class="price-button">{{course.price}} đ</button>
     </div>
     <div class="tile tile-course">
@@ -108,6 +108,9 @@ export default {
     AddToCart(course, user) {
       if (user != null) {
         this.$store.dispatch("addCart", course);
+      }
+      else {
+        
       }
     }
   }

@@ -1,8 +1,6 @@
 <template>
   <div style="position: relative">
-    <!-- <div v-if="notLogged === true">
-        <FormLogin/>
-    </div> -->
+    <FormLogin v-if="user == null && notLogged"></FormLogin>
 
     <div style="height: 60px; content: ''"></div>
 
@@ -534,6 +532,7 @@ export default {
       if (this.user != null) {
         next();
       } else {
+        alert("notLogged");
         this.notLogged = true;
       }
     }
