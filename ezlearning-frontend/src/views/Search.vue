@@ -13,10 +13,10 @@
             <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
               Đánh giá &ensp;
               <select>
-                <option value="volvo">4 sao trở lên</option>
-                <option value="saab">3 sao trở lên</option>
-                <option value="opel">2 sao trở lên</option>
-                <option value="audi">1 sao trở lên</option>
+                <option value="4">4 sao trở lên</option>
+                <option value="3">3 sao trở lên</option>
+                <option value="2">2 sao trở lên</option>
+                <option value="1">1 sao trở lên</option>
               </select>
             </div>
 

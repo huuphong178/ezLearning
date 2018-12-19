@@ -35,7 +35,7 @@
               <div class="tmodal-msg"></div>
             </div>
             <div id="addon" class="dropdown-addon tmodal-addon" style="display:none;">
-              <router-link :to="`/profile/${user.role}?${user.id}`">
+              <router-link :to="`/profile-student/${user.role}?${user.name}`">
                 <span id="addon-text"></span>
               </router-link>
               <img

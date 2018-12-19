@@ -4,10 +4,13 @@ import Home from './views/Home.vue'
 import CoursesByCat from './views/CoursesByCat.vue'
 import Search from './views/Search.vue'
 import CourseDetail from './views/CourseDetail.vue'
-import Profile from './views/Profile.vue'
+import ProfileStudent from './views/ProfileStudent.vue'
 import Lecture from './views/Lecture.vue'
 import Cart from './views/Cart.vue'
 import Checkout from './views/Checkout.vue'
+import CourseCreate from './views/CourseCreate.vue'
+import LectureCreate from './views/LectureCreate.vue'
+import ProfileTeacher from './views/ProfileTeacher.vue'
 
 Vue.use(Router);
 
@@ -36,9 +39,14 @@ var router = new Router({
       component: CourseDetail
     },
     {
-      path: '/profile/:role?:userid',
-      name: 'Profile',
-      component: Profile
+      path: '/profile-student/:role?:userid',
+      name: 'ProfileStudent',
+      component: ProfileStudent
+    },
+    {
+      path: '/profile-teacher/:role?:userid',
+      name: 'ProfileTeacher',
+      component: ProfileTeacher
     },
     {
       path: '/lecture/:courseid?:lectureid',
@@ -54,6 +62,16 @@ var router = new Router({
       path: '/checkout',
       name: 'Checkout',
       component: Checkout
+    },
+    {
+      path: '/course-create',
+      name: 'CourseCreate',
+      component: CourseCreate
+    },
+    {
+      path: '/lecture-create',
+      name: 'LectureCreate',
+      component: LectureCreate
     }
   ]
 });

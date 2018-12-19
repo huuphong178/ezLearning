@@ -4,6 +4,10 @@ import actions from './actions'
 
 Vue.use(Vuex)
 
+// function ParseBlobToImage(Blob blob){
+
+// }
+
 export default new Vuex.Store({
   state: {
     isLogged: false,
@@ -23,7 +27,7 @@ export default new Vuex.Store({
     courseByCat: [],
     coursesSearch: [], //for page search
     user: null,
-    cart: []
+    cart: [],
   },
   mutations: {
     SET_LOGGED(state, payload) {

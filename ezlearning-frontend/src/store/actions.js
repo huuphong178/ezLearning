@@ -53,9 +53,9 @@ export default {
     },
     signIn(ctx, data){
       axios.post(`http://localhost:3000/user/login`, data).then(response => {
-        if (response.data.status == "true"){
+        if (response.data != null){
           alert(JSON.stringify(response.data));
-          ctx.commit('SET_USER', data);
+          ctx.commit('SET_USER', response.data);
         }
       }).catch(err => {
         alert(err);

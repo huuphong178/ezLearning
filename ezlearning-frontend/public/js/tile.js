@@ -1,4 +1,3 @@
-$(document).ready(function () {
 $(".tile-course").hover(
     function () {
         $(this).parent("div").find(".tile-preview").show();
@@ -18,5 +17,4 @@ $("#popular-left").click(function(){
     $("#popular-list").animate({marginLeft: "0%"}, 600);
     $("#popular-right").fadeIn("fast");
     $("#popular-left").fadeOut("fast");
-})
 })

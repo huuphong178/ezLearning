@@ -1,4 +1,3 @@
-$(document).ready(function () {
 $("#fteachers-right").click(function () {
     $("#fteachers-list").animate({
         marginLeft: "-102%"
@@ -128,42 +127,77 @@ $("#sign-in-tab").click(function () {
 })
 
 function suWarning(msg) {
-    $("#su-warn").css("opacity","0");
+    $("#su-warn").css("opacity", "0");
     setTimeout(function () {
-        $("#su-warn").animate({opacity: "1"},200);
+        $("#su-warn").animate({ opacity: "1" }, 200);
     }, 50);
     $("#su-warn").text(msg);
 }
 
 function siWarning(msg) {
-    $("#si-warn").css("opacity","0");
+    $("#si-warn").css("opacity", "0");
     setTimeout(function () {
-        $("#si-warn").animate({opacity: "1"},200);
+        $("#si-warn").animate({ opacity: "1" }, 200);
     }, 50);
     $("#si-warn").text(msg);
 }
 
-$("#sign-up-submit").click(function(){
+$("#sign-up-submit").click(function () {
     $("#su-warn").show();
     suWarning("Test 1");
 })
 
-$("#sign-in-submit").click(function(){
+$("#sign-in-submit").click(function () {
     $("#si-warn").show();
-    siWarning("Đăng nhập không thành công, vui lòng thử lại");
+    siWarning("Test 2");
 })
 
-$(".sign-up-btn").click(function(){
+$(".sign-up-btn").click(function () {
     $("#su-si-modal").fadeIn("fast");
     signUpModal();
 })
 
-$(".sign-in-btn").click(function(){
+$(".sign-in-btn").click(function () {
     $("#su-si-modal").fadeIn("fast");
     signInModal();
 })
 
-$("#su-si-close").click(function(){
+$("#su-si-close").click(function () {
     $("#su-si-modal").fadeOut("fast");
 })
+
+function tmodalAction(iconToggle, title, msg, addonToggle, addonText) {
+    //iconToggle: 1 - hiện icon thành công, 0 - hiện icon thất bại, khác - không hiện
+    //title: tiêu đề thông báo
+    //msg: nội dung thông báo
+    //addonToggle: 1 - hiện link dẫn đến trang khác (như Tất cả khóa học), khác - không hiện
+    //addon Text: nội dung link nếu addonToggle == 1
+    
+    var modal = $("#modal-template");
+    modal.find(".tmodal-title").html(title);
+    modal.find(".tmodal-msg").html(msg);
+    if (iconToggle == 0) {
+        modal.find("#tmodal-failure").show();
+    }
+    else if (iconToggle == 1) {
+        modal.find("#tmodal-success").show();
+    }
+    if (addonToggle == 1) {
+        modal.find("#addon").show();
+        modal.find("#addon-text").html(addonText);
+    }
+    modal.fadeIn();
+    modal.find("#tmodal-close").click(function () {
+        modal.fadeOut();
+    });
+}
+
+$("#checkout-submit").click(function () {
+    tmodalAction(
+        1,
+        "Thanh toán thành công",
+        "Bạn đã thanh toán thành công khóa học",
+        1,
+        "Xem đơn hàng"
+    );
 })

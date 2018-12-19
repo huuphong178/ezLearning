@@ -59,24 +59,26 @@
             <span @click="setIsLogged(true)" class="sign-in-btn">Đăng nhập</span>
             <span @click="setIsLogged(true)" class="sign-up-btn" style="margin-left: 30px;">Đăng ký</span>
           </div>
+          <!-- student -->
           <div
-            v-if="user != null"
+            v-if="user != null && user.role == 3"
             id="logged-in-student"
             class="col-sm text-right"
             style="width: 40%"
           >
             <span class="sign-up-btn" style="margin-left: 30px;">Kích hoạt</span>
             <img src="/icons/cart.png" width="16px" style="margin-left: 20px;">
-          <router-link to="/cart">
-            <div class="cart" style="margin-left: 5px;">{{cart.length}}</div>
-          </router-link>
-            <span id="nav-profile-s" style="cursor: pointer;">
+            <router-link to="/cart">
+              <div class="cart" style="margin-left: 5px;">{{cart.length}}</div>
+            </router-link>
+            <span id="nav-profile-s" style="cursor: pointer;" v-on:click="DropdownProfile()">
               <div class="navbar-ava-container" style="margin-left: 20px;">
                 <img src="/imgs/students/student1.png" class="navbar-ava-img">
               </div>
               <img src="/icons/more-cat.png" width="11px" style="margin-left: 10px">
             </span>
             <div
+              @mouseleave="DropdownProfileFadeOut()"
               id="dropdown-profile"
               class="menu-dropdown"
               style="display: none; right: -60px; min-width: 230px; text-align: left;"
@@ -91,6 +93,43 @@
                 </div>
               </div>
               <div class="dropdown-addon" v-on:click="logOut()">Đăng xuất</div>
+            </div>
+          </div>
+          <!-- teacher -->
+          <div
+            v-if="user != null && user.role == 2"
+            id="logged-in-teacher-b"
+            class="col-sm text-right"
+            style="width: 40%"
+          >
+            <router-link to="/course-create">
+              <span class="sign-up-btn white" style="margin-left: 30px;">Tạo khóa học</span>
+            </router-link>
+            <span id="nav-profile-banner-t" style="cursor: pointer;" v-on:click="DropdownProfile()">
+              <div class="navbar-ava-container" style="margin-left: 20px;">
+                <!-- <img src="/imgs/students/student1.png" class="navbar-ava-img"> -->
+                <img class="navbar-ava-img" src alt="Image teacher">
+              </div>
+              <img src="/icons/more-cat.png" width="11px" style="margin-left: 10px">
+              <!-- <img src="/icons/more-cat-white.png" width="11px" style="margin-left: 10px"> -->
+            </span>
+            <div
+              @mouseleave="DropdownProfileFadeOut()"
+              id="dropdown-profile"
+              class="menu-dropdown"
+              style="display: none; right: -60px; min-width: 230px; text-align: left;"
+            >
+            <router-link :to="`/profile-teacher/${user.role}?${user.name}`">
+              <div class="dropdown-addon-top" style="font-weight: bold;">Võ Thịnh Chuẩn</div>
+              </router-link>
+              <div class="dropdown-content">
+                <div class="dropdown">
+                  <ul>
+                    <li>Các khóa học của tôi</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="dropdown-addon">Đăng xuất</div>
             </div>
           </div>
         </div>
@@ -113,15 +152,23 @@ export default {
   computed: {
     ...mapState(["catogaries"]),
     ...mapState(["cart"]),
-    ...mapState(["user"]),
-
+    ...mapState(["user"])
   },
   methods: {
+    DropdownProfile() {
+      this.$jQuery("#dropdown-profile").show();
+    },
+    DropdownProfileFadeOut() {
+      this.$jQuery("#dropdown-profile").fadeOut("fast");
+    },
     dropdownCatsMouseEnter() {
       this.$jQuery(event.target).fadeIn("fast");
     },
-    navCatMouseEnter(){
-      this.$jQuery(event.target).parent().find("#dropdown-cats").fadeIn("fast");
+    navCatMouseEnter() {
+      this.$jQuery(event.target)
+        .parent()
+        .find("#dropdown-cats")
+        .fadeIn("fast");
     },
     dropdownCatsMouseLeave() {
       this.$jQuery(event.target).fadeOut("fast");
@@ -139,12 +186,12 @@ export default {
 
       this.dataSignIn = {};
       this.dataSignUp = {};
-    },
+    }
   },
   watch: {
     $route(to, from) {
       this.query = "";
-    }
+    },
   }
 };
 </script>
