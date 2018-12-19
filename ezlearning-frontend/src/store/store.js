@@ -7,9 +7,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     isLogged: false,
-    catogaries: [],  //for page courses-by-cat,
-    listCourse: [
-      {
+    catogaries: [], //for page courses-by-cat,
+    listCourse: [{
         id: 5,
         name: "Vẽ 3D"
       },
@@ -22,44 +21,45 @@ export default new Vuex.Store({
     statistic: [],
     saleCoureses: [],
     courseByCat: [],
-    coursesSearch: [],  //for page search
+    coursesSearch: [], //for page search
     user: null,
     cart: []
   },
   mutations: {
-    SET_LOGGED(state, payload)
-    {
+    SET_LOGGED(state, payload) {
       state.isLogged = payload;
     },
-    SET_CATOGARIES(state, payload)
-    {
+    SET_CATOGARIES(state, payload) {
       state.catogaries = payload;
     },
-    SET_BANNER(state, payload)
-    {
+    SET_BANNER(state, payload) {
       state.courseBanner = payload;
     },
-    SET_STATISTIC(state, payload){
+    SET_STATISTIC(state, payload) {
       state.statistic = payload;
     },
-    SET_SALE(state, payload){
+    SET_SALE(state, payload) {
       state.saleCourese = payload;
     },
     SET_COURSES_SEARCH(state, payload) {
       state.coursesSearch = payload;
     },
-    SET_USER(state , payload){
+    SET_USER(state, payload) {
       state.user = payload;
     },
-    UPDATE_LOGIN_STATUS(state){
+    UPDATE_LOGIN_STATUS(state) {
       state.cart = {};
     },
-    ADD_CART(state, payload){
-        state.cart.push(payload);
+    ADD_CART(state, payload) {
+      state.cart.push(payload);
     },
-    SET_COURSES_BY_CAT(state, payload){
+    SET_COURSES_BY_CAT(state, payload) {
       state.courseByCat = payload;
-    }
+    },
+    REMOVE_CART_ITEM(state, payload) {
+      var index = state.cart.indexOf(payload);
+      state.cart.splice(index, 1);
+    },
   },
   actions,
 })

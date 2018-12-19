@@ -7,6 +7,7 @@ import CourseDetail from './views/CourseDetail.vue'
 import Profile from './views/Profile.vue'
 import Lecture from './views/Lecture.vue'
 import Cart from './views/Cart.vue'
+import Checkout from './views/Checkout.vue'
 
 Vue.use(Router);
 
@@ -48,6 +49,11 @@ var router = new Router({
       path: '/cart',
       name: 'Cart',
       component: Cart
+    },
+    {
+      path: '/checkout',
+      name: 'Checkout',
+      component: Checkout
     }
   ]
 });

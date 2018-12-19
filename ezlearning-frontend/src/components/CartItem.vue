@@ -9,9 +9,9 @@
       <div class="col-sm-8 cart-item-info" style="padding-right: 0px">
         <div class="row">
           <div class="col-sm-11">
-            <span class="cart-item-title">Nhập môn ngôn ngữ lập trình Javascript</span>
+            <span class="cart-item-title">{{cartItem.name}}</span>
           </div>
-          <div class="col-sm-1">
+          <div class="col-sm-1" v-on:click="DeleteItem(cartItem)">
             <img src="/icons/lecture-create/delete.png" width="16px" class="btn-img">
           </div>
         </div>
@@ -28,3 +28,18 @@
     </div>
   </div>
 </template>
+
+<script>
+
+export default {
+  props:{
+    cartItem: {}
+  },
+  methods:{
+    DeleteItem(cartItem){
+      alert("Xóa khỏi giỏ hàng");
+      this.$store.dispatch("removeCartItem", cartItem);
+    }
+  }
+}
+</script>

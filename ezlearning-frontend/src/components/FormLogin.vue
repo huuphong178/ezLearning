@@ -118,9 +118,11 @@ name: "FormLogin",
     ...mapState(["signInSuccess"])
   },
   methods: {
-    ...mapActions(["signIn"]),
     ...mapActions(["signUp"]),
-
+    signIn(dataSignIn){
+      this.$store.dispatch("signIn", dataSignIn);
+      this.$store.dispatch("setIsLogged", false);      
+    },
     signInModal() {
     this.$jQuery("#sign-up-modal").hide();
     this.$jQuery("#sign-in-modal").show();

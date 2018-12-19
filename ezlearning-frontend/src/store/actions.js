@@ -54,6 +54,7 @@ export default {
     signIn(ctx, data){
       axios.post(`http://localhost:3000/user/login`, data).then(response => {
         if (response.data.status == "true"){
+          alert(JSON.stringify(response.data));
           ctx.commit('SET_USER', data);
         }
       }).catch(err => {
@@ -97,5 +98,8 @@ export default {
       }).catch(err => {
         alert(err);
       });
+    },
+    removeCartItem(ctx, cartItem){
+      ctx.commit('REMOVE_CART_ITEM', cartItem);
     }
   }
