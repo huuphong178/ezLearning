@@ -75,7 +75,7 @@ public class UserHandler extends BaseHandler {
                 String password = obj.get("password").getAsString();
                 User ret = bus.login(username, password);
                 if (ret != null) {
-                    out.print("{\"status\": \"true\"}");
+                    out.print(gson.toJson(ret));
                 } else {
                     out.print("{\"status\": \"false\"}");
                 }
