@@ -8,6 +8,7 @@ package handler;
 import bus.LectureBUS;
 import dao.LectureDAO;
 import dto.Lecture;
+import dto.LectureExt;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
@@ -49,6 +50,28 @@ public class LectureHandler extends BaseHandler{
                 
                 if(!listLecture.isEmpty())
                     return gson.toJson(listLecture);
+            break;    
+            case "/course":
+                String queryCourseID = req.getQueryString(); 
+                Collection<LectureExt> listLectureExt = new ArrayList<>();
+                if(!StringUtil.isEmpty(queryCourseID)){
+                    Map<String, String> params = StringUtil.getParams(queryCourseID, "&");
+                    String id = params.get("id");
+                    
+                    String selectFrom = "SELECT c.id, c.name, ch.id as 'chapter id', ch.chapter_order, ch.name as 'chapter name', lec.id as 'lecture id', lec.name as 'lecture name', lec.date, lec.videopath, lec.docpath"
+                            + " FROM course c, chapter ch, lecture lec";
+                    String where = " WHERE c.id = ch.courseid AND lec.chapterid = ch.id AND c.id = '" + id + "'" 
+                            + " ORDER BY ch.id, lec.id";
+                    String sql = selectFrom + where;
+                    System.out.println("SQL: " + sql);
+                    
+                    ArrayList<String[]> list = bus.executeSelectSQL(sql);
+                    LectureExt item = new LectureExt(list);
+                    listLectureExt.add(item);
+                }
+                
+                if(!listLectureExt.isEmpty())
+                    return gson.toJson(listLectureExt);
         }
         
         return "";

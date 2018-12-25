@@ -19,6 +19,7 @@ public class PopularCourse {
     private String catid;
     private String catname;
     private String quality;
+    private String teachername;
 
     public PopularCourse(String[] row) {
         this.courseid = row[0];
@@ -30,6 +31,7 @@ public class PopularCourse {
         this.catid = row[6];
         this.catname = row[7];
         this.quality = row[8];
+        this.teachername = row[9];
     }
 
     public String getCourseid() {

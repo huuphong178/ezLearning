@@ -5,8 +5,10 @@
  */
 package bus;
 
+import dao.LectureDAO;
 import dao.ObjectDAO;
 import dto.Lecture;
+import java.util.ArrayList;
 
 /**
  *
@@ -16,6 +18,10 @@ public class LectureBUS extends ObjectBUS<Lecture>{
     
     public LectureBUS(ObjectDAO<Lecture> dao) {
         super(dao);
+    }
+    
+    public ArrayList<String[]> executeSelectSQL(String sql) throws Exception{   
+        return ((LectureDAO)dao).executeSelectSQL(sql);
     }
     
 }

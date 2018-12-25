@@ -8,6 +8,7 @@ package handler;
 import bus.CourseBUS;
 import dao.CourseDAO;
 import dto.Course;
+import dto.CourseExt;
 import dto.PopularCourse;
 import dto.PromotionCourse;
 import java.util.ArrayList;
@@ -38,17 +39,33 @@ public class CourseHandler extends BaseHandler{
         switch (pathInfo) {
             case "/":
                 String query = req.getQueryString();                
-                Collection<Course> listCourse = new ArrayList<>();
+                Collection<CourseExt> listCourse = new ArrayList<>();          
                 if(!StringUtil.isEmpty(query)){
                     Map<String, String> params = StringUtil.getParams(query, "&");
                     String id = params.get("id");
                     if(!StringUtil.isEmpty(id)){
-                        Course item = bus.getOne(id);
-                        if(item!=null)
-                            listCourse.add(item);
+                        String selectFrom = "SELECT c.*, cat.name as 'catname', u.displayname as 'teachername'"
+                            + " FROM course c, category cat, user u";
+                        String where = " WHERE c.catid = cat.id AND u.username = c.teacherid AND c.id = '" + id + "'";
+                        String sql = selectFrom + where;
+                        System.out.println("SQL: " + sql);
+                        
+                        ArrayList<String[]> item = bus.executeSelectSQL(sql);
+                        if(!item.isEmpty())
+                            listCourse.add(new CourseExt(item.get(0)));
                     }
                 }else{
-                    listCourse = bus.getAll();
+                    String selectFrom = "SELECT c.*, cat.name as 'catname', u.displayname as 'teachername'"
+                            + " FROM course c, category cat, user u";
+                    String where = " WHERE c.catid = cat.id AND u.username = c.teacherid";
+                    String sql = selectFrom + where;
+                    System.out.println("SQL: " + sql);
+
+                    ArrayList<String[]> items = bus.executeSelectSQL(sql);
+                    
+                    for(String[] i : items){
+                        listCourse.add(new CourseExt(i));
+                    }
                 }
                 
                 if(!listCourse.isEmpty())
@@ -56,24 +73,36 @@ public class CourseHandler extends BaseHandler{
                 break;
             case "/random":
                 String queryRandom = req.getQueryString();                
-                Collection<Course> listCourseRandom = new ArrayList<>();
+                Collection<CourseExt> listCourseRandom = new ArrayList<>();
                 if(!StringUtil.isEmpty(queryRandom)){
                     Map<String, String> params = StringUtil.getParams(queryRandom, "&");
                     String n = params.get("n");
                     if(!StringUtil.isEmpty(n)){
-                        ArrayList<Course> temptList = new ArrayList<>();
+                        ArrayList<CourseExt> temptList = new ArrayList<>();
                         HashMap<Integer, Integer> indexUsed = new HashMap<>();
-                        temptList = bus.getAll();
-                        for(int i = 0; i < Integer.parseInt(n); i++){
+                        
+                        String selectFrom = "SELECT c.*, cat.name as 'catname', u.displayname as 'teachername'"
+                            + " FROM course c, category cat, user u";
+                        String where = " WHERE c.catid = cat.id AND u.username = c.teacherid";
+                        String sql = selectFrom + where;
+                        System.out.println("SQL: " + sql);
+
+                        ArrayList<String[]> items = bus.executeSelectSQL(sql);
+
+                        for(String[] i : items){
+                            temptList.add(new CourseExt(i));
+                        }
+                        int number = Integer.parseInt(n);
+                        int loop = number <= temptList.size() ? number : temptList.size();
+                        for(int i = 0; i < loop; i++){
                             Random rand = new Random(); 
                             int index = rand.nextInt(temptList.size());
                             if(indexUsed.containsKey(index)){
                                 i--;
                             }else{
                                 indexUsed.put(index, index);
+                                listCourseRandom.add(temptList.get(index));
                             }
-                            
-                            listCourseRandom.add(temptList.get(index));
                         }
                     }
                 }
@@ -134,7 +163,7 @@ public class CourseHandler extends BaseHandler{
                     String n = params.get("n");
                     
                     ArrayList<PopularCourse> temptList = new ArrayList<>();
-                    String selectFrom = "SELECT receipt.courseid, c.name as 'coursename', c.price, u.username, u.avatar, c.rating, cat.id as 'catid', cat.name as 'catname', count(*)"
+                    String selectFrom = "SELECT receipt.courseid, c.name as 'coursename', c.price, u.username, u.avatar, c.rating, cat.id as 'catid', cat.name as 'catname', count(*), u.displayname as 'teachername'"
                             + " FROM receiptdetail receipt, category cat, course c, user u";
                     String where = " WHERE c.id = receipt.courseid AND c.catid = cat.id AND c.teacherid = u.username"
                             + " GROUP BY receipt.courseid"
@@ -170,7 +199,7 @@ public class CourseHandler extends BaseHandler{
                     String n = params.get("n");
                     
                     ArrayList<PopularCourse> temptList = new ArrayList<>();
-                    String selectFrom = "SELECT c.id, c.name as 'coursename', c.price, u.username, u.avatar, c.rating, cat.id as 'catid', cat.name as 'catname', '1'"
+                    String selectFrom = "SELECT c.id, c.name as 'coursename', c.price, u.username, u.avatar, c.rating, cat.id as 'catid', cat.name as 'catname', '1', u.displayname as 'teachername'"
                             + " FROM category cat, course c, user u";
                     String where = " WHERE c.catid = cat.id AND c.teacherid = u.username"
                             + " ORDER BY rating DESC";
@@ -205,7 +234,7 @@ public class CourseHandler extends BaseHandler{
                     String n = params.get("n");
                     
                     ArrayList<PopularCourse> temptList = new ArrayList<>();
-                    String selectFrom = "SELECT c.id, c.name as 'coursename', c.price, u.username, u.avatar, c.rating, cat.id as 'catid', cat.name as 'catname', c.date"
+                    String selectFrom = "SELECT c.id, c.name as 'coursename', c.price, u.username, u.avatar, c.rating, cat.id as 'catid', cat.name as 'catname', c.date, u.displayname as 'teachername'"
                             + " FROM category cat, course c, user u";
                     String where = " WHERE c.catid = cat.id AND c.teacherid = u.username"
                             + " ORDER BY date DESC";
@@ -234,23 +263,23 @@ public class CourseHandler extends BaseHandler{
                 break;
             case "/teach":
                 String queryTeach = req.getQueryString();                
-                Collection<Course> listCourseTeach = new ArrayList<>();
+                Collection<CourseExt> listCourseTeach = new ArrayList<>();
                 if(!StringUtil.isEmpty(queryTeach)){
                     Map<String, String> params = StringUtil.getParams(queryTeach, "&");
                     String n = params.get("n");
                     String id = params.get("teacherid");
                     
-                    String selectFrom = "SELECT c.*"
-                            + " FROM course c, user u";
-                    String where = " WHERE c.teacherid = u.username AND c.teacherid = '" + id + "' ORDER BY c.date DESC";
+                    String selectFrom = "SELECT c.*, cat.name as 'catname', u.displayname as 'teachername'"
+                            + " FROM course c, user u, category cat";
+                    String where = " WHERE cat.id = c.catid AND c.teacherid = u.username AND c.teacherid = '" + id + "' ORDER BY c.date DESC";
                     String sql = selectFrom + where;
                     System.out.println("SQL: " + sql);
                     
                     
-                    ArrayList<Course> temptList = new ArrayList<>();
+                    ArrayList<CourseExt> temptList = new ArrayList<>();
                     ArrayList<String[]> tempt = bus.executeSelectSQL(sql);
                     for (String[] str : tempt) {
-                        Course item = new Course(str);
+                        CourseExt item = new CourseExt(str);
                         temptList.add(item);
                     }
                     
@@ -270,23 +299,23 @@ public class CourseHandler extends BaseHandler{
                 break;
             case "/studentid":
                 String queryStudentID = req.getQueryString();                
-                Collection<Course> listCourseStudentID = new ArrayList<>();
+                Collection<CourseExt> listCourseStudentID = new ArrayList<>();
                 if(!StringUtil.isEmpty(queryStudentID)){
                     Map<String, String> params = StringUtil.getParams(queryStudentID, "&");
                     String n = params.get("n");
                     String id = params.get("id");
                     
-                    String selectFrom = "SELECT c.*"
-                            + " FROM course c, receiptdetail re";
-                    String where = " WHERE c.id = re.courseid AND re.studentid = '" + id + "' ORDER BY re.id DESC";
+                    String selectFrom = "SELECT c.*, cat.name as 'catname', u.displayname as 'teachername'"
+                            + " FROM course c, receiptdetail re, user u, category cat";
+                    String where = " WHERE c.id = re.courseid AND re.studentid = '" + id + "' AND u.username = c.teacherid AND cat.id = c.catid ORDER BY re.id DESC";
                     String sql = selectFrom + where;
                     System.out.println("SQL: " + sql);
                     
                     
-                    ArrayList<Course> temptList = new ArrayList<>();
+                    ArrayList<CourseExt> temptList = new ArrayList<>();
                     ArrayList<String[]> tempt = bus.executeSelectSQL(sql);
                     for (String[] str : tempt) {
-                        Course item = new Course(str);
+                        CourseExt item = new CourseExt(str);
                         temptList.add(item);
                     }
                     
