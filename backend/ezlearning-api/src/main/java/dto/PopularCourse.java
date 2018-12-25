@@ -11,27 +11,46 @@ package dto;
  */
 public class PopularCourse {
     private String courseid;
-    private String coursename;
+    private String courseName;
     private String price;
-    private String username;
+    private String userName;
     private String avatar;
     private String rating;
     private String catid;
-    private String catname;
+    private String catName;
     private String quality;
-    private String teachername;
+    private String teacherName;
+    private String description;
+    private String percentage;
+    private String promotionalPrice;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public PopularCourse(String[] row) {
         this.courseid = row[0];
-        this.coursename = row[1];
+        this.courseName = row[1];
         this.price = row[2];
-        this.username = row[3];
+        this.userName = row[3];
         this.avatar = row[4];
         this.rating = row[5];
         this.catid = row[6];
-        this.catname = row[7];
+        this.catName = row[7];
         this.quality = row[8];
-        this.teachername = row[9];
+        this.teacherName = row[9];
+        this.description = row[10];
+        this.percentage = row[18];
+        
+        Long price = Long.parseLong(this.price);
+        Long percentage = Long.parseLong(this.percentage);
+        Long sale = (price * percentage) / 100;
+        Long kq = price-sale;
+        this.promotionalPrice = kq.toString();
     }
 
     public String getCourseid() {
@@ -43,11 +62,11 @@ public class PopularCourse {
     }
 
     public String getCoursename() {
-        return coursename;
+        return courseName;
     }
 
     public void setCoursename(String coursename) {
-        this.coursename = coursename;
+        this.courseName = coursename;
     }
 
     public String getPrice() {
@@ -59,11 +78,11 @@ public class PopularCourse {
     }
 
     public String getUsername() {
-        return username;
+        return userName;
     }
 
     public void setUsername(String username) {
-        this.username = username;
+        this.userName = username;
     }
 
     public String getAvatar() {
@@ -91,11 +110,11 @@ public class PopularCourse {
     }
 
     public String getCatname() {
-        return catname;
+        return catName;
     }
 
     public void setCatname(String catname) {
-        this.catname = catname;
+        this.catName = catname;
     }
 
     public String getQuality() {

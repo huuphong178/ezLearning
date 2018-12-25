@@ -22,6 +22,7 @@ public class PromotionCourse {
     private String from_date;
     private String to_date;
     private String promotionalPrice;
+    private String description;
     
     public PromotionCourse(String[] row) {
         this.id = row[0];
@@ -35,6 +36,7 @@ public class PromotionCourse {
         this.percentage = row[8];
         this.from_date = row[9];
         this.to_date = row[10];
+        this.description = row[11];
     }
 
     public String getId() {
@@ -133,6 +135,12 @@ public class PromotionCourse {
         this.to_date = to_date;
     }
     
-    
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
     
 }

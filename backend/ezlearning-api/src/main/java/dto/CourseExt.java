@@ -21,6 +21,24 @@ public class CourseExt {
     private String catid;
     private String catname;
     private String teachername;
+    private String percentage;
+    private String promotionalPrice;
+
+    public String getPromotionalPrice() {
+        return promotionalPrice;
+    }
+
+    public void setPromotionalPrice(String promotionalPrice) {
+        this.promotionalPrice = promotionalPrice;
+    }
+
+    public String getPercentage() {
+        return percentage;
+    }
+
+    public void setPercentage(String percentage) {
+        this.percentage = percentage;
+    }
 
     public CourseExt(String[] row) {
         this.id = row[0];
@@ -34,6 +52,15 @@ public class CourseExt {
         this.catid = row[8];
         this.catname = row[9];
         this.teachername = row[10];
+        this.percentage = row[18];
+        
+        Long price = Long.parseLong(this.price);
+        Long percentage = Long.parseLong(this.percentage);
+        Long sale = (price * percentage) / 100;
+        Long kq = price-sale;
+        this.promotionalPrice = kq.toString();
+        
+        
     }
 
     public String getId() {

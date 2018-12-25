@@ -6,13 +6,16 @@
 package handler;
 
 import bus.CourseBUS;
+import com.google.gson.JsonObject;
 import dao.CourseDAO;
 import dto.Course;
 import dto.CourseExt;
 import dto.PopularCourse;
 import dto.PromotionCourse;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -28,6 +31,7 @@ import util.StringUtil;
 public class CourseHandler extends BaseHandler{
     
     private final CourseBUS bus = new CourseBUS(new CourseDAO());
+    private final SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
     
     @Override
     protected String doGetHandler(HttpServletRequest req, HttpServletResponse resp) throws Exception {
@@ -44,10 +48,10 @@ public class CourseHandler extends BaseHandler{
                     Map<String, String> params = StringUtil.getParams(query, "&");
                     String id = params.get("id");
                     if(!StringUtil.isEmpty(id)){
-                        String selectFrom = "SELECT c.*, cat.name as 'catname', u.displayname as 'teachername'"
+                        String selectFrom = "SELECT *, IFNULL(percentage, 0) as 'percentage2' FROM (SELECT c.*, cat.name as 'catname', u.displayname as 'teachername'"
                             + " FROM course c, category cat, user u";
-                        String where = " WHERE c.catid = cat.id AND u.username = c.teacherid AND c.id = '" + id + "'";
-                        String sql = selectFrom + where;
+                        String where = " WHERE c.catid = cat.id AND u.username = c.teacherid AND c.id = '" + id + "') table1";
+                        String sql = selectFrom + where + " LEFT JOIN voucher v ON table1.id = v.courseid;";
                         System.out.println("SQL: " + sql);
                         
                         ArrayList<String[]> item = bus.executeSelectSQL(sql);
@@ -55,10 +59,10 @@ public class CourseHandler extends BaseHandler{
                             listCourse.add(new CourseExt(item.get(0)));
                     }
                 }else{
-                    String selectFrom = "SELECT c.*, cat.name as 'catname', u.displayname as 'teachername'"
+                    String selectFrom = "SELECT *, IFNULL(percentage, 0) as 'percentage2' FROM (SELECT c.*, cat.name as 'catname', u.displayname as 'teachername'"
                             + " FROM course c, category cat, user u";
-                    String where = " WHERE c.catid = cat.id AND u.username = c.teacherid";
-                    String sql = selectFrom + where;
+                    String where = " WHERE c.catid = cat.id AND u.username = c.teacherid) table1";
+                    String sql = selectFrom + where + " LEFT JOIN voucher v ON table1.id = v.courseid;";
                     System.out.println("SQL: " + sql);
 
                     ArrayList<String[]> items = bus.executeSelectSQL(sql);
@@ -81,10 +85,10 @@ public class CourseHandler extends BaseHandler{
                         ArrayList<CourseExt> temptList = new ArrayList<>();
                         HashMap<Integer, Integer> indexUsed = new HashMap<>();
                         
-                        String selectFrom = "SELECT c.*, cat.name as 'catname', u.displayname as 'teachername'"
+                        String selectFrom = "SELECT *, IFNULL(percentage, 0) as 'percentage2' FROM (SELECT c.*, cat.name as 'catname', u.displayname as 'teachername'"
                             + " FROM course c, category cat, user u";
-                        String where = " WHERE c.catid = cat.id AND u.username = c.teacherid";
-                        String sql = selectFrom + where;
+                        String where = " WHERE c.catid = cat.id AND u.username = c.teacherid) table1";
+                        String sql = selectFrom + where + " LEFT JOIN voucher v ON table1.id = v.courseid;";
                         System.out.println("SQL: " + sql);
 
                         ArrayList<String[]> items = bus.executeSelectSQL(sql);
@@ -115,12 +119,14 @@ public class CourseHandler extends BaseHandler{
                 Collection<PromotionCourse> listCoursePromotion = new ArrayList<>();
                 if(!StringUtil.isEmpty(queryPromotion)){
                     Map<String, String> params = StringUtil.getParams(queryPromotion, "&");
-                    String from = params.get("from");
-                    String to = params.get("to");
+                    Long timestampFrom = Long.parseLong(params.get("from"));
+                    Long timestampTo = Long.parseLong(params.get("to"));
+                    String from = sdf.format(new Date(timestampFrom));              //params.get("from");
+                    String to = sdf.format(new Date(timestampTo));   
                     String n = params.get("n");
                     if(!StringUtil.isEmpty(from) && !StringUtil.isEmpty(to)){
                         ArrayList<PromotionCourse> temptList = new ArrayList<>();
-                        String selectFrom = "SELECT c.id, c.name, c.rating, c.price, c.catid, cat.name as 'catname', u.displayname as 'teachername', u.avatar, v.percentage, v.from_date, v.to_date"
+                        String selectFrom = "SELECT c.id, c.name, c.rating, c.price, c.catid, cat.name as 'catname', u.displayname as 'teachername', u.avatar, v.percentage, v.from_date, v.to_date, c.description"
                                             + " FROM course c, user u, category cat, voucher v";
                         String where = " WHERE ((v.from_date <= '" + to + "' AND '" + to + "' <= v.to_date) OR (v.to_date >= '" + from + "' AND '" + from + "' >= v.from_date) "
                                 + "OR (v.from_date >= '" + from + "' AND v.to_date <= '" + to + "'))"
@@ -163,12 +169,12 @@ public class CourseHandler extends BaseHandler{
                     String n = params.get("n");
                     
                     ArrayList<PopularCourse> temptList = new ArrayList<>();
-                    String selectFrom = "SELECT receipt.courseid, c.name as 'coursename', c.price, u.username, u.avatar, c.rating, cat.id as 'catid', cat.name as 'catname', count(*), u.displayname as 'teachername'"
+                    String selectFrom = "SELECT *, IFNULL(percentage, 0) as 'percentage2' FROM (SELECT receipt.courseid, c.name as 'coursename', c.price, u.username, u.avatar, c.rating, cat.id as 'catid', cat.name as 'catname', count(*), u.displayname as 'teachername', c.description"
                             + " FROM receiptdetail receipt, category cat, course c, user u";
                     String where = " WHERE c.id = receipt.courseid AND c.catid = cat.id AND c.teacherid = u.username"
                             + " GROUP BY receipt.courseid"
-                            + " ORDER BY count(*) DESC";
-                    String sql = selectFrom + where;
+                            + " ORDER BY count(*) DESC) table1";
+                    String sql = selectFrom + where + " LEFT JOIN voucher v ON table1.courseid = v.courseid;";
                     System.out.println("SQL: " + sql);
 
                     ArrayList<String[]> tempt = bus.executeSelectSQL(sql);
@@ -199,11 +205,11 @@ public class CourseHandler extends BaseHandler{
                     String n = params.get("n");
                     
                     ArrayList<PopularCourse> temptList = new ArrayList<>();
-                    String selectFrom = "SELECT c.id, c.name as 'coursename', c.price, u.username, u.avatar, c.rating, cat.id as 'catid', cat.name as 'catname', '1', u.displayname as 'teachername'"
+                    String selectFrom = "SELECT *, IFNULL(percentage, 0) as 'percentage2' FROM (SELECT c.id, c.name as 'coursename', c.price, u.username, u.avatar, c.rating, cat.id as 'catid', cat.name as 'catname', '1', u.displayname as 'teachername'"
                             + " FROM category cat, course c, user u";
                     String where = " WHERE c.catid = cat.id AND c.teacherid = u.username"
-                            + " ORDER BY rating DESC";
-                    String sql = selectFrom + where;
+                            + " ORDER BY rating DESC) table1";
+                    String sql = selectFrom + where + " LEFT JOIN voucher v ON table1.id = v.courseid;";
                     System.out.println("SQL: " + sql);
 
                     ArrayList<String[]> tempt = bus.executeSelectSQL(sql);
@@ -234,11 +240,11 @@ public class CourseHandler extends BaseHandler{
                     String n = params.get("n");
                     
                     ArrayList<PopularCourse> temptList = new ArrayList<>();
-                    String selectFrom = "SELECT c.id, c.name as 'coursename', c.price, u.username, u.avatar, c.rating, cat.id as 'catid', cat.name as 'catname', c.date, u.displayname as 'teachername'"
+                    String selectFrom = "SELECT *, IFNULL(percentage, 0) as 'percentage2' FROM (SELECT c.id, c.name as 'coursename', c.price, u.username, u.avatar, c.rating, cat.id as 'catid', cat.name as 'catname', c.date, u.displayname as 'teachername', c.description"
                             + " FROM category cat, course c, user u";
                     String where = " WHERE c.catid = cat.id AND c.teacherid = u.username"
-                            + " ORDER BY date DESC";
-                    String sql = selectFrom + where;
+                            + " ORDER BY date DESC) table1";
+                    String sql = selectFrom + where + " LEFT JOIN voucher v ON table1.id = v.courseid;";
                     System.out.println("SQL: " + sql);
 
                     ArrayList<String[]> tempt = bus.executeSelectSQL(sql);
@@ -269,10 +275,10 @@ public class CourseHandler extends BaseHandler{
                     String n = params.get("n");
                     String id = params.get("teacherid");
                     
-                    String selectFrom = "SELECT c.*, cat.name as 'catname', u.displayname as 'teachername'"
+                    String selectFrom = "SELECT *, IFNULL(percentage, 0) as 'percentage2' FROM (SELECT c.*, cat.name as 'catname', u.displayname as 'teachername'"
                             + " FROM course c, user u, category cat";
-                    String where = " WHERE cat.id = c.catid AND c.teacherid = u.username AND c.teacherid = '" + id + "' ORDER BY c.date DESC";
-                    String sql = selectFrom + where;
+                    String where = " WHERE cat.id = c.catid AND c.teacherid = u.username AND c.teacherid = '" + id + "' ORDER BY c.date DESC ) table1";
+                    String sql = selectFrom + where + " LEFT JOIN voucher v ON table1.id = v.courseid;";
                     System.out.println("SQL: " + sql);
                     
                     
@@ -305,10 +311,10 @@ public class CourseHandler extends BaseHandler{
                     String n = params.get("n");
                     String id = params.get("id");
                     
-                    String selectFrom = "SELECT c.*, cat.name as 'catname', u.displayname as 'teachername'"
+                    String selectFrom = "SELECT *, IFNULL(percentage, 0) as 'percentage2' FROM (SELECT c.*, cat.name as 'catname', u.displayname as 'teachername'"
                             + " FROM course c, receiptdetail re, user u, category cat";
-                    String where = " WHERE c.id = re.courseid AND re.studentid = '" + id + "' AND u.username = c.teacherid AND cat.id = c.catid ORDER BY re.id DESC";
-                    String sql = selectFrom + where;
+                    String where = " WHERE c.id = re.courseid AND re.studentid = '" + id + "' AND u.username = c.teacherid AND cat.id = c.catid ORDER BY re.id DESC) table1";
+                    String sql = selectFrom + where + " LEFT JOIN voucher v ON table1.id = v.courseid;";
                     System.out.println("SQL: " + sql);
                     
                     
@@ -335,6 +341,40 @@ public class CourseHandler extends BaseHandler{
                 break;
             case "/search":
                 return doSearch(req);
+            case "/voucher":
+                String queryCheckVoucher = req.getQueryString();                
+                if(!StringUtil.isEmpty(queryCheckVoucher)){
+                    Map<String, String> params = StringUtil.getParams(queryCheckVoucher, "&"); 
+                    String id = params.get("id");
+                    if(!StringUtil.isEmpty(id)){
+                        String selectFrom = "SELECT c.id, c.price, v.percentage"
+                                            + " FROM voucher v, course c";
+                        String where = " WHERE c.id = v.courseid  AND c.id = '" + id + "'";
+                        String sql = selectFrom + where;
+                        
+                        System.out.println("SQL: " + sql);
+                        
+                        ArrayList<String[]> tempt = bus.executeSelectSQL(sql);
+                        
+                        if(!tempt.isEmpty()){
+                            String[] item = tempt.get(0);
+                            Long price = Long.parseLong(item[1]);
+                            Long percentage = Long.parseLong(item[2]);
+                            Long sale = (price * percentage)/100;
+                            Long promotionalPrice = price-sale;
+                            
+                            JsonObject obj = new JsonObject();
+                            obj.addProperty("price", price.toString());
+                            obj.addProperty("percentage", percentage.toString());
+                            obj.addProperty("promotionalPrice", promotionalPrice.toString());
+                            
+                            return obj.toString();
+                            
+                        }
+                    }
+                }
+                
+                break;
         }
         
         return "";
