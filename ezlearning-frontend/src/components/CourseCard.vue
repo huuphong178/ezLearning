@@ -5,23 +5,32 @@
     style="height: 100%; position: relative;"
   >
     <div class="tile-price" v-on:click="AddToCart(course, user)">
-      <button class="price-button">{{course.price}} đ</button>
+      <button class="price-button" v-if="course.percentage != null">{{course.promotionalPrice}} đ</button>
+      <button class="price-button" v-if="course.percentage == null">{{course.Price}} đ</button>
+
     </div>
     <div class="tile tile-course">
       <router-link :to="`/course/${course.id}`">
         <div class="tile-preview">
           <div style="position: relative; height: 100%;">
             <div>
-              <div class="tile-cat">Kế toán</div>
+              <div class="tile-cat">{{course.catName}}</div>
             </div>
             <div>
               <div>
-                <img src="/icons/ratings/rate-full.png" width="18px">
-                <img src="/icons/ratings/rate-full.png" width="18px">
-                <img src="/icons/ratings/rate-full.png" width="18px">
-                <img src="/icons/ratings/rate-full.png" width="18px">
-                <img src="/icons/ratings/rate-outline.png" width="18px">
-                <span>(04)</span>
+                <img
+                src="/icons/ratings/rate-full.png"
+                width="18px"
+                v-for="item in +course.rating"
+                :key="item">
+              
+              <img
+                src="/icons/ratings/rate-outline.png"
+                width="18px"
+                v-for="item in (5 - +course.rating)"
+                :key="item"
+              >
+                <span>(0{{course.rating}})</span>
               </div>
               <div class="tile-preview-name">{{course.name}}</div>
               <div>
@@ -31,7 +40,7 @@
                 >
                   <img src="/imgs/teachers/teacher1.png" class="tile-ava-img">
                 </div>
-                <span>Trần Đình Dần (Master Trần)</span>
+                <span>{{course.teacherName}}</span>
               </div>
               <div class="tile-preview-des">{{course.description}}</div>
             </div>
@@ -40,19 +49,26 @@
         <div class="tile-info" style="background-color: rgba(0, 178, 203, 0.75);">
           <div style="position: relative; height: 100%;">
             <div>
-              <div class="tile-discount" style="margin-bottom: 5px;">50%</div>
+              <div class="tile-discount" style="margin-bottom: 5px;">{{course.percentage}}%</div>
               <br>
-              <div class="tile-cat">Kế toán</div>
+              <div class="tile-cat">{{course.catName}}</div>
             </div>
             <div style="bottom: 0; position: absolute;">
-              <div>
-                <img src="/icons/ratings/rate-full-white.png" width="18px">
-                <img src="/icons/ratings/rate-full-white.png" width="18px">
-                <img src="/icons/ratings/rate-full-white.png" width="18px">
-                <img src="/icons/ratings/rate-full-white.png" width="18px">
-                <img src="/icons/ratings/rate-outline-white.png" width="18px">
-                <span>(04)</span>
-              </div>
+              <img
+                src="/icons/ratings/rate-full-white.png"
+                width="18px"
+                v-for="item in +course.rating"
+                :key="item">
+              
+              <img
+                src="/icons/ratings/rate-outline-white.png"
+                width="18px"
+                v-for="item in (5 - +course.rating)"
+                :key="item"
+              >
+              
+              <span>(0{{course.rating}})</span>
+
               <div class="tile-course-name">{{course.name}}</div>
               <div>
                 <div
@@ -61,11 +77,11 @@
                 >
                   <img src="/imgs/teachers/teacher1.png" class="tile-ava-img">
                 </div>
-                <span>Trần Đình Dần (Master Trần)</span>
+                <span>{{course.teacherName}}</span>
               </div>
-              <div>
+              <div v-if="course.percentage != null">
                 Giá cũ:
-                <span class="tile-old-price">299,000 đ</span>
+                <span class="tile-old-price">{{course.price}}đ</span>
               </div>
             </div>
           </div>
@@ -108,9 +124,7 @@ export default {
     AddToCart(course, user) {
       if (user != null) {
         this.$store.dispatch("addCart", course);
-      }
-      else {
-        
+      } else {
       }
     }
   }

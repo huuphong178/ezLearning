@@ -1,16 +1,15 @@
 <template>
 <div>
     <div v-for="course in courseBanner" :key="course.id">
-    <!-- <img src="../assets/pics/banner.png" alt=""> -->
+    <img src="/pics/banner.png" alt="">
         <div>
             {{course.catname}}
         </div>
         <div>
-            {{course.name}}
+            {{course.coursename}}
         </div>
-        <div >
-           
-            <!-- <img src="../assets/pics/teacher.png" alt="" style="display:inline-block">   load hình giáo viên -->
+        <div>
+            <img src="/pics/teacher.png" alt="" style="display:inline-block">   
             <div style="display:inline-block">{{course.teachername}}</div>
         </div>
         <button>ĐĂNG KÝ NGAY</button>
@@ -29,11 +28,6 @@ export default {
   },
   computed: {
     ...mapState(['courseBanner'])
-  },
-  methods: {
-    LogIn() {},
-
-    Signup() {}
   }
 };
 </script>

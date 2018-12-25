@@ -12,18 +12,10 @@ export default new Vuex.Store({
   state: {
     isLogged: false,
     catogaries: [], //for page courses-by-cat,
-    listCourse: [{
-        id: 5,
-        name: "Vẽ 3D"
-      },
-      {
-        id: 3,
-        name: "Vẽ 2D"
-      }
-    ], //for listcoursecard
+    listCoursePopular: [],
     courseBanner: [],
     statistic: [],
-    saleCoureses: [],
+    saleCourese: [],
     courseByCat: [],
     coursesSearch: [], //for page search
     user: null,
@@ -48,8 +40,8 @@ export default new Vuex.Store({
     SET_COURSES_SEARCH(state, payload) {
       if (payload == "") {
         state.coursesSearch = [];
-      } else state.coursesSearch = payload;
-      alert(JSON.stringify(state.coursesSearch));
+      }
+      else state.coursesSearch = payload;
 
     },
     SET_USER(state, payload) {
@@ -69,8 +61,8 @@ export default new Vuex.Store({
       var index = state.cart.indexOf(payload);
       state.cart.splice(index, 1);
     },
-    REMOVE_COURSE_SEARCH(state){
-      state.coursesSearch = [];
+    SET_POPULAR_COURSES(state, payload){
+      state.listCoursePopular = payload
     }
   },
   actions,

@@ -7,7 +7,9 @@
             </div>
             <div class="tile-container">
               <AdvertiseHome/>
-               <CourseCard/>
+             <div v-for="course in saleCourese" :key="course.id">
+               <CourseCard v-bind:course="course"/>
+             </div>
             </div>
         </div>
     </div>
@@ -17,12 +19,17 @@
 // @ is an alias to /src
 import CourseCard from '@/components/CourseCard.vue'
 import AdvertiseHome from '@/components/AdvertiseHome.vue'
+import { mapState } from "vuex"
 
 export default {
   name: 'home',
   components: {
     CourseCard,
     AdvertiseHome
-  }
+  },
+   computed: {
+    ...mapState(["saleCourese"])
+  },
+
 }
 </script>

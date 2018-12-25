@@ -12,35 +12,35 @@
         </div>
       </router-link>
 
-      <router-link :to="`/search/marketing`">
+      <router-link :to="`/search/Marketing`">
         <div class="hot-cats marketing">
           <img src="icons/hot-cats/marketing.png" width="32px" style="margin-bottom: 5px;">
           <br>Marketing
         </div>
       </router-link>
 
-      <router-link :to="`/search/kinh-doanh`">
+      <router-link :to="`/search/Kinh doanh`">
         <div class="hot-cats business">
           <img src="icons/hot-cats/business.png" width="34px" style="margin-bottom: 5px;">
           <br>Kinh doanh
         </div>
       </router-link>
 
-      <router-link :to="`/search/phat-trien-ca-nhan`">
+      <router-link :to="`/search/Phát triển cá nhân`">
         <div class="hot-cats personal">
           <img src="icons/hot-cats/personal.png" width="32px" style="margin-bottom: 5px;">
           <br>Phát triển cá nhân
         </div>
       </router-link>
 
-      <router-link :to="`/search/do-hoa`">
+      <router-link :to="`/search/Đồ họa`">
         <div class="hot-cats design">
           <img src="icons/hot-cats/design.png" width="28px" style="margin-bottom: 5px;">
           <br>Đồ họa
         </div>
       </router-link>
 
-      <router-link :to="`/search/lap-trinh`">
+      <router-link :to="`/search/Lập trình`">
         <div class="hot-cats programming">
           <img src="icons/hot-cats/programming.png" width="32px" style="margin-bottom: 5px;">
           <br>Lập trình

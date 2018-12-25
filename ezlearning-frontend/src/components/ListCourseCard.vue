@@ -25,18 +25,15 @@
 
 <script>
 import CourseCard from "@/components/CourseCard.vue";
-import { mapState } from "vuex";
 
 export default {
   name: "ListCourseCard",
   props: {
-    sectionTitle: String
+    sectionTitle: String,
+    listCourse: []
   },
   components: {
     CourseCard
-  },
-  computed: {
-    ...mapState(["listCourse"])
   },
   methods: {
     popularLeftClick() {
