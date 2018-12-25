@@ -46,13 +46,18 @@ export default new Vuex.Store({
       state.saleCourese = payload;
     },
     SET_COURSES_SEARCH(state, payload) {
-      state.coursesSearch = payload;
+      if (payload == "") {
+        state.coursesSearch = [];
+      } else state.coursesSearch = payload;
+      alert(JSON.stringify(state.coursesSearch));
+
     },
     SET_USER(state, payload) {
       state.user = payload;
     },
     UPDATE_LOGIN_STATUS(state) {
       state.cart = {};
+      state.user = null;
     },
     ADD_CART(state, payload) {
       state.cart.push(payload);
@@ -64,6 +69,9 @@ export default new Vuex.Store({
       var index = state.cart.indexOf(payload);
       state.cart.splice(index, 1);
     },
+    REMOVE_COURSE_SEARCH(state){
+      state.coursesSearch = [];
+    }
   },
   actions,
 })

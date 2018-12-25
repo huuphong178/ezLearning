@@ -39,12 +39,12 @@ var router = new Router({
       component: CourseDetail
     },
     {
-      path: '/profile-student/:role?:userid',
+      path: '/profile-student/:role?:username',
       name: 'ProfileStudent',
       component: ProfileStudent
     },
     {
-      path: '/profile-teacher/:role?:userid',
+      path: '/profile-teacher/:role?:username',
       name: 'ProfileTeacher',
       component: ProfileTeacher
     },

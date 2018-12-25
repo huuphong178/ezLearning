@@ -20,14 +20,22 @@
               </select>
             </div>
 
-            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" v-on:click="FilterPrice()">
-              Giá &ensp;
-              <span class="box">0đ - 1.000.000đ</span>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" v-on:click="FilterPrice()">Giá &ensp;
+              <!-- <span class="box">0đ - 1.000.000đ</span> -->
+              <select>
+                <option value="4">0đ - 200.000đ</option>
+                <option value="3">200.000đ - 500.000đ</option>
+                <option value="2">500.000đ - 800.000đ</option>
+                <option value="1">Trên 800.000đ</option>
+              </select>
             </div>
           </div>
         </div>
         <div class="tile-container">
-          <CourseCard/>
+          <div v-if="coursesSearch.length <= 0">Không có kết quả tìm kiếm phù hợp</div>
+          <div v-for="course in coursesSearch" :key="course.id" v-if="coursesSearch.length > 0">
+            <CourseCard v-bind:course="course"/>
+          </div>
         </div>
       </div>
     </div>
@@ -37,7 +45,7 @@
 <script>
 import CourseCard from "@/components/CourseCard.vue";
 
-import { mapActions } from "vuex";
+import { mapState, mapActions } from "vuex";
 
 export default {
   name: "home",
@@ -49,12 +57,17 @@ export default {
   components: {
     CourseCard
   },
+  computed: {
+    ...mapState(["coursesSearch"])
+  },
   created() {
     this.query = this.$route.params.query;
+    this.$store.dispatch("applySearch", this.query);
   },
   watch: {
     $route(to, from) {
       this.query = to.params.query;
+      this.$store.dispatch("applySearch", this.query);
     }
   }
 };

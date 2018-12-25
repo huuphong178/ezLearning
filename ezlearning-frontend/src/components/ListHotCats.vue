@@ -5,7 +5,7 @@
       <button class="button-white-small" style="float: right;">Xem thêm</button>
     </div>
     <div class="hot-cats-container">
-      <router-link :to="`/search/ngoai-ngu`">
+      <router-link :to="`/search/Ngoại ngữ`">
         <div class="hot-cats lang">
           <img src="icons/hot-cats/lang.png" width="41px" style="margin-bottom: 5px;">
           <br>Ngoại ngữ

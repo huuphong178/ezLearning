@@ -5,8 +5,10 @@
         <img src="/imgs/students/student2.png" class="profile-ava">
       </div>
       <div class="col-sm-9" style="padding-top: 30px;">
-        <div class="profile-label">Học sinh</div>
-        <div class="profile-name">Võ Thịnh Chuẩn</div>
+        <div class="profile-label" v-if="user.role == 3">Học sinh</div>
+        <div class="profile-label" v-if="user.role == 2">Giảng viên</div>
+
+        <div class="profile-name">{{user.username}}</div>
         <div class="course-count">5 khóa học</div>
       </div>
     </div>
@@ -24,3 +26,13 @@
     </div>
   </div>
 </template>
+
+<script>
+import { mapState } from "vuex";
+
+export default {
+  computed: {
+    ...mapState(["user"])
+  },
+}
+</script>

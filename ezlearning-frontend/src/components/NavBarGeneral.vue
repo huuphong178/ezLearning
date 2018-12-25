@@ -73,8 +73,8 @@
             </router-link>
             <span id="nav-profile-s" style="cursor: pointer;" v-on:click="DropdownProfile()">
               <div class="navbar-ava-container" style="margin-left: 20px;">
-                <img src="/imgs/students/student1.png" class="navbar-ava-img">
-              </div>
+                <img src="" class="navbar-ava-img" id="avt">
+              </div>avt
               <img src="/icons/more-cat.png" width="11px" style="margin-left: 10px">
             </span>
             <div
@@ -119,17 +119,19 @@
               class="menu-dropdown"
               style="display: none; right: -60px; min-width: 230px; text-align: left;"
             >
-            <router-link :to="`/profile-teacher/${user.role}?${user.name}`">
-              <div class="dropdown-addon-top" style="font-weight: bold;">Võ Thịnh Chuẩn</div>
+            <router-link :to="`/profile-teacher/${user.role}?${user.username}`">
+              <div class="dropdown-addon-top" style="font-weight: bold;">{{user.username}}</div>
               </router-link>
               <div class="dropdown-content">
                 <div class="dropdown">
                   <ul>
-                    <li>Các khóa học của tôi</li>
+                     <router-link :to="`/profile-teacher/${user.role}?${user.username}`">
+                        <li>Các khóa học của tôi</li>
+                     </router-link>
                   </ul>
                 </div>
               </div>
-              <div class="dropdown-addon">Đăng xuất</div>
+              <div class="dropdown-addon"  v-on:click="logOut()">Đăng xuất</div>
             </div>
           </div>
         </div>
@@ -173,20 +175,11 @@ export default {
     dropdownCatsMouseLeave() {
       this.$jQuery(event.target).fadeOut("fast");
     },
-    ...mapActions(["applySearch"]),
-    ...mapActions(["signIn"]),
-    ...mapActions(["signUp"]),
+    // ...mapActions(["applySearch"]),
     ...mapActions(["logOut"]),
-    ...mapActions(["setIsLogged"]),
-    SignInFacebook() {},
-    SignUpFacebook() {},
-    CloseSignInForm() {
-      document.getElementById("si-warn").style.display = "none";
-      document.getElementById("su-warn").style.display = "none";
 
-      this.dataSignIn = {};
-      this.dataSignUp = {};
-    }
+    ...mapActions(["setIsLogged"]),
+
   },
   watch: {
     $route(to, from) {
