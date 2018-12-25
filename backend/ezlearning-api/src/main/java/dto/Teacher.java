@@ -10,15 +10,24 @@ package dto;
  * @author Phong Nguyen
  */
 public class Teacher extends User {
-
+    private int countCourse;
     public Teacher(String[] user) {
         super(user);
+        this.countCourse = Integer.parseInt(user[10]);
         this.role = 2;
-
     }
 
-    public Teacher(String username, String password, String email, int role, String displayname, String address, String phone, String degree, String dob, String avatar) {
+    public Teacher(String username, String password, String email, int role, String displayname, String address, String phone, String degree, String dob, String avatar, int countCourse) {
         super(username, password, email, role, displayname, address, phone, degree, dob, avatar);
+        this.countCourse=countCourse;
+    }
+
+    public int getCountCourse() {
+        return countCourse;
+    }
+
+    public void setCountCourse(int countCourse) {
+        this.countCourse = countCourse;
     }
 
     @Override

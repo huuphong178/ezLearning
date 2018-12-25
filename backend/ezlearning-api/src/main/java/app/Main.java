@@ -17,6 +17,8 @@ import handler.MethodHandler;
 import handler.RatingHandler;
 import handler.ReceiptDetailHandler;
 import handler.ReceiptHandler;
+import handler.StatisticHandler;
+import handler.StudentHandler;
 import handler.TeacherHandler;
 import handler.UserHandler;
 import handler.VoucherHandler;
@@ -66,6 +68,8 @@ public class Main {
         handler.addServlet(RatingHandler.class, "/rating/*");
         handler.addServlet(MethodHandler.class, "/method/*");
         handler.addServlet(TeacherHandler.class, "/teacher/*");
+        handler.addServlet(StudentHandler.class, "/student/*");
+        handler.addServlet(StatisticHandler.class, "/statistic/*");
         handler.addFilter(CORSResponseFilter.class, "/*", EnumSet.of(DispatcherType.REQUEST));
         try {
             server.start();
