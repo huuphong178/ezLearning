@@ -5,13 +5,13 @@
  */
 package handler;
 
-import bus.TeacherBUS;
+import bus.StudentBUS;
 import bus.UserBUS;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import dao.TeacherDAO;
+import dao.StudentDAO;
 import dao.UserDAO;
-import dto.Teacher;
+import dto.Student;
 import dto.User;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -26,10 +26,10 @@ import util.StringUtil;
  *
  * @author Phong Nguyen
  */
-public class TeacherHandler extends BaseHandler {
+public class StudentHandler extends BaseHandler {
 
     private final UserBUS bus = new UserBUS(new UserDAO());
-    private final TeacherBUS teacherbus = new TeacherBUS(new TeacherDAO());
+    private final StudentBUS studentbus = new StudentBUS(new StudentDAO());
 
     @Override
     protected String doGetHandler(HttpServletRequest req, HttpServletResponse resp) throws Exception {
@@ -40,30 +40,30 @@ public class TeacherHandler extends BaseHandler {
         String query = req.getQueryString();
         switch (pathInfo) {
             case "/":
-                Collection<Teacher> listTeach = new ArrayList<>();
+                Collection<Student> listTeach = new ArrayList<>();
                 if (!StringUtil.isEmpty(query)) {
                     Map<String, String> params = StringUtil.getParams(query, "&");
                     String username = params.get("username");
                     if (!StringUtil.isEmpty(username)) {
-                        Teacher item = teacherbus.getOne(username);
+                        Student item = studentbus.getOne(username);
                         if (item != null) {
                             listTeach.add(item);
                         }
                     }
                 } else {
-                    listTeach = teacherbus.getAll();
+                    listTeach = studentbus.getAll();
                 }
                 if (!listTeach.isEmpty()) {
                     return gson.toJson(listTeach);
                 }
                 break;
-            case "/bestrate":
+            case "/historyTransaction":
                 if (!StringUtil.isEmpty(query)) {
                     Map<String, String> params = StringUtil.getParams(query, "&");
-                    String param = params.get("n");
-                    if (!StringUtil.isEmpty(param)) {
-                        int n = Integer.parseInt(params.get("n"));
-                        JsonArray result = bus.getTeacherBest(n);
+                    String username = params.get("username");
+                    System.err.println(username);
+                    if (!StringUtil.isEmpty(username)) {
+                        JsonArray result=studentbus.getHistoryTransaction(username);
                         return result.toString();
                     }
                 }

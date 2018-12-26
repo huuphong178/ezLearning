@@ -7,7 +7,6 @@ package handler;
 
 import bus.TeacherBUS;
 import bus.UserBUS;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import dao.TeacherDAO;
 import dao.UserDAO;
@@ -26,10 +25,9 @@ import util.StringUtil;
  *
  * @author Phong Nguyen
  */
-public class TeacherHandler extends BaseHandler {
+public class StatisticHandler extends BaseHandler {
 
     private final UserBUS bus = new UserBUS(new UserDAO());
-    private final TeacherBUS teacherbus = new TeacherBUS(new TeacherDAO());
 
     @Override
     protected String doGetHandler(HttpServletRequest req, HttpServletResponse resp) throws Exception {
@@ -37,37 +35,11 @@ public class TeacherHandler extends BaseHandler {
         if (StringUtil.isEmpty(pathInfo)) {
             pathInfo = "/";
         }
-        String query = req.getQueryString();
         switch (pathInfo) {
             case "/":
-                Collection<Teacher> listTeach = new ArrayList<>();
-                if (!StringUtil.isEmpty(query)) {
-                    Map<String, String> params = StringUtil.getParams(query, "&");
-                    String username = params.get("username");
-                    if (!StringUtil.isEmpty(username)) {
-                        Teacher item = teacherbus.getOne(username);
-                        if (item != null) {
-                            listTeach.add(item);
-                        }
-                    }
-                } else {
-                    listTeach = teacherbus.getAll();
-                }
-                if (!listTeach.isEmpty()) {
-                    return gson.toJson(listTeach);
-                }
-                break;
-            case "/bestrate":
-                if (!StringUtil.isEmpty(query)) {
-                    Map<String, String> params = StringUtil.getParams(query, "&");
-                    String param = params.get("n");
-                    if (!StringUtil.isEmpty(param)) {
-                        int n = Integer.parseInt(params.get("n"));
-                        JsonArray result = bus.getTeacherBest(n);
-                        return result.toString();
-                    }
-                }
-                break;
+                JsonObject result = bus.thongkeCourseStudentTeacher();
+                System.err.println(result);
+                return result.toString();
         }
         return "";
     }
