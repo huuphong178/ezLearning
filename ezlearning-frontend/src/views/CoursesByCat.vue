@@ -8,7 +8,7 @@
           <span class="section-keyword">{{catId}}</span>
         </div>
         <div class="tile-container">
-          <div v-for="course in courseByCat" :key="course.id">
+          <div v-for="course in listCourse" :key="course.id">
             <CourseCard v-bind:course="course"/>
           </div>
         </div>
@@ -29,27 +29,53 @@ export default {
       catId: ""
     };
   },
+  computed: {
+    listCourse() {
+      var path = this.$route.path;
+      if (path.startsWith("/courses-by-cat")) {
+        return this.$store.state.courseByCat;
+      }
+      else{
+         if (this.$route.params.typename == "sale") {
+           return this.$store.state.saleCourese;
+         }
+      }
+    }
+  },
   created() {
-    this.catId = this.$route.params.catId;
-    if (this.catId == "all") {
-      this.$store.dispatch("getAllCourses");
+    var path = this.$route.path;
+    if (path.startsWith("/courses-by-cat")) {
+      this.catId = this.$route.params.catId;
+      if (this.catId == "all") {
+        this.$store.dispatch("getAllCourses");
+      } else {
+        this.$store.dispatch("getCourseByCat", this.catId);
+      }
     } else {
-      this.$store.dispatch("getCourseByCat", this.catId);
+      //type/:typename
+      if (this.$route.params.typename == "sale") {
+        this.$store.dispatch("getAllCoursesSale");
+      }
     }
   },
   components: {
     CourseCard
   },
-  computed: {
-    ...mapState(["courseByCat"])
-  },
   watch: {
     $route(to, from) {
-      this.catId = to.params.catId;
-      if (this.catId == "all") {
-        this.$store.dispatch("getAllCourses");
+      var path = this.$route.path;
+      if (path.startsWith("/courses-by-cat")) {
+        this.catId = this.$route.params.catId;
+        if (this.catId == "all") {
+          this.$store.dispatch("getAllCourses");
+        } else {
+          this.$store.dispatch("getCourseByCat", this.catId);
+        }
       } else {
-        this.$store.dispatch("getCourseByCat", this.catId);
+        //type/:typename
+        if (this.$route.params.typename == "sale") {
+          this.$store.dispatch("getAllCoursesSale");
+        }
       }
     }
   }

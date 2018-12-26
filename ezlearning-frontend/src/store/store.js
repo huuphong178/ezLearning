@@ -13,6 +13,8 @@ export default new Vuex.Store({
     isLogged: false,
     catogaries: [], //for page courses-by-cat,
     listCoursePopular: [],
+    listHighRatingCourse: [],
+    listNewCourse: [],
     courseBanner: [],
     statistic: [],
     saleCourese: [],
@@ -42,9 +44,9 @@ export default new Vuex.Store({
         state.coursesSearch = [];
       }
       else state.coursesSearch = payload;
-
     },
     SET_USER(state, payload) {
+      alert("payload: "+ JSON.stringify(payload));
       state.user = payload;
     },
     UPDATE_LOGIN_STATUS(state) {
@@ -52,9 +54,11 @@ export default new Vuex.Store({
       state.user = null;
     },
     ADD_CART(state, payload) {
+      alert(JSON.stringify(payload));
       state.cart.push(payload);
     },
     SET_COURSES_BY_CAT(state, payload) {
+      alert("payload" +JSON.stringify(payload));
       state.courseByCat = payload;
     },
     REMOVE_CART_ITEM(state, payload) {
@@ -63,7 +67,13 @@ export default new Vuex.Store({
     },
     SET_POPULAR_COURSES(state, payload){
       state.listCoursePopular = payload
-    }
+    },
+    SET_HIGH_RATING_COURSES(state, payload){
+      state.listHighRatingCourse = payload
+    },
+    SET_NEW_COURSES(state, payload){
+      state.listNewCourse = payload
+    },
   },
   actions,
 })

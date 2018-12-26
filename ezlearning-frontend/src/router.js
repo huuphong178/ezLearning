@@ -24,7 +24,12 @@ var router = new Router({
       component: Home
     },
     {
-      path: '/courses-by-cat/:catId', // gồm cả danh mục hot
+      path: '/courses-by-cat/:catId',
+      name: 'CoursesByCat',
+      component: CoursesByCat
+    },
+    {
+      path: '/type/:typename',
       name: 'CoursesByCat',
       component: CoursesByCat
     },

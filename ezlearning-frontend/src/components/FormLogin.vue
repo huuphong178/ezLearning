@@ -34,7 +34,7 @@
               </div>
               <div>
                 <label class="label-normal">Email hoặc Số điện thoại</label>
-                <input class="input-normal" type="text" v-model="dataSignUp.phone">
+                <input class="input-normal" type="text" v-model="dataSignUp.email">
               </div>
               <div>
                 <label class="label-normal">Mật khẩu</label>
@@ -111,11 +111,10 @@ name: "FormLogin",
     return {
       query: "",
       dataSignIn: {},
-      dataSignUp: {}
+      dataSignUp: {
+        role: 3
+      }
     };
-  },
-  computed: {
-    ...mapState(["signInSuccess"])
   },
   methods: {
     ...mapActions(["signUp"]),

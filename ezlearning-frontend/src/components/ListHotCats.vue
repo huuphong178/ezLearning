@@ -2,7 +2,9 @@
   <div id="hot-cats">
     <div style="margin-bottom: 10px;">
       <span class="section-title">Danh mục hot</span>
-      <button class="button-white-small" style="float: right;">Xem thêm</button>
+      <router-link to="/courses-by-cat/all">
+        <button class="button-white-small" style="float: right;">Xem thêm</button>
+      </router-link>
     </div>
     <div class="hot-cats-container">
       <router-link :to="`/search/Ngoại ngữ`">

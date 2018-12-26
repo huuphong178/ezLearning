@@ -5,7 +5,7 @@
                 <img src="icons/show-off-courses.png" width="58px" style="float: left; margin-right: 20px;">
                 <div>
                     <span class="show-off-number">
-                        {{statistic.course}}+
+                        {{statistic.sumcourse}}+
                     </span>
                     <br>
                     Khóa học
@@ -15,7 +15,7 @@
                 <img src="icons/show-off-students.png" width="58px" style="float: left; margin-right: 20px;">
                 <div>
                     <span class="show-off-number">
-                        {{statistic.student}}+
+                        {{statistic.sumstudent}}+
                     </span>
                     <br>
                     Học viên
@@ -25,7 +25,7 @@
                 <img src="icons/show-off-teachers.png" width="58px" style="float: left; margin-right: 20px;">
                 <div>
                     <span class="show-off-number">
-                        {{statistic.teacher}}+
+                        {{statistic.sumteacher}}+
                     </span>
                     <br>
                     Giảng viên

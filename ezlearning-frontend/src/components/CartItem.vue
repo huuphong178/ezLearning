@@ -9,7 +9,7 @@
       <div class="col-sm-8 cart-item-info" style="padding-right: 0px">
         <div class="row">
           <div class="col-sm-11">
-            <span class="cart-item-title">{{cartItem.name}}</span>
+            <span class="cart-item-title">{{cartItem.courseName}}</span>
           </div>
           <div class="col-sm-1" v-on:click="DeleteItem(cartItem)">
             <img src="/icons/lecture-create/delete.png" width="16px" class="btn-img">
@@ -18,10 +18,11 @@
         <div class="row" style="margin-top: 5px; bottom: 0; width: 100%; position: absolute;">
           <div class="col-sm-6">
             <img src="/imgs/teachers/teacher2.png" class="cart-item-ava">
-            <span class="cart-item-name">Phan Văn Luân</span>
+            <span class="cart-item-name">{{cartItem.teacherName}}</span>
           </div>
           <div class="col-sm-6 text-right no-padding">
-            <span class="cart-item-price">599,000</span>
+            <span class="cart-item-price" v-if="cartItem.percentage == 0">{{cartItem.price}}</span>
+            <span class="cart-item-price" v-if="cartItem.percentage != 0">{{cartItem.promotionalPrice}}</span>
           </div>
         </div>
       </div>

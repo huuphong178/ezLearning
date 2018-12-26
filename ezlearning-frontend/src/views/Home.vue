@@ -15,8 +15,8 @@
       <ListHotCats/>
 
       <ListCourseCard sectionTitle="Phổ biến" v-bind:listCourse="listCoursePopular"/>
-      <ListCourseCard sectionTitle="Được đánh giá cao"/>
-      <ListCourseCard sectionTitle="Mới nhất"/>
+      <ListCourseCard sectionTitle="Được đánh giá cao" v-bind:listCourse="listHighRatingCourse"/>
+      <ListCourseCard sectionTitle="Mới nhất" v-bind:listCourse="listNewCourse"/>
 
       <ListFamousTeacher/>
     </div>
@@ -47,7 +47,9 @@ export default {
     ListFamousTeacher
   },
   computed: {
-    ...mapState(["listCoursePopular"])
+    ...mapState(["listCoursePopular"]),
+    ...mapState(["listHighRatingCourse"]),
+    ...mapState(["listNewCourse"])
   },
   methods: {
     ...mapActions(["init"])

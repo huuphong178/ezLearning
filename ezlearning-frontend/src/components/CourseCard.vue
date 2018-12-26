@@ -5,8 +5,8 @@
     style="height: 100%; position: relative;"
   >
     <div class="tile-price" v-on:click="AddToCart(course, user)">
-      <button class="price-button" v-if="course.percentage != null">{{course.promotionalPrice}} đ</button>
-      <button class="price-button" v-if="course.percentage == null">{{course.Price}} đ</button>
+      <button class="price-button" v-if="course.percentage != 0">{{course.promotionalPrice}} đ</button>
+      <button class="price-button" v-if="course.percentage == 0">{{course.price}} đ</button>
 
     </div>
     <div class="tile tile-course">
@@ -49,7 +49,7 @@
         <div class="tile-info" style="background-color: rgba(0, 178, 203, 0.75);">
           <div style="position: relative; height: 100%;">
             <div>
-              <div class="tile-discount" style="margin-bottom: 5px;">{{course.percentage}}%</div>
+              <div v-if="course.percentage != 0" class="tile-discount" style="margin-bottom: 5px;">{{course.percentage}}%</div>
               <br>
               <div class="tile-cat">{{course.catName}}</div>
             </div>
@@ -69,7 +69,7 @@
               
               <span>(0{{course.rating}})</span>
 
-              <div class="tile-course-name">{{course.name}}</div>
+              <div class="tile-course-name">{{course.courseName}}</div>
               <div>
                 <div
                   class="tile-ava-container"
@@ -79,7 +79,7 @@
                 </div>
                 <span>{{course.teacherName}}</span>
               </div>
-              <div v-if="course.percentage != null">
+              <div v-if="course.percentage != 0">
                 Giá cũ:
                 <span class="tile-old-price">{{course.price}}đ</span>
               </div>
@@ -125,6 +125,7 @@ export default {
       if (user != null) {
         this.$store.dispatch("addCart", course);
       } else {
+         this.$store.dispatch("setIsLogged", true);
       }
     }
   }

@@ -3,14 +3,14 @@
     <div v-for="course in courseBanner" :key="course.id">
     <img src="/pics/banner.png" alt="">
         <div>
-            {{course.catname}}
+            {{course.catName}}
         </div>
         <div>
-            {{course.coursename}}
+            {{course.courseName}}
         </div>
         <div>
             <img src="/pics/teacher.png" alt="" style="display:inline-block">   
-            <div style="display:inline-block">{{course.teachername}}</div>
+            <div style="display:inline-block">{{course.teacherName}}</div>
         </div>
         <button>ĐĂNG KÝ NGAY</button>
     </div>
