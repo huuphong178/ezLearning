@@ -205,7 +205,7 @@ public class CourseHandler extends BaseHandler{
                     String n = params.get("n");
                     
                     ArrayList<PopularCourse> temptList = new ArrayList<>();
-                    String selectFrom = "SELECT *, IFNULL(percentage, 0) as 'percentage2' FROM (SELECT c.id, c.name as 'coursename', c.price, u.username, u.avatar, c.rating, cat.id as 'catid', cat.name as 'catname', '1', u.displayname as 'teachername'"
+                    String selectFrom = "SELECT *, IFNULL(percentage, 0) as 'percentage2' FROM (SELECT c.id, c.name as 'coursename', c.price, u.username, u.avatar, c.rating, cat.id as 'catid', cat.name as 'catname', '1', u.displayname as 'teachername', c.description"
                             + " FROM category cat, course c, user u";
                     String where = " WHERE c.catid = cat.id AND c.teacherid = u.username"
                             + " ORDER BY rating DESC) table1";
