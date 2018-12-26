@@ -419,17 +419,18 @@ public class CourseHandler extends BaseHandler{
         String query = req.getQueryString();
         Map<String, String> params = StringUtil.getParams(query, "&");
         String catID = params.get("catid");
-        ArrayList<Course> temptList = new ArrayList<>();
+        ArrayList<CourseExt> temptList = new ArrayList<>();
 
         if (catID != null) {
-            String sql = "SELECT c.*, cat.name"
-                    + " FROM course c, category cat"
-                    + " WHERE c.catid = cat.id AND c.catid = " + catID;
+            String sql = "SELECT *, IFNULL(percentage, 0) as 'percentage2' FROM (SELECT c.*, cat.name as 'catname', u.displayname as 'teachername'"
+                    + " FROM course c, category cat, user u"
+                    + " WHERE c.catid = cat.id AND u.username = c.teacherid AND c.catid = " + catID + " ) table1"
+                    + " LEFT JOIN voucher v ON table1.id = v.courseid;";
             System.out.println("SQL: " + sql);
 
             ArrayList<String[]> tempt = bus.executeSelectSQL(sql);
             for (String[] str : tempt) {
-                Course item = new Course(str);
+                CourseExt item = new CourseExt(str);
                 temptList.add(item);
             }
 
@@ -445,25 +446,28 @@ public class CourseHandler extends BaseHandler{
             String categoryName = req.getParameter("categoryname");
             String sql = "";
             if(courseName != null){
-                sql = "SELECT *"
-                    + " FROM course"
-                    + " WHERE name LIKE '%" + courseName + "%'";
+                sql = "SELECT *, IFNULL(percentage, 0) as 'percentage2' FROM (SELECT c.*, cat.name as 'catname', u.displayname as 'teachername'"
+                    + " FROM course c, category cat, user u"
+                    + " WHERE c.name LIKE '%" + courseName + "%' AND c.catid = cat.id AND u.username = c.teacherid) table1"
+                    + " LEFT JOIN voucher v ON table1.id = v.courseid;";
                 System.out.println("SQL: " + sql);   
             }else if(teacherName != null){
-                sql = "SELECT c.*"
-                    + " FROM course c, user u"
-                    + " WHERE c.teacherid = u.username AND u.displayname LIKE '%" + teacherName + "%'";
+                sql = "SELECT *, IFNULL(percentage, 0) as 'percentage2' FROM (SELECT c.*, cat.name as 'catname', u.displayname as 'teachername'"
+                    + " FROM course c, user u, category cat"
+                    + " WHERE c.teacherid = u.username AND c.catid = cat.id AND u.displayname LIKE '%" + teacherName + "%') table1"
+                    + " LEFT JOIN voucher v ON table1.id = v.courseid;";
                 System.out.println("SQL: " + sql); 
             }else if(categoryName != null){
-                sql = "SELECT c.*"
-                    + " FROM course c, category cat"
-                    + " WHERE c.catid = cat.id AND cat.name LIKE '%" + categoryName + "%'";
+                sql = "SELECT *, IFNULL(percentage, 0) as 'percentage2' FROM (SELECT c.*, cat.name as 'catname', u.displayname as 'teachername'"
+                    + " FROM course c, category cat, user u"
+                    + " WHERE c.catid = cat.id AND c.teacherid = u.username AND cat.name LIKE '%" + categoryName + "%' ) table1"
+                    + " LEFT JOIN voucher v ON table1.id = v.courseid;";
                 System.out.println("SQL: " + sql); 
             }
             
             ArrayList<String[]> tempt = bus.executeSelectSQL(sql);
             for (String[] str : tempt) {
-                Course item = new Course(str);
+                CourseExt item = new CourseExt(str);
                 temptList.add(item);
             }
             
