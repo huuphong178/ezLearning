@@ -15,6 +15,7 @@ export default new Vuex.Store({
     listCoursePopular: [],
     listHighRatingCourse: [],
     listNewCourse: [],
+    listFamousTeacher: [],
     courseBanner: [],
     statistic: [],
     saleCourese: [],
@@ -22,6 +23,8 @@ export default new Vuex.Store({
     coursesSearch: [], //for page search
     user: null,
     cart: [],
+    courseDetail: {},
+    listLecture: [],
   },
   mutations: {
     SET_LOGGED(state, payload) {
@@ -58,7 +61,7 @@ export default new Vuex.Store({
       state.cart.push(payload);
     },
     SET_COURSES_BY_CAT(state, payload) {
-      alert("payload" +JSON.stringify(payload));
+      // alert("payload" +JSON.stringify(payload));
       state.courseByCat = payload;
     },
     REMOVE_CART_ITEM(state, payload) {
@@ -74,6 +77,15 @@ export default new Vuex.Store({
     SET_NEW_COURSES(state, payload){
       state.listNewCourse = payload
     },
+    SET_FAMOUS_TEACHER(state, payload){
+      state.listFamousTeacher = payload;
+    },
+    SET_COURSE_DETAIL(state, payload){
+      state.courseDetail = payload;
+    },
+    SET_LECTURES(state, payload){
+      state.listLecture = payload
+    }
   },
   actions,
 })

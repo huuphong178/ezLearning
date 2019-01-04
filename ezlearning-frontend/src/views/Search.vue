@@ -33,8 +33,10 @@
         </div>
         <div class="tile-container">
           <div v-if="coursesSearch.length <= 0">Không có kết quả tìm kiếm phù hợp</div>
-          <div v-for="course in coursesSearch" :key="course.id" v-if="coursesSearch.length > 0">
+          <div v-if="coursesSearch.length > 0">
+          <div v-for="course in coursesSearch" :key="course.id">
             <CourseCard v-bind:course="course"/>
+          </div>
           </div>
         </div>
       </div>

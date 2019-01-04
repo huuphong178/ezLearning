@@ -21,14 +21,18 @@
         <img src="icons/home-left.png" width="10px">
       </div>
     </div>
+    
     <div
-      style="width: calc(100% - 104px); padding: 5px; overflow: hidden; margin-left: 52px; margin-right: 52px;"
+      style ="width: calc(100% - 104px); padding: 5px; overflow: hidden; margin-left: 52px; margin-right: 52px;"
     >
+    
       <div id="fteachers-list" style="width: 200%; height: 600px;">
         <div class="fteachers-container">
-          <FamousTeacher/>
+          <div v-for="teacherItem in listTeacher" :key="teacherItem.idteacher">
+          <FamousTeacher :teacher="teacherItem"/>
         </div>
       </div>
+    </div>
     </div>
   </div>
 </template>
@@ -38,6 +42,9 @@ import FamousTeacher from "@/components/FamousTeacher.vue";
 
 export default {
   name: "home",
+  props: {
+    listTeacher: []
+  },
   components: {
     FamousTeacher
   },

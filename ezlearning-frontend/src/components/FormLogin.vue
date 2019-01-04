@@ -40,7 +40,7 @@
                 <label class="label-normal">Mật khẩu</label>
                 <input class="input-normal" type="password" v-model="dataSignUp.password">
               </div>
-              <div id="su-warn" class="form-warning" style="display: none;"></div>
+              <div id="su-warn" class="form-warning" style="display: none;">Đăng ký không thành công, vui lòng thử lại!</div>
               <button
                 id="sign-up-submit"
                 class="big-button"
@@ -77,7 +77,7 @@
                 <label class="label-normal">Mật khẩu</label>
                 <input class="input-normal" type="password" v-model="dataSignIn.password">
               </div>
-              <div id="si-warn" class="form-warning" style="display: none;"></div>
+              <div id="si-warn" class="form-warning" style="display: none;">Đăng nhập không thành công, vui lòng thử lại!</div>
               <button
                 id="sign-in-submit"
                 class="big-button"
@@ -112,9 +112,11 @@ name: "FormLogin",
       query: "",
       dataSignIn: {},
       dataSignUp: {
-        role: 3
       }
     };
+  },
+  computed: {
+    ...mapState(["user"])
   },
   methods: {
     ...mapActions(["signUp"]),

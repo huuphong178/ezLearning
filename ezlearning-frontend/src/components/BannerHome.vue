@@ -1,8 +1,8 @@
 <template>
 <div>
-    <div v-for="course in courseBanner" :key="course.id">
+    <!-- <div v-for="course in courseBanner" :key="course.id"> -->
     <img src="/pics/banner.png" alt="">
-        <div>
+        <!-- <div>
             {{course.catName}}
         </div>
         <div>
@@ -13,7 +13,7 @@
             <div style="display:inline-block">{{course.teacherName}}</div>
         </div>
         <button>ĐĂNG KÝ NGAY</button>
-    </div>
+    </div> -->
 </div>
 </template>
 

@@ -9,7 +9,7 @@
       <div class="col-sm-8 cart-item-info" style="padding-right: 0px">
         <div class="row">
           <div class="col-sm-11">
-            <span class="cart-item-title">{{cartItem.courseName}}</span>
+            <span class="cart-item-title">{{cartItem.name}}</span>
           </div>
           <div class="col-sm-1" v-on:click="DeleteItem(cartItem)">
             <img src="/icons/lecture-create/delete.png" width="16px" class="btn-img">

@@ -18,7 +18,7 @@
       <ListCourseCard sectionTitle="Được đánh giá cao" v-bind:listCourse="listHighRatingCourse"/>
       <ListCourseCard sectionTitle="Mới nhất" v-bind:listCourse="listNewCourse"/>
 
-      <ListFamousTeacher/>
+      <ListFamousTeacher v-bind:listTeacher="listFamousTeacher"/>
     </div>
     
   </div>
@@ -49,7 +49,8 @@ export default {
   computed: {
     ...mapState(["listCoursePopular"]),
     ...mapState(["listHighRatingCourse"]),
-    ...mapState(["listNewCourse"])
+    ...mapState(["listNewCourse"]),
+    ...mapState(["listFamousTeacher"])
   },
   methods: {
     ...mapActions(["init"])

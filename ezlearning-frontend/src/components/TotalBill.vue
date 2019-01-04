@@ -5,7 +5,7 @@
         <div class="order-id">Tổng hóa đơn</div>
       </div>
       <div class="col-sm-6 text-right">
-        <div class="order-o-price">599,000</div>
+        <div class="order-o-price">{{+ sum}</div>
         <div class="order-discount">0</div>
       </div>
     </div>
@@ -16,3 +16,28 @@
     </div>
   </div>
 </template>
+
+<script>
+import { mapState } from "vuex";
+
+export default {
+  data() {
+    return {
+      sum: ""
+    };
+  },
+  computed: {
+    ...mapState(["cart"])
+  },
+  created() {
+    var carts = this.$store.state.cart;
+    carts.forEach(element => {
+      if (element.percentage != 0) {
+        this.sum += +element.promotionalPrice;
+      } else {
+        this.sum += +element.price;
+      }
+    });
+  }
+};
+</script>

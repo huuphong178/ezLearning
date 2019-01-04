@@ -73,8 +73,8 @@
             </router-link>
             <span id="nav-profile-s" style="cursor: pointer;" v-on:click="DropdownProfile()">
               <div class="navbar-ava-container" style="margin-left: 20px;">
-                <img src="" class="navbar-ava-img" id="avt">
-              </div>avt
+                <img src="/imgs/students/student1.png" class="navbar-ava-img" id="avt">
+              </div>
               <img src="/icons/more-cat.png" width="11px" style="margin-left: 10px">
             </span>
             <div

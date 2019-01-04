@@ -68,6 +68,17 @@ export default {
     }).catch(err => {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
       alert(err);
     });
+
+    //famous teacher
+    axios.get("http://localhost:3000/teacher/bestrate?n=5").then(response => {
+      // alert(JSON.stringify(response));
+      if (response.status == 200) {
+        ctx.commit('SET_FAMOUS_TEACHER', response.data);
+      }
+    }).catch(err => {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+      alert(err);
+    });
+
   },
   setIsLogged(ctx, data) {
     ctx.commit('SET_LOGGED', data);
@@ -85,10 +96,10 @@ export default {
   signIn(ctx, data) {
     axios.post(`http://localhost:3000/user/login`, data).then(response => {
       if (response.data.status == null) {
-        alert(JSON.stringify(response.data));
         ctx.commit('SET_USER', response.data);
         ctx.commit('SET_LOGGED', false);
       } else {
+        
         ctx.commit('SET_LOGGED', true);
       }
     }).catch(err => {
@@ -170,6 +181,35 @@ export default {
       // alert("new: "+ JSON.stringify(response));
       if (response.status == 200) {
         ctx.commit('SET_NEW_COURSES', response.data);
+      }
+    }).catch(err => {
+      alert(err);
+    });
+  },
+  getCoursesOfTeacher(ctx, teacherid){
+    axios.get(`http://localhost:3000/course/teach?teacherid=${teacherid}&n=5`).then(response => {
+      // alert(JSON.stringify(response));
+      if (response.status == 200) {
+        ctx.commit('SET_COURSES_SEARCH', response.data);
+      }
+    }).catch(err => {
+      alert(err);
+    });
+  },
+  getCourseDetail(ctx, courseid){
+    axios.get(`http://localhost:3000/course?id=${courseid}`).then(response => {
+      // alert(JSON.stringify(response));
+      if (response.status == 200) {
+        ctx.commit('SET_COURSE_DETAIL', response.data[0]);
+      }
+    }).catch(err => {
+      alert(err);
+    });
+  },
+  getLectures(ctx, courseid){
+    axios.get(`http://localhost:3000/lecture/course?id=${courseid}`).then(response => {
+      if (response.status == 200) {
+        ctx.commit('SET_LECTURES', response.data[0].chapterlist);
       }
     }).catch(err => {
       alert(err);
