@@ -25,6 +25,7 @@ export default new Vuex.Store({
     cart: [],
     courseDetail: {},
     listLecture: [],
+    profileCourse: []
   },
   mutations: {
     SET_LOGGED(state, payload) {
@@ -40,6 +41,7 @@ export default new Vuex.Store({
       state.statistic = payload;
     },
     SET_SALE(state, payload) {
+      // alert(JSON.stringify(payload));
       state.saleCourese = payload;
     },
     SET_COURSES_SEARCH(state, payload) {
@@ -49,7 +51,7 @@ export default new Vuex.Store({
       else state.coursesSearch = payload;
     },
     SET_USER(state, payload) {
-      alert("payload: "+ JSON.stringify(payload));
+      // alert("payload: "+ JSON.stringify(payload));
       state.user = payload;
     },
     UPDATE_LOGIN_STATUS(state) {
@@ -57,7 +59,7 @@ export default new Vuex.Store({
       state.user = null;
     },
     ADD_CART(state, payload) {
-      alert(JSON.stringify(payload));
+      // alert(JSON.stringify(payload));
       state.cart.push(payload);
     },
     SET_COURSES_BY_CAT(state, payload) {
@@ -68,7 +70,11 @@ export default new Vuex.Store({
       var index = state.cart.indexOf(payload);
       state.cart.splice(index, 1);
     },
+    DELETE_ALL_CART_ITEM(state, payload){
+      state.cart = [];
+    },
     SET_POPULAR_COURSES(state, payload){
+      // alert("Popular: " + JSON.stringify(payload));
       state.listCoursePopular = payload
     },
     SET_HIGH_RATING_COURSES(state, payload){
@@ -85,6 +91,9 @@ export default new Vuex.Store({
     },
     SET_LECTURES(state, payload){
       state.listLecture = payload
+    },
+    SET_PROFILE_COURSES(state, payload){
+      state.profileCourse = payload
     }
   },
   actions,

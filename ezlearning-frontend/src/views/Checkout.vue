@@ -162,6 +162,7 @@ export default {
   },
   methods: {
     CheckoutNotice() {
+      this.$store.dispatch("deleteCart");
       function tmodalAction(iconToggle, title, msg, addonToggle, addonText) {
         //iconToggle: 1 - hiện icon thành công, 0 - hiện icon thất bại, khác - không hiện
         //title: tiêu đề thông báo

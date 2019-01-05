@@ -214,5 +214,17 @@ export default {
     }).catch(err => {
       alert(err);
     });
+  },
+  deleteCart(ctx){
+    ctx.commit('DELETE_ALL_CART_ITEM');
+  },
+  getProfileCourses(ctx, studentid){
+    axios.get(`http://localhost:3000/course/studentid?id=${studentid}`).then(response => {
+      if (response.status == 200) {
+        ctx.commit('SET_PROFILE_COURSES', response.data);
+      }
+    }).catch(err => {
+      alert(err);
+    });
   }
 }

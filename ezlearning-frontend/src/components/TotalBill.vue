@@ -5,13 +5,13 @@
         <div class="order-id">Tổng hóa đơn</div>
       </div>
       <div class="col-sm-6 text-right">
-        <div class="order-o-price">{{+ sum}</div>
+        <div class="order-o-price">{{sum}}</div>
         <div class="order-discount">0</div>
       </div>
     </div>
     <div class="row">
       <div class="col-sm-12 text-right">
-        <div class="order-price">599,000</div>
+        <div class="order-price">{{sum}}</div>
       </div>
     </div>
   </div>
@@ -23,7 +23,7 @@ import { mapState } from "vuex";
 export default {
   data() {
     return {
-      sum: ""
+      sum: 0
     };
   },
   computed: {
@@ -38,6 +38,7 @@ export default {
         this.sum += +element.price;
       }
     });
+    alert(this.sum);
   }
 };
 </script>

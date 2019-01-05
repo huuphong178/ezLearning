@@ -10,7 +10,7 @@
 
     </div>
     <div class="tile tile-course">
-      <router-link :to="`/course/${course.id}`">
+      <router-link :to="`/course/${course.courseid}`">
         <div class="tile-preview">
           <div style="position: relative; height: 100%;">
             <div>

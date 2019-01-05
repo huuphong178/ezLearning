@@ -15,7 +15,7 @@
       <div class="popular-list" style="width: 200%;">
         <div class="tile-container-long">
           <div v-for="courseItem in listCourse" :key="courseItem.id">
-            <CourseCard v-bind:course="courseItem"/>
+            <CourseCard :course="courseItem"/>
           </div>
         </div>
       </div>

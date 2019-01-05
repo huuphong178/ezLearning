@@ -10,7 +10,7 @@
       <div class="tile-container">
         <AdvertiseHome/>
         <div v-for="course in saleCourese" :key="course.id">
-          <CourseCard v-bind:course="course"/>
+          <CourseCard :course="course"/>
         </div>
       </div>
     </div>

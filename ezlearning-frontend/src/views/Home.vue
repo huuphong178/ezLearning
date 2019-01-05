@@ -14,9 +14,9 @@
 
       <ListHotCats/>
 
-      <ListCourseCard sectionTitle="Phổ biến" v-bind:listCourse="listCoursePopular"/>
-      <ListCourseCard sectionTitle="Được đánh giá cao" v-bind:listCourse="listHighRatingCourse"/>
-      <ListCourseCard sectionTitle="Mới nhất" v-bind:listCourse="listNewCourse"/>
+      <ListCourseCard sectionTitle="Phổ biến" :listCourse="listCoursePopular"/>
+      <ListCourseCard sectionTitle="Được đánh giá cao" :listCourse="listHighRatingCourse"/>
+      <ListCourseCard sectionTitle="Mới nhất" :listCourse="listNewCourse"/>
 
       <ListFamousTeacher v-bind:listTeacher="listFamousTeacher"/>
     </div>

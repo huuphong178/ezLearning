@@ -83,12 +83,18 @@
               class="menu-dropdown"
               style="display: none; right: -60px; min-width: 230px; text-align: left;"
             >
-              <div class="dropdown-addon-top" style="font-weight: bold;">Võ Thịnh Chuẩn</div>
+              <router-link :to="`/profile-student/${user.role}?${user.username}`">
+                <div class="dropdown-addon-top" style="font-weight: bold;">{{user.username}}</div>
+              </router-link>
               <div class="dropdown-content">
                 <div class="dropdown">
                   <ul>
-                    <li>Các khóa học của tôi</li>
-                    <li>Lịch sử giao dịch</li>
+                    <router-link :to="`/profile-student/${user.role}?${user.username}`">
+                      <li>Các khóa học của tôi</li>
+                    </router-link>
+                    <router-link :to="`/profile-student/${user.role}?${user.username}`">
+                      <li>Lịch sử giao dịch</li>
+                    </router-link>
                   </ul>
                 </div>
               </div>
@@ -119,19 +125,19 @@
               class="menu-dropdown"
               style="display: none; right: -60px; min-width: 230px; text-align: left;"
             >
-            <router-link :to="`/profile-teacher/${user.role}?${user.username}`">
-              <div class="dropdown-addon-top" style="font-weight: bold;">{{user.username}}</div>
+              <router-link :to="`/profile-teacher/${user.role}?${user.username}`">
+                <div class="dropdown-addon-top" style="font-weight: bold;">{{user.username}}</div>
               </router-link>
               <div class="dropdown-content">
                 <div class="dropdown">
                   <ul>
-                     <router-link :to="`/profile-teacher/${user.role}?${user.username}`">
-                        <li>Các khóa học của tôi</li>
-                     </router-link>
+                    <router-link :to="`/profile-teacher/${user.role}?${user.username}`">
+                      <li>Các khóa học của tôi</li>
+                    </router-link>
                   </ul>
                 </div>
               </div>
-              <div class="dropdown-addon"  v-on:click="logOut()">Đăng xuất</div>
+              <div class="dropdown-addon" v-on:click="logOut()">Đăng xuất</div>
             </div>
           </div>
         </div>
@@ -178,13 +184,12 @@ export default {
     // ...mapActions(["applySearch"]),
     ...mapActions(["logOut"]),
 
-    ...mapActions(["setIsLogged"]),
-
+    ...mapActions(["setIsLogged"])
   },
   watch: {
     $route(to, from) {
       this.query = "";
-    },
+    }
   }
 };
 </script>
