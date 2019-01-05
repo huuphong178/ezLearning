@@ -38,7 +38,7 @@ export default {
   },
   methods:{
     DeleteItem(cartItem){
-      alert("Xóa khỏi giỏ hàng");
+      //alert("Xóa khỏi giỏ hàng");
       this.$store.dispatch("removeCartItem", cartItem);
     }
   }

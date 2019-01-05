@@ -38,7 +38,7 @@ export default {
         this.sum += +element.price;
       }
     });
-    alert(this.sum);
+    ////alert(this.sum);
   }
 };
 </script>

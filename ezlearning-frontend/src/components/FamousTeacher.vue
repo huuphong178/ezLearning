@@ -24,7 +24,7 @@
         <span class="fteachers-course-count">{{coursesSearch.length}}</span>
         <span class="fteachers-course">Khóa học</span>
       </div>
-      <div>
+      <div style="height: 340px; overflow:hidden">
         <div v-for="courses in coursesSearch" :key="courses.id">
           <div class="fteachers-course-tile">
             <div class="fteachers-course-price" @click="AddToCart(courses, user)">

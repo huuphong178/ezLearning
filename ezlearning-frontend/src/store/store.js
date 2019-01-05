@@ -41,7 +41,7 @@ export default new Vuex.Store({
       state.statistic = payload;
     },
     SET_SALE(state, payload) {
-      // alert(JSON.stringify(payload));
+      // ////alert(JSON.stringify(payload));
       state.saleCourese = payload;
     },
     SET_COURSES_SEARCH(state, payload) {
@@ -51,7 +51,7 @@ export default new Vuex.Store({
       else state.coursesSearch = payload;
     },
     SET_USER(state, payload) {
-      // alert("payload: "+ JSON.stringify(payload));
+      // ////alert("payload: "+ JSON.stringify(payload));
       state.user = payload;
     },
     UPDATE_LOGIN_STATUS(state) {
@@ -59,11 +59,11 @@ export default new Vuex.Store({
       state.user = null;
     },
     ADD_CART(state, payload) {
-      // alert(JSON.stringify(payload));
+      // ////alert(JSON.stringify(payload));
       state.cart.push(payload);
     },
     SET_COURSES_BY_CAT(state, payload) {
-      // alert("payload" +JSON.stringify(payload));
+      // ////alert("payload" +JSON.stringify(payload));
       state.courseByCat = payload;
     },
     REMOVE_CART_ITEM(state, payload) {
@@ -74,7 +74,7 @@ export default new Vuex.Store({
       state.cart = [];
     },
     SET_POPULAR_COURSES(state, payload){
-      // alert("Popular: " + JSON.stringify(payload));
+      // ////alert("Popular: " + JSON.stringify(payload));
       state.listCoursePopular = payload
     },
     SET_HIGH_RATING_COURSES(state, payload){
